@@ -1,7 +1,4 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import { Space } from '@/features/space';
-import { Posts } from '@/features/posts/components/posts';
+import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,20 +10,5 @@ type SpacePageProps = {
 };
 
 export default async function SpacePage({ params }: SpacePageProps) {
-  const supabase = createServerComponentClient({ cookies });
-
-  const { data: posts } = await supabase
-    .from('detailed_post')
-    .select()
-    .eq('posted_in', params.spaceId)
-    .order('created_at', { ascending: false });
-
-  if (posts) {
-    return (
-      <>
-        <Space spaceId={params.spaceId} spaceName={params.spaceName} />
-        <Posts posts={posts} />
-      </>
-    );
-  }
+  redirect(`/spaces/${params.spaceId}/${params.spaceName}/new/1`);
 }

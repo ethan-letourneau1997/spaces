@@ -18,6 +18,11 @@ export function PostThumbnail({ post }: PostThumbnailProps) {
     return <LinkPostThumbnail post={post} />;
   }
 
+  // TODO Delete
+  if (post.type === 'image') {
+    return <TextPostThumbnail />;
+  }
+
   if (post.type === 'image') {
     return <ImagePostThumbnail post={post} />;
   }

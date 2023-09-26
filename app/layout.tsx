@@ -3,6 +3,7 @@ import '@mantine/core/styles.css';
 import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
 
 import React from 'react';
+import { Inter } from 'next/font/google';
 import { theme } from '../theme';
 import { Navbar } from '@/features/navbar';
 
@@ -11,6 +12,11 @@ export const metadata = {
   description: 'I am using Mantine with Next.js!',
 };
 export const dynamic = 'force-dynamic';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({ children }: { children: any }) {
   return (
@@ -23,7 +29,7 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body>
+      <body className={inter.className}>
         <MantineProvider theme={theme}>
           <Navbar>
             <Container>{children}</Container>

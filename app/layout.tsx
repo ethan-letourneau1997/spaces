@@ -1,6 +1,6 @@
 import '@mantine/core/styles.css';
 
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
 
 import React from 'react';
 import { theme } from '../theme';
@@ -25,7 +25,9 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <Navbar>{children}</Navbar>
+          <Navbar>
+            <Container>{children}</Container>
+          </Navbar>
         </MantineProvider>
       </body>
     </html>

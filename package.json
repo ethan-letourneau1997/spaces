@@ -27,10 +27,13 @@
     "@supabase/supabase-js": "^2.36.0",
     "@tabler/icons-react": "^2.20.0",
     "cookies-next": "^2.1.1",
+    "link-preview-js": "^3.0.5",
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "supabase": "^1.99.5"
+    "react-icons": "^4.11.0",
+    "supabase": "^1.99.5",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",

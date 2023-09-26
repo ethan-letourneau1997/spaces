@@ -1,15 +1,14 @@
 import { Stack } from '@mantine/core';
-
 import { Database } from '@/lib/database';
-import Post from './post';
+import { Post } from './post';
 
 export const dynamic = 'force-dynamic';
 
 type PostsProps = {
-  posts: Database['public']['Tables']['post']['Row'][];
+  posts: Database['public']['Views']['detailed_post']['Row'][];
 };
 
-export default async function Posts({ posts }: PostsProps) {
+export async function Posts({ posts }: PostsProps) {
   if (posts) {
     return (
       <>

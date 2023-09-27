@@ -18,7 +18,9 @@ export function PostVotes({ postId }: PostVotesProps) {
       setTotalVotes(votes);
     }
 
-    getTotalPostVotes();
+    if (postId) {
+      getTotalPostVotes();
+    }
   }, [postId]);
 
   return (

@@ -1,4 +1,4 @@
-import { Flex } from '@mantine/core';
+import { Box, Flex } from '@mantine/core';
 import { PostPagination } from '@/features/post-pagination';
 import { SpaceSidebar } from '@/features/space-sidebar';
 import '@mantine/core/styles.css';
@@ -12,7 +12,9 @@ export default function SpaceLayout({ children }: { children: any }) {
         {children}
         <PostPagination />
       </div>
-      <SpaceSidebar />
+      <Box miw="300px">
+        <SpaceSidebar />
+      </Box>
     </Flex>
   );
 }

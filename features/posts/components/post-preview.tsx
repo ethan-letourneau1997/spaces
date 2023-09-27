@@ -2,14 +2,15 @@
 
 import { Card, Grid } from '@mantine/core';
 import { Database } from '@/lib/database';
-import { PostVotes } from './post-votes';
+
 import { PostThumbnail } from '@/features/post-thumbnail';
+import { PostVotes } from '@/features/post-votes';
 
 type PostsProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
 };
 
-export function Post({ post }: PostsProps) {
+export function PostPreview({ post }: PostsProps) {
   return (
     <Card>
       <Grid>

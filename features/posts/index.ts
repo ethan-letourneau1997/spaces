@@ -1,1 +1,1 @@
-export * from './components/posts';
+export * from './components/post-previews';

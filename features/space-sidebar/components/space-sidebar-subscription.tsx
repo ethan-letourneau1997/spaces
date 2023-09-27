@@ -5,6 +5,8 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import { FaUserAstronaut } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
+import { fetchSubscriberCount } from '@/utils/fetch-subscriber-count';
+import { checkUserSubscription } from '@/utils/check-user-subscription';
 
 type SpaceSidebarSubscriptionProps = {
   spaceId: string;
@@ -15,37 +17,19 @@ export function SpaceSidebarSubscription({ spaceId }: SpaceSidebarSubscriptionPr
   const [userSubscribed, setUserSubscribed] = useState(false);
   const [subscriberCount, setSubscriberCount] = useState(0);
 
+  async function getSubscriberCount() {
+    const count = await fetchSubscriberCount(spaceId);
+    setSubscriberCount(count);
+  }
+
+  async function isUserSubscribed() {
+    const userSubscription = await checkUserSubscription(spaceId);
+    setUserSubscribed(userSubscription);
+  }
+
   useEffect(() => {
-    async function fetchSubscriberCount() {
-      const { count } = await supabase
-        .from('user_community')
-        .select('*', { count: 'exact', head: true })
-        .eq('community_id', spaceId);
-      if (count) {
-        setSubscriberCount(count);
-      }
-    }
-
-    async function checkUserSubscribed() {
-      const { data } = await supabase.auth.getSession();
-
-      if (!data.session) return;
-
-      const { data: user_community } = await supabase
-        .from('user_community')
-        .select()
-        .match({ user_id: data.session.user.id, community_id: spaceId })
-        .single();
-
-      if (user_community) {
-        setUserSubscribed(true);
-      } else {
-        setUserSubscribed(false);
-      }
-    }
-
-    checkUserSubscribed();
-    fetchSubscriberCount();
+    getSubscriberCount();
+    isUserSubscribed();
   }, [userSubscribed]);
 
   async function handleSubscribe() {

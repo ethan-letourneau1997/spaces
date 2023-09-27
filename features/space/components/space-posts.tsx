@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Posts } from '@/features/posts/components/posts';
 import { getSortedPosts } from '@/features/space/api/get-sorted-posts';
 
@@ -17,10 +16,6 @@ export default async function SpacePosts({ params }: SpacePostsProps) {
   const posts = await getSortedPosts(params.spaceId, params.page, params.sort);
 
   if (posts) {
-    return (
-      <Suspense fallback={<div>Loading...</div>}>
-        <Posts posts={posts} />
-      </Suspense>
-    );
+    return <Posts posts={posts} />;
   }
 }

@@ -22,7 +22,9 @@ export async function getSortedPosts(
         .order('created_at', { ascending: false })
         .range(lowerLimit, upperLimit);
 
-      return posts;
+      if (posts) {
+        return posts;
+      }
     }
 
     if (sortBy === 'old') {
@@ -32,8 +34,9 @@ export async function getSortedPosts(
         .eq('posted_in', communityId)
         .order('created_at', { ascending: true })
         .range(lowerLimit, upperLimit);
-
-      return posts;
+      if (posts) {
+        return posts;
+      }
     }
 
     if (sortBy === 'top') {
@@ -44,7 +47,9 @@ export async function getSortedPosts(
         .order('total_votes', { ascending: false })
         .range(lowerLimit, upperLimit);
 
-      return posts;
+      if (posts) {
+        return posts;
+      }
     }
   } catch (error) {
     return [];

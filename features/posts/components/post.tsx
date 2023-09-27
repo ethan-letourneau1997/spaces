@@ -1,9 +1,7 @@
 'use client';
 
 import { Card, Grid } from '@mantine/core';
-
 import { Database } from '@/lib/database';
-
 import { PostVotes } from './post-votes';
 import { PostThumbnail } from '@/features/post-thumbnail';
 

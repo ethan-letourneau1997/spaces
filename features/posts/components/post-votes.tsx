@@ -23,7 +23,7 @@ export function PostVotes({ postId }: PostVotesProps) {
 
   return (
     <Flex justify="flex-end">
-      <Stack align="center" justify="center" gap="xs">
+      <Stack align="center" justify="center" gap={2}>
         <ActionIcon variant="transparent" color="gray">
           <BiUpvote />
         </ActionIcon>

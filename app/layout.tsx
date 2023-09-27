@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: any }) {
       <body className={inter.className}>
         <MantineProvider theme={theme}>
           <Navbar>
-            <Container>{children}</Container>
+            <Container size="lg">{children}</Container>
           </Navbar>
         </MantineProvider>
       </body>

@@ -13,13 +13,10 @@ type SpaceProps = {
 
 export async function Space({ params }: SpaceProps) {
   return (
-    <div>
-      <p>
-        {params.spaceName} - {params.spaceId}
-      </p>
+    <>
       <PostsHeader params={params} />
       <SpaceComponent h="md" />
       <SpacePosts params={params} />
-    </div>
+    </>
   );
 }

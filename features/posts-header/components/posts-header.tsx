@@ -10,8 +10,6 @@ type PostsHeaderProps = {
   };
 };
 
-//TODO add inter
-
 export function PostsHeader({ params }: PostsHeaderProps) {
   return (
     <Card>

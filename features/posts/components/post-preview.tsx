@@ -1,6 +1,7 @@
 'use client';
 
-import { Card, Grid } from '@mantine/core';
+import { Anchor, Card, Grid } from '@mantine/core';
+import Link from 'next/link';
 import { Database } from '@/lib/database';
 
 import { PostThumbnail } from '@/features/post-thumbnail';
@@ -21,7 +22,12 @@ export function PostPreview({ post }: PostsProps) {
           <div>
             posted by {post.username} in {post.community_name}
           </div>
-          <div>{post.title}</div>
+          <Anchor
+            component={Link}
+            href={`spaces/${post.posted_in}/${post.community_name}/post/${post.id}`}
+          >
+            {post.title}
+          </Anchor>
         </Grid.Col>
         <Grid.Col span={1}>
           <PostVotes postId={post.id} />

@@ -1,3 +1,5 @@
+import { Card } from '@mantine/core';
+
 type PostProps = {
   params: {
     spaceId: string;
@@ -9,5 +11,5 @@ type PostProps = {
 };
 
 export async function Post({ params }: PostProps) {
-  return <div>hello post.</div>;
+  return <Card w="100%">hello post.</Card>;
 }

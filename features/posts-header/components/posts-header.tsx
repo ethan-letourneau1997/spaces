@@ -24,13 +24,14 @@ export function PostsHeader({ params }: PostsHeaderProps) {
         >
           New
         </Anchor>
-        {/* <Anchor
+        <Anchor
           c={`${params.sort === 'old' ? 'indigo.5' : 'gray.3'}`}
           underline={`${params.sort === 'old' ? 'always' : 'hover'}`}
-          href={`/spaces/${params.spaceId}/${params.spaceName}/old/${params.page}`}
+          component={Link}
+          href={`/spaces/${params.spaceId}/${params.spaceName}/old/1`}
         >
           Old
-        </Anchor> */}
+        </Anchor>
         <Anchor
           c={`${params.sort === 'top' ? 'indigo.5' : 'gray.3'}`}
           underline={`${params.sort === 'top' ? 'always' : 'hover'}`}

@@ -16,7 +16,7 @@ export async function getSortedPosts(
   try {
     if (sortBy === 'new') {
       const { data: posts } = await supabase
-        .from('post')
+        .from('detailed_post')
         .select()
         .eq('posted_in', communityId)
         .order('created_at', { ascending: false })
@@ -29,7 +29,7 @@ export async function getSortedPosts(
 
     if (sortBy === 'old') {
       const { data: posts } = await supabase
-        .from('post')
+        .from('detailed_post')
         .select()
         .eq('posted_in', communityId)
         .order('created_at', { ascending: true })

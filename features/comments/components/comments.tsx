@@ -1,7 +1,7 @@
+import { Card } from '@mantine/core';
 import { fetchPostComments } from '@/utils/fetch-post-comments';
 import { Comment } from './comment';
 import { Database } from '@/lib/database';
-import { Card } from '@mantine/core';
 
 async function ChildComments({
   commentId,

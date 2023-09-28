@@ -3,7 +3,9 @@
 import { Card, Stack, Tabs, TextInput } from '@mantine/core';
 import { IconBook, IconPhoto, IconLink } from '@tabler/icons-react';
 import { useState } from 'react';
+import { FilePondFile } from 'filepond';
 import { TextEditor } from '@/features/text-editor';
+import { ImageDropzone } from '@/features/image-dropzone';
 
 type TitleInputProps = {
   title: string;
@@ -39,6 +41,7 @@ export function NewPostForm() {
   const [title, setTitle] = useState('');
   const [textContent, setTextContent] = useState('test');
   const [link, setLink] = useState('');
+  const [images, setImages] = useState<FilePondFile[]>([]);
 
   return (
     <Card>
@@ -67,8 +70,9 @@ export function NewPostForm() {
           </Stack>
         </Tabs.Panel>
         <Tabs.Panel pt="lg" value="images">
-          <Stack>
+          <Stack pb="xl">
             <TitleInput title={title} setTitle={setTitle} />
+            <ImageDropzone files={images} setFiles={setImages} />
           </Stack>
         </Tabs.Panel>
       </Tabs>

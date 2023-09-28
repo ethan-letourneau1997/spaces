@@ -72,7 +72,7 @@ export function TextEditor({ content, setContent }: TextEditorProps) {
         </RichTextEditor.ControlsGroup>
       </RichTextEditor.Toolbar>
 
-      <RichTextEditor.Content />
+      <RichTextEditor.Content mih="30vh" />
     </RichTextEditor>
   );
 }

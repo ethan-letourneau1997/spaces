@@ -4,7 +4,7 @@ import { Button, Card, Flex, Stack, Tabs } from '@mantine/core';
 import { IconBook, IconPhoto, IconLink } from '@tabler/icons-react';
 import { useState, useTransition } from 'react';
 import { FilePondFile } from 'filepond';
-import { redirect, useParams, usePathname } from 'next/navigation';
+import { redirect, useParams } from 'next/navigation';
 import { TextEditor } from '@/features/text-editor';
 import { ImageDropzone } from '@/features/image-dropzone';
 import { CommunitySelect } from './community-select';
@@ -37,7 +37,6 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
   const isImageSubmitDisabled = !title || images.length === 0;
 
   const params = useParams();
-  const pathname = usePathname();
 
   async function handleCreatePost(postType: string) {
     startTransition(async () => {
@@ -50,7 +49,7 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
         });
 
         await uploadImages(images as unknown as File[], postId);
-        redirect(`${pathname}/${postId}/captions`);
+        redirect(`spaces/${params.spaceId}/${params.spaceName}/post/${postId}/edit?type=image`);
       }
 
       if (postType === 'link') {

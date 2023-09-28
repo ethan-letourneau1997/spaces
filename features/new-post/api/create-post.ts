@@ -59,5 +59,5 @@ export async function createPost(params: createPostParams) {
 
     return data.id;
   }
-  return null;
+  return data.id;
 }

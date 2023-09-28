@@ -12,7 +12,7 @@ type PostPageProps = {
   };
 };
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function EditPage({ params }: PostPageProps) {
   return (
     <>
       <Post params={params} />

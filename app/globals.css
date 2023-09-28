@@ -1,0 +1,23 @@
+
+
+@media (min-width: 30em) {
+    .filepond--item {
+        width: calc(50% - .5em);
+    }
+}
+
+@media (min-width: 50em) {
+    .filepond--item {
+        width: calc(33.33% - .5em);
+    }
+}
+
+
+
+.filepond--panel-root {
+    background-color: var(--mantine-color-dark-4) !important;
+}
+
+.filepond--drop-label {
+    color: red var(--mantine-color-dark-1) !important;
+}

@@ -43,6 +43,8 @@ export function NewPostForm() {
   const [link, setLink] = useState('');
   const [images, setImages] = useState<FilePondFile[]>([]);
 
+  console.log(images);
+
   return (
     <Card>
       <Tabs defaultValue="text">
@@ -70,7 +72,7 @@ export function NewPostForm() {
           </Stack>
         </Tabs.Panel>
         <Tabs.Panel pt="lg" value="images">
-          <Stack pb="xl">
+          <Stack>
             <TitleInput title={title} setTitle={setTitle} />
             <ImageDropzone files={images} setFiles={setImages} />
           </Stack>

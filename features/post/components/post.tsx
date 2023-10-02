@@ -27,6 +27,7 @@ export async function Post({ params }: PostProps) {
           <Title order={1} size="h3">
             {post.title}
           </Title>
+          <Space h="md" />
           <PostContent post={post} />
         </Card>
         <Space h="lg" />

@@ -1,4 +1,5 @@
 import { Database } from '@/lib/database';
+import { TextPostContent } from './text-post-content';
 
 type PostContentProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -6,6 +7,6 @@ type PostContentProps = {
 
 export function PostContent({ post }: PostContentProps) {
   if (post.type === 'text') {
-    return <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />;
+    return <TextPostContent post={post} />;
   }
 }

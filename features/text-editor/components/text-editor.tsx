@@ -13,9 +13,10 @@ import SubScript from '@tiptap/extension-subscript';
 type TextEditorProps = {
   content: string;
   setContent: (content: string) => void;
+  mih?: string;
 };
 
-export function TextEditor({ content, setContent }: TextEditorProps) {
+export function TextEditor({ content, setContent, mih }: TextEditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -72,7 +73,7 @@ export function TextEditor({ content, setContent }: TextEditorProps) {
         </RichTextEditor.ControlsGroup>
       </RichTextEditor.Toolbar>
 
-      <RichTextEditor.Content mih="30vh" />
+      <RichTextEditor.Content mih={mih || '30vh'} />
     </RichTextEditor>
   );
 }

@@ -3,6 +3,7 @@ import { Card, Title, Text, Space } from '@mantine/core';
 import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
 import { PostContent } from './post-content';
 import { Comments } from '@/features/comments';
+import { RootCommentInput } from '@/features/root-comment-input';
 
 type PostProps = {
   params: {
@@ -30,6 +31,8 @@ export async function Post({ params }: PostProps) {
           <Space h="md" />
           <PostContent post={post} />
         </Card>
+        <Space h="sm" />
+        <RootCommentInput post={post} />
         <Space h="lg" />
         <Comments params={params} />
       </>

@@ -6,13 +6,14 @@ import { usePathname } from 'next/navigation';
 import { Button } from '@mantine/core';
 import { TextEditor } from '@/features/text-editor';
 import { Database } from '@/lib/database';
-import { createRootComment } from '@/utils/create-root-comment';
+import { createChildComment } from '@/utils/create-child-comment';
 
 type ChildCommentInputProps = {
   parentComment: Database['public']['Views']['comment_details']['Row'];
+  handleClose: () => void;
 };
 
-export function ChildCommentInput({ parentComment }: ChildCommentInputProps) {
+export function ChildCommentInput({ parentComment, handleClose }: ChildCommentInputProps) {
   const [comment, setComment] = useState<string>('');
   const [isPending, startTransition] = useTransition();
   const [remount, setRemount] = useState(0);
@@ -21,9 +22,10 @@ export function ChildCommentInput({ parentComment }: ChildCommentInputProps) {
 
   async function handleRootComment() {
     startTransition(async () => {
-      await createRootComment(parentComment.root_post, comment, pathname);
+      await createChildComment(parentComment.id!, parentComment.root_post, comment, pathname);
       setComment('');
       setRemount(remount + 1);
+      handleClose();
     });
   }
 

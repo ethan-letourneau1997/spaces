@@ -18,7 +18,7 @@ export function CommentFooter({ comment }: CommentFooterProps) {
 
       <Collapse transitionDuration={0} in={opened}>
         <Text>
-          <ChildCommentInput parentComment={comment} />
+          <ChildCommentInput handleClose={toggle} parentComment={comment} />
         </Text>
       </Collapse>
     </Box>

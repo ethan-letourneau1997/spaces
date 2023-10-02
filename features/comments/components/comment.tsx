@@ -8,6 +8,7 @@ import classes from '../styles/Comment.module.css';
 import { Database } from '@/lib/database';
 
 import { CommentAvatar } from './comment-avatar';
+import { CommentFooter } from './comment-footer';
 
 type CommentProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -42,8 +43,10 @@ export function Comment({ comment, children, params }: CommentProps) {
             {hovered ? <Box w={1.5} h="100%" bg="gray.4" /> : <Box w={1.5} h="100%" bg="gray.8" />}
           </Flex>
         </Stack>
+
         <Collapse in={opened} px="sm">
           <div id="CommentContent" dangerouslySetInnerHTML={{ __html: comment.content || '' }} />
+          <CommentFooter comment={comment} />
           {children}
         </Collapse>
       </Flex>

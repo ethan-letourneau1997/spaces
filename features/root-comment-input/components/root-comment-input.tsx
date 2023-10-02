@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react';
 
 import { usePathname } from 'next/navigation';
-import { Button, Flex } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { TextEditor } from '@/features/text-editor';
 import { Database } from '@/lib/database';
 import { createRootComment } from '@/utils/create-root-comment';
@@ -27,14 +27,19 @@ export function RootCommentInput({ post }: RootCommentInputProps) {
     });
   }
 
+  const replyButton = (
+    <Button loading={isPending} onClick={handleRootComment}>
+      Reply
+    </Button>
+  );
+
   return (
-    <>
-      <TextEditor key={remount} content={comment} setContent={setComment} mih="20vh" />
-      <Flex justify="flex-end">
-        <Button loading={isPending} onClick={handleRootComment}>
-          Reply
-        </Button>
-      </Flex>
-    </>
+    <TextEditor
+      buttons={replyButton}
+      key={remount}
+      content={comment}
+      setContent={setComment}
+      mih="10vh"
+    />
   );
 }

@@ -9,14 +9,16 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
+import { Group } from '@mantine/core';
 
 type TextEditorProps = {
   content: string;
   setContent: (content: string) => void;
   mih?: string;
+  buttons?: JSX.Element;
 };
 
-export function TextEditor({ content, setContent, mih }: TextEditorProps) {
+export function TextEditor({ content, setContent, mih, buttons }: TextEditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -74,6 +76,9 @@ export function TextEditor({ content, setContent, mih }: TextEditorProps) {
       </RichTextEditor.Toolbar>
 
       <RichTextEditor.Content mih={mih || '30vh'} />
+      <Group justify="flex-end" py="xs" px="xs">
+        {buttons}
+      </Group>
     </RichTextEditor>
   );
 }

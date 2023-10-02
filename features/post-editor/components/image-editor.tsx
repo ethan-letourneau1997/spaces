@@ -1,5 +1,7 @@
 import { fetchPostImages } from '@/utils/fetch-post-images';
 
+import { ImageCaptionEditor } from './image-caption-editor';
+
 type PostEditorProps = {
   params: {
     spaceId: string;
@@ -11,10 +13,6 @@ type PostEditorProps = {
 
 export async function ImageEditor({ params }: PostEditorProps) {
   const postImages = await fetchPostImages(params.postId);
-  console.log(postImages);
-  return (
-    <div>
-      <p>hello image post {params.postId}.</p>
-    </div>
-  );
+
+  return <ImageCaptionEditor images={postImages!} params={params} />;
 }

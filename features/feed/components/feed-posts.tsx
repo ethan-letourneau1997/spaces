@@ -10,6 +10,7 @@ type userSubscriptionProps = {
 
 export async function FeedPosts({ params }: userSubscriptionProps) {
   const feedPosts = await fetchSortedFeedPosts(params.page, params.sort);
+  console.log(feedPosts?.length);
 
   if (feedPosts) return <PostPreviews posts={feedPosts} />;
 }

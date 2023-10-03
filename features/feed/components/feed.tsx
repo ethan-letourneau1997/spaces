@@ -9,7 +9,7 @@ type userSubscriptionProps = {
   };
 };
 
-export async function UserFeed({ params }: userSubscriptionProps) {
+export async function Feed({ params }: userSubscriptionProps) {
   return (
     <>
       <FeedHeader params={params} />

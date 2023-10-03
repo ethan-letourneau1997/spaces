@@ -19,9 +19,11 @@ export async function fetchUserSpaces() {
         a.community_id.name.localeCompare(b.community_id.name)
       );
 
-      return sortedSpaces;
+      // Create a new array with only the community_id objects
+      const filteredUserSpaces = sortedSpaces.map((item) => item.community_id);
+
+      return filteredUserSpaces;
     }
   }
-
   return [];
 }

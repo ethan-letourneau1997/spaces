@@ -1,4 +1,4 @@
-import { UserFeed } from '@/features/user-feed';
+import { Feed } from '@/features/feed';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,10 +9,10 @@ type SpacePageProps = {
   };
 };
 
-export default async function SpacePage({ params }: SpacePageProps) {
+export default async function FeedPage({ params }: SpacePageProps) {
   return (
     <>
-      <UserFeed params={params} />
+      <Feed params={params} />
     </>
   );
 }

@@ -28,7 +28,6 @@ export function ProfileCommentPagination() {
       .select('*', { count: 'exact', head: true })
       .eq('posted_by', user.id);
     if (count) {
-      console.log(count);
       return Math.ceil(count / 10);
     }
     return null;

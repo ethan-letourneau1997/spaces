@@ -1,4 +1,4 @@
-import { Profile } from '@/features/profile';
+import { ProfilePosts } from '@/features/profile-posts';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,5 +11,5 @@ type SpacePageProps = {
 };
 
 export default async function ProfilePostsPage({ params }: SpacePageProps) {
-  return <Profile params={params} />;
+  return <ProfilePosts params={params} />;
 }

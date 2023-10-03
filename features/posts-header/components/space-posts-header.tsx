@@ -1,16 +1,11 @@
+'use client';
+
 import { Anchor, Card, Group } from '@mantine/core';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
-type SpacePostsHeaderProps = {
-  params: {
-    spaceId: string;
-    spaceName: string;
-    page: string;
-    sort: 'top' | 'new' | 'old';
-  };
-};
-
-export function SpacePostsHeader({ params }: SpacePostsHeaderProps) {
+export function SpacePostsHeader() {
+  const params = useParams();
   return (
     <Card>
       <Group>

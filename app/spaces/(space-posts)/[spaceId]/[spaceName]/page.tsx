@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { DEFAULT_SORT } from '@/lib/constants';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,5 +11,5 @@ type SpacePageProps = {
 };
 
 export default async function SpacePage({ params }: SpacePageProps) {
-  redirect(`/spaces/${params.spaceId}/${params.spaceName}/new/1`);
+  redirect(`/spaces/${params.spaceId}/${params.spaceName}/${DEFAULT_SORT}`);
 }

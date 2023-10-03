@@ -1,1 +1,1 @@
-export const DEFAULT_SORT = '/new/1';
+export const DEFAULT_SORT = 'new/1';

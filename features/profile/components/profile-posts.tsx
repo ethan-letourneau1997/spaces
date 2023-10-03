@@ -12,7 +12,6 @@ type ProfilePostsProps = {
 export async function ProfilePosts({ params }: ProfilePostsProps) {
   const { page, sort, username } = params;
   const profilePosts = await fetchSortedProfilePosts(page, sort, username);
-  console.log(profilePosts);
 
   if (profilePosts) return <PostPreviews posts={profilePosts} />;
 }

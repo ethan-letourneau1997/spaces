@@ -10,6 +10,6 @@ type SpacePageProps = {
   };
 };
 
-export default async function SpacePage({ params }: SpacePageProps) {
+export default async function ProfilePostsPage({ params }: SpacePageProps) {
   return <Profile params={params} />;
 }

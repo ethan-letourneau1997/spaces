@@ -1,14 +1,14 @@
 import { Anchor, Card, Group } from '@mantine/core';
 import Link from 'next/link';
 
-type PostsHeaderProps = {
+type FeedPostsHeaderProps = {
   params: {
     page: string;
     sort: 'top' | 'new' | 'old';
   };
 };
 
-export function FeedHeader({ params }: PostsHeaderProps) {
+export function FeedPostsHeader({ params }: FeedPostsHeaderProps) {
   return (
     <Card>
       <Group>

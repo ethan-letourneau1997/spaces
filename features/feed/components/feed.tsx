@@ -1,5 +1,5 @@
 import { Space } from '@mantine/core';
-import { FeedHeader } from '@/features/posts-header/components/feed-header';
+import { FeedPostsHeader } from '@/features/posts-header';
 import { FeedPosts } from './feed-posts';
 
 type userSubscriptionProps = {
@@ -12,7 +12,7 @@ type userSubscriptionProps = {
 export async function Feed({ params }: userSubscriptionProps) {
   return (
     <>
-      <FeedHeader params={params} />
+      <FeedPostsHeader params={params} />
       <Space h="md" />
       <FeedPosts params={params} />
     </>

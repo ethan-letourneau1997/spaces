@@ -1,7 +1,7 @@
 import { Anchor, Card, Group } from '@mantine/core';
 import Link from 'next/link';
 
-type PostsHeaderProps = {
+type SpacePostsHeaderProps = {
   params: {
     spaceId: string;
     spaceName: string;
@@ -10,7 +10,7 @@ type PostsHeaderProps = {
   };
 };
 
-export function PostsHeader({ params }: PostsHeaderProps) {
+export function SpacePostsHeader({ params }: SpacePostsHeaderProps) {
   return (
     <Card>
       <Group>

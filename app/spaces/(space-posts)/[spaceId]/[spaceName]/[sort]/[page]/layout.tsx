@@ -1,5 +1,4 @@
-import { PostPagination } from '@/features/post-pagination';
-
+import { PostPagination } from '@/features/pagination';
 import '@mantine/core/styles.css';
 
 export const dynamic = 'force-dynamic';

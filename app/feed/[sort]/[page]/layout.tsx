@@ -1,5 +1,4 @@
-import { FeedPagination } from '@/features/feed-pagination';
-
+import { FeedPagination } from '@/features/pagination';
 import '@mantine/core/styles.css';
 
 export const dynamic = 'force-dynamic';

@@ -4,14 +4,12 @@ export const dynamic = 'force-dynamic';
 
 type SpacePageProps = {
   params: {
+    page: string;
+    sort: 'top' | 'new' | 'old';
     username: string;
   };
 };
 
 export default async function SpacePage({ params }: SpacePageProps) {
-  return (
-    <>
-      <Profile username={params.username} />
-    </>
-  );
+  return <Profile params={params} />;
 }

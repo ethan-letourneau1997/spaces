@@ -3,7 +3,7 @@
 import useSWR from 'swr';
 
 import { useParams } from 'next/navigation';
-import { Box, Flex, SimpleGrid, Text } from '@mantine/core';
+import { Box, Divider, Flex, SimpleGrid, Text } from '@mantine/core';
 import { FaCommentAlt } from 'react-icons/fa';
 import { PiSignpostFill } from 'react-icons/pi';
 import { fetchProfileByUsername } from '@/utils/fetch-profile-by-username';
@@ -37,6 +37,7 @@ export function ProfileSidebarDetails() {
     return (
       <>
         <Text ta="center">{profile.biography}</Text>
+        <Divider my="sm" />
         <SimpleGrid cols={2}>
           <Box>
             <Flex align="center" gap="xs" justify="center">

@@ -1,20 +1,20 @@
-import { fetchUserSpaces } from '@/features/feed/api/fetch-user-spaces';
-import { SidebarWrapper } from '@/features/sidebar-wrapper';
+'use client';
 
+import { useParams } from 'next/navigation';
+import { Card, Title } from '@mantine/core';
 import { ProfileSidebarDetails } from './profile-sidebar-details';
 import { ProfileAvatar } from './profile-avatar';
-import { ProfileSidebarUsername } from './profile-sidebar-username';
 
 export async function ProfileSidebar() {
-  const userSpaces = await fetchUserSpaces();
+  const params = useParams();
 
-  if (userSpaces) {
-    return (
-      <SidebarWrapper>
-        <ProfileAvatar />
-        <ProfileSidebarUsername />
-        <ProfileSidebarDetails />
-      </SidebarWrapper>
-    );
-  }
+  return (
+    <Card miw="300px" maw="300px" h="fit-content">
+      <ProfileAvatar />
+      <Title order={1} size="h4" ta="center" mt="md">
+        {params.username}
+      </Title>
+      <ProfileSidebarDetails />
+    </Card>
+  );
 }

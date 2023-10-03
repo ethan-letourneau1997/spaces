@@ -1,7 +1,5 @@
 import { Box, Flex, Space } from '@mantine/core';
 
-import '@mantine/core/styles.css';
-
 import { ProfileSidebar } from '@/features/profile-sidebar';
 
 export const dynamic = 'force-dynamic';

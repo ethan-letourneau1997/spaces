@@ -2,25 +2,27 @@
 
 import useSWR from 'swr';
 
-import { useParams } from 'next/navigation';
 import { Avatar, Center } from '@mantine/core';
-
-import { fetchProfileByUsername } from '@/utils/fetch-profile-by-username';
-
+import { useParams } from 'next/navigation';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { fetchAvatar } from '@/utils/fetch-avatar';
 
 export function ProfileAvatar() {
   const params = useParams();
-  const { data: profile } = useSWR('profile', async () => {
-    const userProfile = await fetchProfileByUsername(params.username);
-    return userProfile;
-  });
-
+  const supabase = createClientComponentClient();
   // eslint-disable-next-line consistent-return
   const { data: avatarUrl } = useSWR('avatarUrl', async () => {
-    if (profile) {
-      const userAvatar = await fetchAvatar(profile.id);
-      return userAvatar.path;
+    if (params.username) {
+      const { data: public_profile } = await supabase
+        .from('public_profile')
+        .select()
+        .eq('username', params.username)
+        .single();
+
+      if (public_profile) {
+        const userAvatar = await fetchAvatar(public_profile.id);
+        return userAvatar.path;
+      }
     }
   });
 

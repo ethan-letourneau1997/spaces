@@ -1,6 +1,6 @@
 'use client';
 
-import { List } from '@mantine/core';
+import { Box, Stack } from '@mantine/core';
 import { Database } from '@/lib/database';
 
 type SidebarSpacesProps = {
@@ -9,10 +9,10 @@ type SidebarSpacesProps = {
 
 export function SidebarSpaces({ spaces }: SidebarSpacesProps) {
   return (
-    <List>
+    <Stack gap="xs">
       {spaces.map((space) => (
-        <List.Item key={space.id}>{space.name}</List.Item>
+        <Box key={space.id}>{space.name}</Box>
       ))}
-    </List>
+    </Stack>
   );
 }

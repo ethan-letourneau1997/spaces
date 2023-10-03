@@ -21,7 +21,7 @@ export async function fetchSortedFeedPosts(page: string, sortBy: 'top' | 'new' |
 
     if (sortBy === 'new' && communityIds) {
       const { data: posts } = await supabase
-        .from('post')
+        .from('detailed_post')
         .select()
         .in('posted_in', communityIds)
         .order('created_at', { ascending: false })
@@ -31,7 +31,7 @@ export async function fetchSortedFeedPosts(page: string, sortBy: 'top' | 'new' |
 
     if (sortBy === 'old' && communityIds) {
       const { data: posts } = await supabase
-        .from('post')
+        .from('detailed_post')
         .select()
         .in('posted_in', communityIds)
         .order('created_at', { ascending: true })

@@ -35,22 +35,25 @@ export function ProfileSidebarDetails() {
 
   if (commentCount && postCount) {
     return (
-      <SimpleGrid cols={2}>
-        <Box>
-          <Flex align="center" gap="xs" justify="center">
-            <PiSignpostFill />
-            <Text>{postCount}</Text>
-          </Flex>
-          <Text ta="center">Posts</Text>
-        </Box>
-        <Box>
-          <Flex align="center" gap="xs" justify="center">
-            <FaCommentAlt />
-            <Text>{commentCount}</Text>
-          </Flex>
-          <Text ta="center">Comments</Text>
-        </Box>
-      </SimpleGrid>
+      <>
+        <Text ta="center">{profile.biography}</Text>
+        <SimpleGrid cols={2}>
+          <Box>
+            <Flex align="center" gap="xs" justify="center">
+              <PiSignpostFill />
+              <Text>{postCount}</Text>
+            </Flex>
+            <Text ta="center">Posts</Text>
+          </Box>
+          <Box>
+            <Flex align="center" gap="xs" justify="center">
+              <FaCommentAlt />
+              <Text>{commentCount}</Text>
+            </Flex>
+            <Text ta="center">Comments</Text>
+          </Box>
+        </SimpleGrid>
+      </>
     );
   }
 }

@@ -1,6 +1,7 @@
-import { Box, Group, Divider, Text } from '@mantine/core';
+import { Group, Text, Anchor, Divider } from '@mantine/core';
+import Link from 'next/link';
 import { Database } from '@/lib/database';
-import { getTimeSinceNow } from '@/utils/get-time-since-now';
+import { DEFAULT_SORT } from '@/lib/constants';
 
 type CommentRootPostProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -8,17 +9,21 @@ type CommentRootPostProps = {
 
 export function CommentRootPost({ post }: CommentRootPostProps) {
   return (
-    <Box>
+    <>
       <Group gap={0}>
-        <Text fw={700} size="sm">
-          {post.username}
+        <Text fw={600} size="sm">
+          {post.title}
         </Text>
-        &nbsp;-&nbsp;<Text size="sm">{getTimeSinceNow(post.created_at, true)}</Text>
+        <Text size="sm">&nbsp;-</Text>
+        <Anchor
+          component={Link}
+          href={`/spaces/${post.id}/${post.community_name}/${DEFAULT_SORT}`}
+          size="sm"
+        >
+          &nbsp;{post.community_name}
+        </Anchor>
       </Group>
-      <Text maw="95%" truncate>
-        {post.title}
-      </Text>
-      <Divider my="sm" />
-    </Box>
+      <Divider size="xs" mt="xs" />
+    </>
   );
 }

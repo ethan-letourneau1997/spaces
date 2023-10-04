@@ -1,26 +1,36 @@
-import { Group, Divider, Paper, Text } from '@mantine/core';
-import { RenderHtml } from '@/components/RenderHtml';
+import { Card } from '@mantine/core';
 import { Database } from '@/lib/database';
-import { getTimeSinceNow } from '@/utils/get-time-since-now';
+import { fetchCommentById } from '@/utils/fetch-comment-by-id ';
+
+import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
+import { CommentRootPost } from './comment-root-post';
+import { ParentCommentPreview } from './parent-comment-preview';
+import { CommentPreview } from './comment-preview';
 
 type ProfileCommentProps = {
   comment: Database['public']['Tables']['comment']['Row'];
   username: string;
 };
 
-export function ProfileComment({ comment, username }: ProfileCommentProps) {
-  return (
-    <Group gap="sm">
-      <Divider size="sm" orientation="vertical" variant="dashed" />
-      <Paper px="sm" py="sm" style={{ flexGrow: 1 }}>
-        <Group gap={0}>
-          <Text fw={700} size="sm">
-            {username}
-          </Text>
-          &nbsp;-&nbsp;<Text size="sm">{getTimeSinceNow(comment.created_at, true)}</Text>
-        </Group>
-        <RenderHtml content={comment.content} />
-      </Paper>
-    </Group>
-  );
+export async function ProfileComment({ comment, username }: ProfileCommentProps) {
+  const rootPost = await fetchDetailedPostById(comment.root_post);
+
+  const parentComment = comment.parent_comment
+    ? await fetchCommentById(comment.parent_comment)
+    : null;
+
+  if (rootPost) {
+    return (
+      <Card pr="xl">
+        <CommentRootPost post={rootPost} />
+        {parentComment ? (
+          <ParentCommentPreview comment={parentComment}>
+            <CommentPreview comment={comment} username={username} />
+          </ParentCommentPreview>
+        ) : (
+          <CommentPreview comment={comment} username={username} />
+        )}
+      </Card>
+    );
+  }
 }

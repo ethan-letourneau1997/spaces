@@ -1,36 +1,25 @@
-import { Card } from '@mantine/core';
+import { Group, Paper, Text, Box } from '@mantine/core';
+import { RenderHtml } from '@/components/RenderHtml';
 import { Database } from '@/lib/database';
-import { fetchCommentById } from '@/utils/fetch-comment-by-id ';
-
-import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
-import { CommentRootPost } from './comment-root-post';
-import { ParentComment } from './parent-comment';
-import { ProfileComment } from './profile-comment';
+import { getTimeSinceNow } from '@/utils/get-time-since-now';
 
 type CommentPreviewProps = {
   comment: Database['public']['Tables']['comment']['Row'];
   username: string;
 };
 
-export async function CommentPreview({ comment, username }: CommentPreviewProps) {
-  const rootPost = await fetchDetailedPostById(comment.root_post);
-
-  const parentComment = comment.parent_comment
-    ? await fetchCommentById(comment.parent_comment)
-    : null;
-
-  if (rootPost) {
-    return (
-      <Card>
-        <CommentRootPost post={rootPost} />
-        {parentComment ? (
-          <ParentComment comment={parentComment}>
-            <ProfileComment comment={comment} username={username} />
-          </ParentComment>
-        ) : (
-          <ProfileComment comment={comment} username={username} />
-        )}
-      </Card>
-    );
-  }
+export function CommentPreview({ comment, username }: CommentPreviewProps) {
+  return (
+    <Box pl="lg" style={{ borderLeft: '1px dashed #5c5f66' }} mt="sm">
+      <Paper px="sm" py="sm" style={{ flexGrow: 1 }}>
+        <Group gap={0}>
+          <Text fw={600} size="sm">
+            {username}
+          </Text>
+          &nbsp;-&nbsp;<Text size="sm">{getTimeSinceNow(comment.created_at, true)}</Text>
+        </Group>
+        <RenderHtml content={comment.content} />
+      </Paper>
+    </Box>
+  );
 }

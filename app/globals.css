@@ -21,3 +21,9 @@
 .filepond--drop-label {
     color: red var(--mantine-color-dark-1) !important;
 }
+
+
+/* Typography Styles Provider */
+.mantine-TypographyStylesProvider-root p {
+    margin-bottom: 0;
+}

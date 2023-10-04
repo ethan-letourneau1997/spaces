@@ -7,6 +7,8 @@ import { useParams } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { fetchAvatar } from '@/utils/fetch-avatar';
 
+// TODO uncomment avatar
+
 export function ProfileAvatar() {
   const params = useParams();
   const supabase = createClientComponentClient();
@@ -29,9 +31,9 @@ export function ProfileAvatar() {
   if (avatarUrl) {
     return (
       <Center>
-        <Avatar src={avatarUrl} size="lg">
-          <Skeleton circle h={56} w={56} />
-        </Avatar>
+        {/* <Avatar src={avatarUrl} size="lg"> */}
+        <Skeleton circle h={56} w={56} />
+        {/* </Avatar> */}
       </Center>
     );
   }

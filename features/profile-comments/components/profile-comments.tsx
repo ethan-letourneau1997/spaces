@@ -1,7 +1,7 @@
 import { Stack } from '@mantine/core';
 import { fetchSortedProfileComments } from '../api/fetch-sorted-profile-comments';
 
-import { ProfileComment } from './profile-comment';
+import { CommentPreview } from './comment-preview';
 
 type ProfilePostsProps = {
   params: {
@@ -17,9 +17,9 @@ export async function ProfileComments({ params }: ProfilePostsProps) {
 
   if (profileComments) {
     return (
-      <Stack>
+      <Stack mt="md">
         {profileComments.map((comment) => (
-          <ProfileComment key={comment.id} comment={comment} />
+          <CommentPreview key={comment.id} comment={comment} username={username} />
         ))}
       </Stack>
     );

@@ -1,26 +1,27 @@
-import { Group, Divider, Paper, Text } from '@mantine/core';
-import { RenderHtml } from '@/components/RenderHtml';
+import { Box, Divider, Group, Text } from '@mantine/core';
 import { Database } from '@/lib/database';
 import { getTimeSinceNow } from '@/utils/get-time-since-now';
+import { RenderHtml } from '@/components/RenderHtml';
 
-type ProfileCommentProps = {
-  comment: Database['public']['Tables']['comment']['Row'];
-  username: string;
+type ParentCommentProps = {
+  comment: Database['public']['Views']['comment_details']['Row'];
+  children: React.ReactNode;
 };
 
-export function ProfileComment({ comment, username }: ProfileCommentProps) {
+export function ParentComment({ comment, children }: ParentCommentProps) {
   return (
     <Group gap="sm">
       <Divider size="sm" orientation="vertical" variant="dashed" />
-      <Paper px="sm" py="sm" style={{ flexGrow: 1 }}>
+      <Box ml="md" style={{ flexGrow: 1 }}>
         <Group gap={0}>
           <Text fw={700} size="sm">
-            {username}
+            {comment.posted_by_username}
           </Text>
           &nbsp;-&nbsp;<Text size="sm">{getTimeSinceNow(comment.created_at, true)}</Text>
         </Group>
         <RenderHtml content={comment.content} />
-      </Paper>
+        {children}
+      </Box>
     </Group>
   );
 }

@@ -2,7 +2,7 @@
 
 import useSWR from 'swr';
 
-import { Avatar, Center } from '@mantine/core';
+import { Avatar, Center, Skeleton } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { fetchAvatar } from '@/utils/fetch-avatar';
@@ -29,7 +29,9 @@ export function ProfileAvatar() {
   if (avatarUrl) {
     return (
       <Center>
-        <Avatar src={avatarUrl} alt="it's me" size="lg" />
+        <Avatar src={avatarUrl} size="lg">
+          <Skeleton circle h={56} w={56} />
+        </Avatar>
       </Center>
     );
   }

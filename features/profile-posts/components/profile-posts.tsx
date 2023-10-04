@@ -1,3 +1,4 @@
+import { Box } from '@mantine/core';
 import { PostPreviews } from '@/features/posts';
 import { fetchSortedProfilePosts } from '../api/fetch-sorted-profile-posts';
 
@@ -13,5 +14,11 @@ export async function ProfilePosts({ params }: ProfilePostsProps) {
   const { page, sort, username } = params;
   const profilePosts = await fetchSortedProfilePosts(page, sort, username);
 
-  if (profilePosts) return <PostPreviews posts={profilePosts} />;
+  if (profilePosts) {
+    return (
+      <Box mt="sm">
+        <PostPreviews posts={profilePosts} />
+      </Box>
+    );
+  }
 }

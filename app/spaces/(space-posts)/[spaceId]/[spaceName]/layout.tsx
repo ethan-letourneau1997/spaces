@@ -9,9 +9,11 @@ export const dynamic = 'force-dynamic';
 export default function SpaceLayout({ children }: { children: any }) {
   return (
     <Flex gap="md">
-      <SpacePostsHeader />
-      <Space h="md" />
-      <Box w="100%">{children}</Box>
+      <Box w="100%">
+        <SpacePostsHeader />
+        <Space h="md" />
+        {children}
+      </Box>
       <Box miw="300px">
         <SpaceSidebar />
       </Box>

@@ -8,7 +8,6 @@ import classes from '../styles/Comment.module.css';
 import { Database } from '@/lib/database';
 
 import { CommentAvatar } from './comment-avatar';
-import { CommentFooter } from './comment-footer';
 
 type CommentProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -46,7 +45,6 @@ export function Comment({ comment, children, params }: CommentProps) {
 
         <Collapse in={opened} px="sm">
           <div id="CommentContent" dangerouslySetInnerHTML={{ __html: comment.content || '' }} />
-          <CommentFooter comment={comment} />
           {children}
         </Collapse>
       </Flex>

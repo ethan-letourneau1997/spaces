@@ -1,7 +1,7 @@
-import { Card } from '@mantine/core';
 import { fetchPostComments } from '@/utils/fetch-post-comments';
 import { Comment } from './comment';
 import { Database } from '@/lib/database';
+import { CommentFooterHandler } from './comment-footer-handler';
 
 async function ChildComments({
   commentId,
@@ -19,6 +19,7 @@ async function ChildComments({
       {childComments?.map((childComment) => (
         <div key={childComment.id}>
           <Comment comment={childComment} params={params}>
+            <CommentFooterHandler comment={childComment} />
             <ChildComments commentId={childComment.id!} allComments={allComments} params={params} />
           </Comment>
         </div>
@@ -47,13 +48,14 @@ export async function Comments({ params }: CommentsProps) {
 
   if (comments && comments.length > 0) {
     return (
-      <Card>
+      <div>
         {rootComments?.map((rootComment) => (
           <Comment key={rootComment.id} comment={rootComment} params={params}>
+            <CommentFooterHandler comment={rootComment} />
             <ChildComments commentId={rootComment.id} allComments={comments} params={params} />
           </Comment>
         ))}
-      </Card>
+      </div>
     );
   }
 

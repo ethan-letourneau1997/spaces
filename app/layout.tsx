@@ -1,8 +1,9 @@
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import './globals.css';
 
 import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
-
+import { Notifications } from '@mantine/notifications';
 import React from 'react';
 import { Inter } from 'next/font/google';
 import { theme } from '../theme';
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body className={inter.className}>
         <MantineProvider theme={theme}>
+          <Notifications />
           <Navbar>
             <Container size="lg">{children}</Container>
           </Navbar>

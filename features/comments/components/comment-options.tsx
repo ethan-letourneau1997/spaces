@@ -7,6 +7,7 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useParams } from 'next/navigation';
 import { useDisclosure } from '@mantine/hooks';
 import { useTransition } from 'react';
+import { notifications } from '@mantine/notifications';
 import { Database } from '@/lib/database';
 import { deleteComment } from '../api/delete-comment';
 
@@ -23,6 +24,10 @@ export function CommentOptions({ comment }: CommentOptionsProps) {
     startTransition(async () => {
       await deleteComment(comment, params.spaceId as string, params.spaceName as string);
       close();
+      notifications.show({
+        title: 'Comment Deleted',
+        message: 'Your comment has been deleted!',
+      });
     });
   }
 

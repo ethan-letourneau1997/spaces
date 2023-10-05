@@ -5,6 +5,10 @@ import { PostContent } from './post-content';
 import { Comments } from '@/features/comments';
 import { RootCommentInput } from '@/features/root-comment-input';
 
+import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
+import { fetchPostVotes } from '@/utils/fetch-post-votes';
+import { PostVoteButtons } from '@/features/post-votes/components/post-vote-buttons';
+
 type PostProps = {
   params: {
     spaceId: string;
@@ -17,6 +21,8 @@ type PostProps = {
 
 export async function Post({ params }: PostProps) {
   const post = await fetchDetailedPostById(params.postId);
+  const userVote = await fetchUserPostVote(post.id);
+  const postVotes = await fetchPostVotes(post.id);
 
   if (post) {
     return (
@@ -30,6 +36,7 @@ export async function Post({ params }: PostProps) {
           </Title>
           <Space h="md" />
           <PostContent post={post} />
+          <PostVoteButtons postVotes={postVotes || 0} userVote={userVote || 0} post={post} />
         </Card>
         <Space h="sm" />
         <RootCommentInput post={post} />

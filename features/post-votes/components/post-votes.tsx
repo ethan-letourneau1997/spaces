@@ -1,39 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { BiDownvote, BiUpvote } from 'react-icons/bi';
-import { Text, Flex, Stack, ActionIcon } from '@mantine/core';
+import useSWR from 'swr';
 import { fetchPostVotes } from '@/utils/fetch-post-votes';
 import { Database } from '@/lib/database';
+import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
+import { PostVoteButtons } from './post-vote-buttons';
 
 type PostVotesProps = {
-  postId: Database['public']['Views']['detailed_post']['Row']['id'];
+  post: Database['public']['Views']['detailed_post']['Row'];
 };
 
-export function PostVotes({ postId }: PostVotesProps) {
-  const [totalVotes, setTotalVotes] = useState(0);
-  useEffect(() => {
-    async function getTotalPostVotes() {
-      const votes = await fetchPostVotes(postId);
-      setTotalVotes(votes);
-    }
+export function PostVotes({ post }: PostVotesProps) {
+  const { data: userVote } = useSWR('userVote', async () => {
+    const vote = await fetchUserPostVote(post.id);
+    return vote;
+  });
 
-    if (postId) {
-      getTotalPostVotes();
-    }
-  }, [postId]);
+  const { data: postVotes } = useSWR('postVotes', async () => {
+    const votes = await fetchPostVotes(post.id);
+    return votes;
+  });
 
-  return (
-    <Flex justify="flex-end">
-      <Stack align="center" justify="center" gap={2}>
-        <ActionIcon variant="transparent" color="gray">
-          <BiUpvote />
-        </ActionIcon>
-        <Text>{totalVotes}</Text>
-        <ActionIcon variant="transparent" color="gray">
-          <BiDownvote />
-        </ActionIcon>
-      </Stack>
-    </Flex>
-  );
+  if (postVotes && userVote) {
+    return <PostVoteButtons postVotes={postVotes} userVote={userVote} post={post} />;
+  }
 }

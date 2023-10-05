@@ -35,12 +35,12 @@ export function CommentOptions({ comment }: CommentOptionsProps) {
     <>
       <Modal opened={opened} onClose={close} title="Delete Comment">
         <Text>Are you sure you want to delete this comment?</Text>
-        <Group>
-          <Button onClick={close} variant="subtle" color="gray">
+        <Group mt="md">
+          <Button onClick={close} variant="outline" color="gray">
             Cancel
           </Button>
           <Button loading={isPending} onClick={HandleCommentDelete} variant="filled" color="red">
-            Yes, Delete
+            Delete
           </Button>
         </Group>
       </Modal>

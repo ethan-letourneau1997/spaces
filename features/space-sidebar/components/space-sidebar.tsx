@@ -26,7 +26,10 @@ export function SpaceSidebar() {
           <Title order={2}>{params.spaceName}</Title>
         </Center>
         <Text size="sm">{space.description}</Text>
-        <SpaceSidebarSubscription spaceId={params.spaceId} />
+        <SpaceSidebarSubscription
+          spaceId={params.spaceId as string}
+          spaceName={params.spaceName as string}
+        />
       </Card>
     );
   }

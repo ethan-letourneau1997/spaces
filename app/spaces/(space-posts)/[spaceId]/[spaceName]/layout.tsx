@@ -1,4 +1,4 @@
-import { Box, Flex, Space } from '@mantine/core';
+import { Box, Flex } from '@mantine/core';
 
 import { SpaceSidebar } from '@/features/space-sidebar';
 import '@mantine/core/styles.css';
@@ -11,7 +11,6 @@ export default function SpaceLayout({ children }: { children: any }) {
     <Flex gap="md">
       <Box w="100%">
         <SpacePostsHeader />
-        <Space h="md" />
         {children}
       </Box>
       <Box miw="300px">

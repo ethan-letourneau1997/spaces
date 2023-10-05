@@ -7,7 +7,7 @@ import { RootCommentInput } from '@/features/root-comment-input';
 
 import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
 import { fetchPostVotes } from '@/utils/fetch-post-votes';
-import { PostVoteButtons } from '@/features/post-votes/components/post-vote-buttons';
+import { PostFooter } from './post-footer';
 
 type PostProps = {
   params: {
@@ -36,7 +36,7 @@ export async function Post({ params }: PostProps) {
           </Title>
           <Space h="md" />
           <PostContent post={post} />
-          <PostVoteButtons postVotes={postVotes || 0} userVote={userVote || 0} post={post} />
+          <PostFooter postVotes={postVotes || 0} userVote={userVote || 0} post={post} />
         </Card>
         <Space h="sm" />
         <RootCommentInput post={post} />

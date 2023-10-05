@@ -2,7 +2,7 @@
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
 import { BiDownvote, BiSolidDownvote, BiSolidUpvote, BiUpvote } from 'react-icons/bi';
-import { Text, Flex, Stack, ActionIcon } from '@mantine/core';
+import { Text, Flex, ActionIcon } from '@mantine/core';
 
 import { Database } from '@/lib/database';
 
@@ -12,9 +12,10 @@ type PostVoteButtonsProps = {
   postVotes: number;
   userVote: number;
   post: Database['public']['Views']['detailed_post']['Row'];
+  horizontal?: boolean;
 };
 
-export function PostVoteButtons({ postVotes, userVote, post }: PostVoteButtonsProps) {
+export function PostVoteButtons({ postVotes, userVote, post, horizontal }: PostVoteButtonsProps) {
   const [optimisticPostVotes, setOptimisticPostVotes] = useOptimistic<number>(postVotes);
 
   const [optimisticUserVote, setOptimisticUserVote] = useOptimistic<number>(userVote);
@@ -56,18 +57,16 @@ export function PostVoteButtons({ postVotes, userVote, post }: PostVoteButtonsPr
   }
 
   return (
-    <Flex justify="flex-end">
-      <Stack align="center" justify="center" gap={2}>
-        <ActionIcon onClick={handleUpvote} variant="transparent" color="gray">
-          {optimisticUserVote === 1 ? <BiSolidUpvote /> : <BiUpvote />}
-        </ActionIcon>
-        {/* <BiUpvote /> */}
+    <Flex direction={horizontal ? 'row' : 'column'} align="center" justify="center" gap={2}>
+      <ActionIcon onClick={handleUpvote} variant="transparent" color="gray">
+        {optimisticUserVote === 1 ? <BiSolidUpvote /> : <BiUpvote />}
+      </ActionIcon>
+      {/* <BiUpvote /> */}
 
-        <Text>{optimisticPostVotes}</Text>
-        <ActionIcon onClick={handleDownvote} variant="transparent" color="gray">
-          {optimisticUserVote === -1 ? <BiSolidDownvote /> : <BiDownvote />}
-        </ActionIcon>
-      </Stack>
+      <Text>{optimisticPostVotes}</Text>
+      <ActionIcon onClick={handleDownvote} variant="transparent" color="gray">
+        {optimisticUserVote === -1 ? <BiSolidDownvote /> : <BiDownvote />}
+      </ActionIcon>
     </Flex>
   );
 }

@@ -26,7 +26,7 @@ export function PostPreview({ post, postVotes, userVote }: PostsProps) {
           </div>
           <Anchor
             component={Link}
-            href={`spaces/${post.posted_in}/${post.community_name}/post/${post.id}`}
+            href={`/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`}
           >
             {post.title}
           </Anchor>

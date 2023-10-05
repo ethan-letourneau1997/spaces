@@ -3,8 +3,9 @@
 import { Group } from '@mantine/core';
 
 import { Database } from '@/lib/database';
-import { PostVoteButtons } from '@/features/post-votes/components/post-vote-buttons';
+
 import { PostOptions } from '@/features/post-options';
+import { PostVoteButtons } from '@/features/post-votes/components/post-vote-buttons';
 
 type PostFooterProps = {
   postVotes: number;

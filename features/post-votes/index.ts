@@ -1,1 +1,1 @@
-export * from './components/post-votes';
+export * from './components/post-vote-buttons';

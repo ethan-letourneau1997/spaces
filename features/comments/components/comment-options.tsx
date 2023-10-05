@@ -1,10 +1,12 @@
 'use client';
 
-import { ActionIcon, Menu } from '@mantine/core';
+import { ActionIcon, Button, Group, Menu, Modal, Text } from '@mantine/core';
 
 import { SlOptions } from 'react-icons/sl';
 import { AiFillDelete } from 'react-icons/ai';
 import { useParams } from 'next/navigation';
+import { useDisclosure } from '@mantine/hooks';
+import { useTransition } from 'react';
 import { Database } from '@/lib/database';
 import { deleteComment } from '../api/delete-comment';
 
@@ -14,13 +16,30 @@ type CommentOptionsProps = {
 
 export function CommentOptions({ comment }: CommentOptionsProps) {
   const params = useParams();
+  const [opened, { open, close }] = useDisclosure(false);
+  const [isPending, startTransition] = useTransition();
 
   async function HandleCommentDelete() {
-    await deleteComment(comment, params.spaceId as string, params.spaceName as string);
+    startTransition(async () => {
+      await deleteComment(comment, params.spaceId as string, params.spaceName as string);
+      close();
+    });
   }
 
   return (
     <>
+      <Modal opened={opened} onClose={close} title="Delete Comment">
+        <Text>Are you sure you want to delete this comment?</Text>
+        <Group>
+          <Button onClick={close} variant="subtle" color="gray">
+            Cancel
+          </Button>
+          <Button loading={isPending} onClick={HandleCommentDelete} variant="filled" color="red">
+            Yes, Delete
+          </Button>
+        </Group>
+      </Modal>
+
       <Menu shadow="md">
         <Menu.Target>
           <ActionIcon variant="transparent" aria-label="Settings">
@@ -29,7 +48,7 @@ export function CommentOptions({ comment }: CommentOptionsProps) {
         </Menu.Target>
 
         <Menu.Dropdown>
-          <Menu.Item onClick={HandleCommentDelete} leftSection={<AiFillDelete />}>
+          <Menu.Item onClick={open} leftSection={<AiFillDelete />}>
             Delete
           </Menu.Item>
         </Menu.Dropdown>

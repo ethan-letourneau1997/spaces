@@ -2,9 +2,11 @@
 
 import { Button, Text, Collapse, Box, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+
 import { Database } from '@/lib/database';
 import { ChildCommentInput } from '@/features/child-comment-input';
 import { CommentVoteButtons } from '@/features/comment-votes/components/comment-vote-buttons';
+import { CommentOptions } from './comment-options';
 
 type CommentFooterProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -27,6 +29,7 @@ export function CommentFooter({ comment, userVote, totalVotes }: CommentFooterPr
         <Button variant="subtle" onClick={toggle}>
           {opened ? 'Cancel' : 'Reply'}
         </Button>
+        <CommentOptions comment={comment} />
       </Group>
 
       <Collapse transitionDuration={0} in={opened}>

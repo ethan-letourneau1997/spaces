@@ -8,6 +8,7 @@ import classes from '../styles/Comment.module.css';
 import { Database } from '@/lib/database';
 
 import { CommentAvatar } from './comment-avatar';
+import { getTimeSinceNow } from '../../../utils/get-time-since-now';
 
 type CommentProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -27,8 +28,10 @@ export function Comment({ comment, children, params }: CommentProps) {
             <MdExpandMore size={20} onClick={toggle} />
           </ActionIcon>
         )}
-        <CommentAvatar userId={comment.posted_by!} />
+        {/* <CommentAvatar userId={comment.posted_by!} /> */}
+        <div>AV</div>
         <Text ml="xs">{comment.posted_by_username}</Text>
+        <Text ml="xs">{getTimeSinceNow(comment.created_at, true)}</Text>
       </Group>
       <Flex ml="md" mt="sm" className={classes.comment}>
         <Stack justify="center" gap={1}>

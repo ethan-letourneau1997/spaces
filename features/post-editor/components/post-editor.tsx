@@ -1,4 +1,5 @@
 import { ImageEditor } from './image-editor';
+import { TextPostEditor } from './text-post-editor';
 
 type PostEditorProps = {
   params: {
@@ -11,6 +12,9 @@ type PostEditorProps = {
 };
 
 export async function PostEditor({ params, type }: PostEditorProps) {
+  if (type === 'text') {
+    return <TextPostEditor params={params} />;
+  }
   if (type === 'image') {
     return (
       <div>

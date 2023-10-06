@@ -42,8 +42,8 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
     startTransition(async () => {
       if (postType === 'image') {
         const postId = await createPost({
-          communityId: params.spaceId,
-          communityName: params.spaceName,
+          communityId: params.spaceId as string,
+          communityName: params.spaceName as string,
           title,
           type: 'image',
         });
@@ -54,8 +54,8 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
 
       if (postType === 'link') {
         await createPost({
-          communityId: params.spaceId,
-          communityName: params.spaceName,
+          communityId: params.spaceId as string,
+          communityName: params.spaceName as string,
           title,
           content: link,
           type: postType,
@@ -64,8 +64,8 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
 
       if (postType === 'text') {
         await createPost({
-          communityId: params.spaceId,
-          communityName: params.spaceName,
+          communityId: params.spaceId as string,
+          communityName: params.spaceName as string,
           title,
           content: textContent,
           type: postType,

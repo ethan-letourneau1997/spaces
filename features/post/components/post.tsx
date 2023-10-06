@@ -21,6 +21,11 @@ type PostProps = {
 
 export async function Post({ params }: PostProps) {
   const post = await fetchDetailedPostById(params.postId);
+
+  if (!post) {
+    return <div>Post not found</div>;
+  }
+
   const userVote = await fetchUserPostVote(post.id);
   const postVotes = await fetchPostVotes(post.id);
 

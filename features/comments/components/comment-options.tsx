@@ -8,8 +8,10 @@ import { useParams } from 'next/navigation';
 import { useDisclosure } from '@mantine/hooks';
 import { useTransition } from 'react';
 import { notifications } from '@mantine/notifications';
+import useSWR from 'swr';
 import { Database } from '@/lib/database';
 import { deleteComment } from '../api/delete-comment';
+import { fetchSession } from '@/utils/fetch-session';
 
 type CommentOptionsProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -31,33 +33,43 @@ export function CommentOptions({ comment }: CommentOptionsProps) {
     });
   }
 
-  return (
-    <>
-      <Modal opened={opened} onClose={close} title="Delete Comment">
-        <Text>Are you sure you want to delete this comment?</Text>
-        <Group mt="md">
-          <Button onClick={close} variant="outline" color="gray">
-            Cancel
-          </Button>
-          <Button loading={isPending} onClick={HandleCommentDelete} variant="filled" color="red">
-            Delete
-          </Button>
-        </Group>
-      </Modal>
+  const { data: isCreator } = useSWR('isCreator', async () => {
+    const data = await fetchSession();
+    if (data.session && data.session.user.id === comment.posted_by) {
+      return true;
+    }
+    return false;
+  });
 
-      <Menu shadow="md">
-        <Menu.Target>
-          <ActionIcon variant="transparent" aria-label="Settings">
-            <SlOptions />
-          </ActionIcon>
-        </Menu.Target>
+  if (isCreator) {
+    return (
+      <>
+        <Modal opened={opened} onClose={close} title="Delete Comment">
+          <Text>Are you sure you want to delete this comment?</Text>
+          <Group mt="md">
+            <Button onClick={close} variant="outline" color="gray">
+              Cancel
+            </Button>
+            <Button loading={isPending} onClick={HandleCommentDelete} variant="filled" color="red">
+              Delete
+            </Button>
+          </Group>
+        </Modal>
 
-        <Menu.Dropdown>
-          <Menu.Item onClick={open} leftSection={<AiFillDelete />}>
-            Delete
-          </Menu.Item>
-        </Menu.Dropdown>
-      </Menu>
-    </>
-  );
+        <Menu shadow="md">
+          <Menu.Target>
+            <ActionIcon variant="transparent" aria-label="Settings">
+              <SlOptions />
+            </ActionIcon>
+          </Menu.Target>
+
+          <Menu.Dropdown>
+            <Menu.Item onClick={open} leftSection={<AiFillDelete />}>
+              Delete
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      </>
+    );
+  }
 }

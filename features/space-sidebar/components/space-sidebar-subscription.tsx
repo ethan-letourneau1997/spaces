@@ -50,7 +50,7 @@ export function SpaceSidebarSubscription({ spaceId, spaceName }: SpaceSidebarSub
     setSubscriberCount(subscriberCount - 1);
     notifications.show({
       title: 'Unsubscribed',
-      message: `You are no longer subscribed ${spaceName}.`,
+      message: `You are no longer subscribed to ${spaceName}.`,
     });
   }
 

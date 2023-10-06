@@ -71,9 +71,11 @@ export function PostOptions({ post }: PostOptionsProps) {
             <Menu.Item onClick={open} leftSection={<AiFillDelete />}>
               Delete
             </Menu.Item>
-            <Menu.Item component={Link} href={editPath} leftSection={<AiFillEdit />}>
-              Edit
-            </Menu.Item>
+            {post.type !== 'link' && (
+              <Menu.Item component={Link} href={editPath} leftSection={<AiFillEdit />}>
+                Edit
+              </Menu.Item>
+            )}
           </Menu.Dropdown>
         </Menu>
       </>

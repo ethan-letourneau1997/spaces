@@ -49,7 +49,7 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
         });
 
         await uploadImages(images as unknown as File[], postId);
-        redirect(`spaces/${params.spaceId}/${params.spaceName}/post/${postId}/edit?type=image`);
+        redirect(`/spaces/${params.spaceId}/${params.spaceName}/post/${postId}/edit?type=image`);
       }
 
       if (postType === 'link') {

@@ -14,6 +14,19 @@ export async function deletePost(
 ) {
   const supabase = createServerActionClient({ cookies });
 
+  // if image post, delete images from storage
+  if (post.type === 'image') {
+    const { data: post_images } = await supabase.from('post_image').select().eq('post_id', post.id);
+
+    if (post_images) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const file of post_images) {
+        // eslint-disable-next-line no-await-in-loop
+        await supabase.storage.from('images').remove([`public/${file.filename}`]);
+      }
+    }
+  }
+
   // delete post from database
   await supabase.from('post').delete().eq('id', post.id);
 

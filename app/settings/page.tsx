@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { Settings } from '@/features/settings/components/settings';
 import { fetchAvatar } from '@/utils/fetch-avatar';
 import { fetchProfileById } from '@/utils/fetch-profile-by-id';
@@ -13,6 +14,7 @@ type SettingsPageProps = {
 
 export default async function SettingsPage({ searchParams }: SettingsPageProps) {
   const data = await fetchSession();
+  if (!data.session) redirect('/login');
 
   async function fetchProfile() {
     if (data.session) {

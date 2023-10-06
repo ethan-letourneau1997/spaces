@@ -1,5 +1,6 @@
 import { Card, Title, Text, Space } from '@mantine/core';
 
+import Link from 'next/link';
 import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
 import { PostContent } from './post-content';
 import { Comments } from '@/features/comments';
@@ -8,6 +9,7 @@ import { RootCommentInput } from '@/features/root-comment-input';
 import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
 import { fetchPostVotes } from '@/utils/fetch-post-votes';
 import { PostFooter } from './post-footer';
+import { DEFAULT_SORT } from '@/lib/constants';
 
 type PostProps = {
   params: {
@@ -23,7 +25,15 @@ export async function Post({ params }: PostProps) {
   const post = await fetchDetailedPostById(params.postId);
 
   if (!post) {
-    return <div>Post not found</div>;
+    return (
+      <div>
+        Post not found. Return to&nbsp;
+        <Link href={`/spaces/${params.spaceId}/${params.spaceName}${DEFAULT_SORT}`}>
+          {params.spaceName}
+        </Link>
+        &nbsp;or see whats new in your <Link href="/feed">feed</Link>.
+      </div>
+    );
   }
 
   const userVote = await fetchUserPostVote(post.id);

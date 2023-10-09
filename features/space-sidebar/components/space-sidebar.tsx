@@ -26,7 +26,7 @@ export function SpaceSidebar() {
     return (
       <SidebarWrapper>
         <Center>
-          <Title order={2}>{params.spaceName}</Title>
+          <Title order={2}>{space.display_name}</Title>
         </Center>
         <SpaceAvatar />
         <Text mt="md" size="sm">

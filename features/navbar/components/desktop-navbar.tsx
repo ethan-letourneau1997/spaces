@@ -11,7 +11,7 @@ type DesktopNavbarProps = {
 
 export function DesktopNavbar({ username }: DesktopNavbarProps) {
   return (
-    <Group ml="xl" gap={0} visibleFrom="sm">
+    <Group ml="xl" visibleFrom="sm">
       <UnstyledButton component={Link} href="/" className={classes.control}>
         Home
       </UnstyledButton>
@@ -19,7 +19,7 @@ export function DesktopNavbar({ username }: DesktopNavbarProps) {
         Feed
       </UnstyledButton>
 
-      {username && (
+      {username ? (
         <>
           <UnstyledButton
             component={Link}
@@ -31,7 +31,16 @@ export function DesktopNavbar({ username }: DesktopNavbarProps) {
           <UnstyledButton component={Link} href="/settings" className={classes.control}>
             Settings
           </UnstyledButton>
+          <form action="/auth/sign-out" method="post">
+            <UnstyledButton className={classes.control} type="submit">
+              Logout
+            </UnstyledButton>
+          </form>
         </>
+      ) : (
+        <UnstyledButton component={Link} href="/login" className={classes.control}>
+          Login
+        </UnstyledButton>
       )}
     </Group>
   );

@@ -13,9 +13,7 @@ export default function SpaceLayout({ children }: { children: any }) {
         <SpacePostsHeader />
         {children}
       </Box>
-      <Box miw="300px">
-        <SpaceSidebar />
-      </Box>
+      <SpaceSidebar />
     </Flex>
   );
 }

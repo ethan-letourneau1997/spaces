@@ -9,9 +9,7 @@ export default function SpaceLayout({ children }: { children: any }) {
     <Flex gap="md">
       <Space h="md" />
       <Box w="100%">{children}</Box>
-      <Box miw="300px">
-        <ProfileSidebar />
-      </Box>
+      <ProfileSidebar />
     </Flex>
   );
 }

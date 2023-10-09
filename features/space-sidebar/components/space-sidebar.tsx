@@ -1,10 +1,11 @@
 'use client';
 
-import { Card, Center, Title, Text } from '@mantine/core';
+import { Center, Title, Text } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useParams } from 'next/navigation';
 import useSWR from 'swr';
 import { SpaceSidebarSubscription } from './space-sidebar-subscription';
+import { SidebarWrapper } from '@/features/sidebar-wrapper';
 
 export function SpaceSidebar() {
   const params = useParams();
@@ -21,7 +22,7 @@ export function SpaceSidebar() {
 
   if (space) {
     return (
-      <Card miw="300px" maw="300px" h="fit-content">
+      <SidebarWrapper>
         <Center>
           <Title order={2}>{params.spaceName}</Title>
         </Center>
@@ -30,7 +31,7 @@ export function SpaceSidebar() {
           spaceId={params.spaceId as string}
           spaceName={params.spaceName as string}
         />
-      </Card>
+      </SidebarWrapper>
     );
   }
 }

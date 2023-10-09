@@ -8,9 +8,7 @@ export default function FeedLayout({ children }: { children: any }) {
     <>
       <Flex gap="md">
         <Box w="100%">{children}</Box>
-        <Box miw="300px">
-          <FeedSidebar />
-        </Box>
+        <FeedSidebar />
       </Flex>
     </>
   );

@@ -1,20 +1,21 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { Card, Title } from '@mantine/core';
+import { Title } from '@mantine/core';
 import { ProfileSidebarDetails } from './profile-sidebar-details';
 import { ProfileAvatar } from './profile-avatar';
+import { SidebarWrapper } from '@/features/sidebar-wrapper';
 
-export async function ProfileSidebar() {
+export function ProfileSidebar() {
   const params = useParams();
 
   return (
-    <Card miw="300px" maw="300px" h="fit-content">
+    <SidebarWrapper>
       <ProfileAvatar />
       <Title order={1} size="h4" ta="center" mt="md">
         {params.username}
       </Title>
       <ProfileSidebarDetails />
-    </Card>
+    </SidebarWrapper>
   );
 }

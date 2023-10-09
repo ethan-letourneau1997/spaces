@@ -26,14 +26,12 @@
 }
 
 .mantine-TypographyStylesProvider-root p {
-    margin-bottom: 10px;
-  }
+  margin-bottom: 10px;
+}
 
 .mantine-TypographyStylesProvider-root p:last-of-type {
   margin-bottom: 0;
 }
-
-
 
 /* MEDIA QUERIES */
 
@@ -65,4 +63,11 @@
 /* class to hide element */
 .hidden-element {
   visibility: hidden;
+}
+
+/* responsive styles */
+.hidden-md {
+  @media (max-width: $mantine-breakpoint-md) {
+    display: none;
+  }
 }

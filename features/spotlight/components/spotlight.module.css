@@ -1,0 +1,17 @@
+.spotlightInput {
+  border: none !important;
+  background-color: transparent !important;
+}
+.spotlightRoot {
+  flex-grow: 1 !important;
+}
+
+.selectInput {
+    background-color: transparent !important;
+    border:none !important
+}
+
+.spotlightItem:hover {
+    background-color: var(--mantine-color-dark-6);
+    text-decoration: none;
+}

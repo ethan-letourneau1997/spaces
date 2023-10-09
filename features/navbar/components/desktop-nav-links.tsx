@@ -1,6 +1,7 @@
 import { UnstyledButton, Text } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import Link from 'next/link';
+
 import { DEFAULT_SORT } from '@/lib/constants';
 
 export function HomeLink() {

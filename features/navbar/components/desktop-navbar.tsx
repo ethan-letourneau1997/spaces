@@ -9,6 +9,7 @@ import {
   ProfileLink,
   SettingsLink,
 } from './desktop-nav-links';
+import { Spotlight } from '@/features/spotlight';
 
 type DesktopNavbarProps = {
   username: string | null;
@@ -17,6 +18,7 @@ type DesktopNavbarProps = {
 export function DesktopNavbar({ username }: DesktopNavbarProps) {
   return (
     <Group gap="xl" ml="xl" preventGrowOverflow visibleFrom="sm">
+      <Spotlight />
       <HomeLink />
       {username ? (
         <>

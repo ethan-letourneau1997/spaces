@@ -1614,6 +1614,13 @@
     "@mantine/store" "7.1.2"
     react-transition-group "4.4.5"
 
+"@mantine/spotlight@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/spotlight/-/spotlight-7.1.2.tgz"
+  integrity sha512-J6z8uUuuzU+tDl4Cp82NJ4ZsE8dgvmzNkElRALAjgJ7YICIKlpaTg7gQ3Lu94BYn9e9Fj3/GHxwNspljE98gAg==
+  dependencies:
+    "@mantine/store" "7.1.2"
+
 "@mantine/store@7.1.2":
   version "7.1.2"
   resolved "https://registry.npmjs.org/@mantine/store/-/store-7.1.2.tgz"

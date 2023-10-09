@@ -72,3 +72,15 @@
   }
 }
 
+
+/* disable focus ring */
+
+.m-8fb7ebe7 {
+  transition: none;
+
+  &:focus-within {
+    outline: transparent;
+    border-color: transparent;
+  }
+}
+

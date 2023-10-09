@@ -6,7 +6,7 @@ module.exports = withBundleAnalyzer({
   experimental: {
     serverActions: true,
   },
-  reactStrictMode: false,
+  reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

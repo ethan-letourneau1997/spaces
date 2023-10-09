@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Group } from '@mantine/core';
+import { Button, Group, SimpleGrid, Text } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import { FaUserAstronaut } from 'react-icons/fa';
@@ -55,15 +55,24 @@ export function SpaceSidebarSubscription({ spaceId, spaceName }: SpaceSidebarSub
   }
 
   return (
-    <div>
-      <Group gap="xs">
+    <SimpleGrid cols={2}>
+      <Group gap="xs" align="center">
         <FaUserAstronaut className="text-sm" />
-        {subscriberCount}
-        {subscriberCount === 0 && <>0</>}
+        <Text size="sm">
+          {subscriberCount} subscriber{subscriberCount === 1 ? '' : 's'}
+        </Text>
       </Group>
 
-      {userSubscribed === true && <Button onClick={handleUnsubscribe}>Unsubscribe</Button>}
-      {userSubscribed === false && <Button onClick={handleSubscribe}>Subscribe</Button>}
-    </div>
+      {userSubscribed === true && (
+        <Button size="xs" color="gray" onClick={handleUnsubscribe}>
+          Unsubscribe
+        </Button>
+      )}
+      {userSubscribed === false && (
+        <Button variant="outline" color="gray" size="xs" onClick={handleSubscribe}>
+          Subscribe
+        </Button>
+      )}
+    </SimpleGrid>
   );
 }

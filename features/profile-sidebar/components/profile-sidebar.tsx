@@ -24,7 +24,7 @@ export function ProfileSidebar() {
   if (profile) {
     return (
       <SidebarWrapper>
-        <ProfileAvatar />
+        <ProfileAvatar userId={profile.id} />
         <Title order={1} size="h4" ta="center" mt="md">
           {params.username}
         </Title>

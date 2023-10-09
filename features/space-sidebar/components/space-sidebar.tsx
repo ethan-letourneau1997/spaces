@@ -1,11 +1,13 @@
 'use client';
 
-import { Center, Title, Text } from '@mantine/core';
+import { Center, Title, Text, Divider } from '@mantine/core';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useParams } from 'next/navigation';
 import useSWR from 'swr';
 import { SpaceSidebarSubscription } from './space-sidebar-subscription';
 import { SidebarWrapper } from '@/features/sidebar-wrapper';
+import { SpaceAvatar } from './space-avatar';
+import { spaceSidebarPlaceholder } from './space-sidebar-placeholders';
 
 export function SpaceSidebar() {
   const params = useParams();
@@ -26,7 +28,11 @@ export function SpaceSidebar() {
         <Center>
           <Title order={2}>{params.spaceName}</Title>
         </Center>
-        <Text size="sm">{space.description}</Text>
+        <SpaceAvatar />
+        <Text mt="md" size="sm">
+          {space.description}
+        </Text>
+        <Divider my="md" />
         <SpaceSidebarSubscription
           spaceId={params.spaceId as string}
           spaceName={params.spaceName as string}
@@ -34,4 +40,6 @@ export function SpaceSidebar() {
       </SidebarWrapper>
     );
   }
+
+  return spaceSidebarPlaceholder;
 }

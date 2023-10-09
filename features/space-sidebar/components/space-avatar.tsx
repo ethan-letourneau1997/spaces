@@ -4,23 +4,22 @@ import useSWR from 'swr';
 
 import { Avatar, Center, Skeleton } from '@mantine/core';
 import { useParams } from 'next/navigation';
-import { fetchAvatar } from '@/utils/fetch-avatar';
-import { avatarPlaceholder } from './profile-sidebar-placeholders';
+import { IoPlanetOutline } from 'react-icons/io5';
+import { fetchSpaceAvatar } from '@/utils/fetch-space-avatar';
+import { avatarPlaceholder } from './space-sidebar-placeholders';
 
 // TODO uncomment avatar
 
-type ProfileAvatarProps = {
-  userId: string;
-};
-
-export function ProfileAvatar({ userId }: ProfileAvatarProps) {
+export function SpaceAvatar() {
   const params = useParams();
+
   // eslint-disable-next-line consistent-return
   const { data: avatarUrl } = useSWR('avatarUrl', async () => {
-    if (params.username) {
-      const userAvatar = await fetchAvatar(userId);
-      return userAvatar.path;
+    const avatar = await fetchSpaceAvatar(params.spaceId as string);
+    if (avatar) {
+      return avatar.path;
     }
+    return null;
   });
 
   if (avatarUrl) {
@@ -29,6 +28,16 @@ export function ProfileAvatar({ userId }: ProfileAvatarProps) {
         {/* <Avatar src={avatarUrl} size="lg"> */}
         <Skeleton circle h={56} w={56} />
         {/* </Avatar> */}
+      </Center>
+    );
+  }
+
+  if (avatarUrl === null) {
+    return (
+      <Center>
+        <Avatar size="lg">
+          <IoPlanetOutline />
+        </Avatar>
       </Center>
     );
   }

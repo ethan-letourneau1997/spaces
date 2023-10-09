@@ -15,7 +15,9 @@ export async function Home() {
     return (
       <Container>
         <Center>
-          <p>hello {profile.data.username}</p>
+          {/* <Text size="lg">
+            See what&apos;s <Anchor>hot</Anchor> or start searching!
+          </Text> */}
         </Center>
       </Container>
     );

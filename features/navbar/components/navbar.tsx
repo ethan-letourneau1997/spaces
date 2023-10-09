@@ -1,11 +1,14 @@
 'use client';
 
-import { AppShell, Burger, Group } from '@mantine/core';
+import { AppShell, Box, Burger, Flex, Group, Text, ThemeIcon } from '@mantine/core';
 
 import { MantineLogo } from '@mantine/ds';
 import { useDisclosure } from '@mantine/hooks';
 
 import useSWR from 'swr';
+import { FaUserAstronaut } from 'react-icons/fa';
+import { IoPlanetOutline, IoPlanet } from 'react-icons/io5';
+import { BiSolidPlanet } from 'react-icons/bi';
 import { DesktopNavbar } from './desktop-navbar';
 import { MobileNavbar } from './mobile-navbar';
 import { fetchSession } from '@/utils/fetch-session';
@@ -36,7 +39,20 @@ export function Navbar({ children }: NavbarProps) {
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Group justify="space-between" style={{ flex: 1 }}>
-            <MantineLogo size={30} />
+            <Group gap="xs">
+              <Flex c="pink.8">
+                <FaUserAstronaut size={26} />
+              </Flex>
+
+              <Text
+                size="30px"
+                fw={600}
+                variant="gradient"
+                gradient={{ from: 'pink', to: 'yellow' }}
+              >
+                Spaces
+              </Text>
+            </Group>
             <DesktopNavbar username={username} />
           </Group>
         </Group>

@@ -1,22 +1,30 @@
 'use client';
 
-import { Avatar, Input } from '@mantine/core';
+import { Avatar, Box, Input } from '@mantine/core';
 import { IoPlanetOutline } from 'react-icons/io5';
+import { SpaceAvatarInput } from '@/features/space-avatar-input';
+import { Database } from '@/lib/database';
 
 type SpaceSettingsAvatarProps = {
-  path: string | null;
+  avatar: Database['public']['Tables']['community_avatar']['Row'];
+  spaceId: string;
 };
 
-export function SpaceSettingsAvatar({ path }: SpaceSettingsAvatarProps) {
-  if (path) {
-    return <Avatar src={path} size="lg" />;
-  }
-
+export function SpaceSettingsAvatar({ avatar, spaceId }: SpaceSettingsAvatarProps) {
   return (
-    <Input.Wrapper label="Avatar" description="An avatar representing the space">
-      <Avatar size="lg" mt="xs">
-        <IoPlanetOutline />
-      </Avatar>
-    </Input.Wrapper>
+    <Box>
+      {avatar ? (
+        <Input.Wrapper label="Avatar" description="An avatar representing the space">
+          <Avatar src={avatar.path} mt="xs" size="lg" />
+        </Input.Wrapper>
+      ) : (
+        <Input.Wrapper label="Avatar" description="An avatar representing the space">
+          <Avatar size="lg" mt="xs">
+            <IoPlanetOutline />
+          </Avatar>
+        </Input.Wrapper>
+      )}
+      <SpaceAvatarInput spaceId={spaceId} avatar={avatar} />
+    </Box>
   );
 }

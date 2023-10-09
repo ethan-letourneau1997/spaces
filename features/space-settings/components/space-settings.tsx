@@ -21,23 +21,7 @@ export async function SpaceSettings({ params }: SpaceSettingsProps) {
         <Title size="h3" order={1}>
           {params.spaceName} Settings
         </Title>
-        {/* <TextInput
-          mt="lg"
-          label="Display Name"
-          description="The publicly visible name"
-          value={space.display_name}
-          maw={400}
-        /> */}
-        {/* <DisplayNameInput space={space} /> */}
         <SpaceDisplayNameInput space={space} />
-        {/* <Textarea
-          mt="lg"
-          label="Description"
-          description="A brief description"
-          value={space.description}
-          maw={400}
-        /> */}
-        {/* <SpaceBioInput space={space} /> */}
         <SpaceDescriptionInput space={space} />
 
         <Box mt="lg">

@@ -8,5 +8,5 @@ type SpaceSettingsAvatarHandlerProps = {
 export async function SpaceSettingsAvatarHandler({ spaceId }: SpaceSettingsAvatarHandlerProps) {
   const avatar = await fetchSpaceAvatar(spaceId as string);
 
-  return <SpaceSettingsAvatar path={avatar && avatar.path ? avatar.path : null} />;
+  return <SpaceSettingsAvatar spaceId={spaceId} avatar={avatar || null} />;
 }

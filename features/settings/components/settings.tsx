@@ -17,7 +17,11 @@ export function Settings({ page, profile, avatar }: SettingsProps) {
   return (
     <Container size="sm">
       <Card>
-        <Tabs value={page} onChange={(value) => router.push(`/settings?page=${value}`)}>
+        <Tabs
+          defaultValue="profile"
+          value={page}
+          onChange={(value) => router.push(`/settings?page=${value}`)}
+        >
           <Tabs.List>
             <Tabs.Tab value="profile">Profile</Tabs.Tab>
             <Tabs.Tab value="admin">Admin</Tabs.Tab>

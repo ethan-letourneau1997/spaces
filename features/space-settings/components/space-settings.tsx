@@ -1,6 +1,7 @@
 import { Box, Card, TextInput, Textarea, Title } from '@mantine/core';
 import { fetchSpaceById } from '@/utils/fetch-space-by-id';
 import { SpaceSettingsAvatarHandler } from './space-settings-avatar-handler';
+import { DisplayNameInput } from './display-name-input';
 
 type SpaceSettingsProps = {
   params: {
@@ -18,13 +19,14 @@ export async function SpaceSettings({ params }: SpaceSettingsProps) {
         <Title size="h3" order={1}>
           {params.spaceName} Settings
         </Title>
-        <TextInput
+        {/* <TextInput
           mt="lg"
           label="Display Name"
           description="The publicly visible name"
           value={space.display_name}
           maw={400}
-        />
+        /> */}
+        <DisplayNameInput space={space} />
         <Textarea
           mt="lg"
           label="Description"

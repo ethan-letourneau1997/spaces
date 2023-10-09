@@ -7,7 +7,7 @@ import { DEFAULT_SORT } from '@/lib/constants';
 export function HomeLink() {
   const { hovered, ref } = useHover();
   return (
-    <UnstyledButton component={Link} href="/">
+    <UnstyledButton c="dark.0" component={Link} href="/">
       <Text ref={ref} variant={hovered ? 'gradient' : ''} gradient={{ from: 'pink', to: 'yellow' }}>
         Home
       </Text>
@@ -29,7 +29,7 @@ export function FeedLink() {
 export function ProfileLink({ username }: { username: string }) {
   const { hovered, ref } = useHover();
   return (
-    <UnstyledButton component={Link} href={`/profile/${username}/posts/${DEFAULT_SORT}`}>
+    <UnstyledButton c="dark.0" component={Link} href={`/profile/${username}/posts/${DEFAULT_SORT}`}>
       <Text ref={ref} variant={hovered ? 'gradient' : ''} gradient={{ from: 'pink', to: 'yellow' }}>
         Profile
       </Text>
@@ -41,7 +41,12 @@ export function SettingsLink() {
   const { hovered, ref } = useHover();
   return (
     <UnstyledButton component={Link} href="/settings">
-      <Text ref={ref} variant={hovered ? 'gradient' : ''} gradient={{ from: 'pink', to: 'yellow' }}>
+      <Text
+        c="dark.0"
+        ref={ref}
+        variant={hovered ? 'gradient' : ''}
+        gradient={{ from: 'pink', to: 'yellow' }}
+      >
         Settings
       </Text>
     </UnstyledButton>
@@ -52,7 +57,7 @@ export function LogoutLink() {
   const { hovered, ref } = useHover();
   return (
     <form action="/auth/sign-out" method="post">
-      <UnstyledButton type="submit">
+      <UnstyledButton c="dark.0" type="submit">
         <Text
           ref={ref}
           variant={hovered ? 'gradient' : ''}
@@ -68,7 +73,7 @@ export function LogoutLink() {
 export function LoginLink() {
   const { hovered, ref } = useHover();
   return (
-    <UnstyledButton component={Link} href="/login">
+    <UnstyledButton c="dark.0" component={Link} href="/login">
       <Text ref={ref} variant={hovered ? 'gradient' : ''} gradient={{ from: 'pink', to: 'yellow' }}>
         Login
       </Text>

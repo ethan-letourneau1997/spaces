@@ -1,11 +1,12 @@
 'use client';
 
-import { Anchor, Card, Text, Grid, Stack } from '@mantine/core';
+import { Anchor, Card, Text, Grid, Stack, Group } from '@mantine/core';
 import Link from 'next/link';
 import { Database } from '@/lib/database';
 
 import { PostThumbnail } from '@/features/post-thumbnail';
 import { PostVoteButtons } from '@/features/post-votes';
+import { PostOptions } from '@/features/post-options';
 
 type PostsProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -34,7 +35,12 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostsPr
                 {post.title}
               </Anchor>
             </div>
-            <Text>{commentCount} comments</Text>
+            <Group gap="xs" align="center">
+              <Text size="sm">
+                {commentCount} comment{commentCount === 1 ? '' : 's'}
+              </Text>
+              <PostOptions post={post} />
+            </Group>
           </Stack>
         </Grid.Col>
         <Grid.Col span={1}>

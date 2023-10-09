@@ -12,8 +12,8 @@ import Link from 'next/link';
 import useSWR from 'swr';
 
 import { Database } from '@/lib/database';
-import { deletePost } from '../api/delete-post';
 import { fetchSession } from '@/utils/fetch-session';
+import { deletePost } from '../api/delete-post';
 
 type PostOptionsProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -62,7 +62,7 @@ export function PostOptions({ post }: PostOptionsProps) {
 
         <Menu shadow="md">
           <Menu.Target>
-            <ActionIcon variant="transparent" aria-label="Settings">
+            <ActionIcon color="gray" variant="transparent" aria-label="Settings">
               <SlOptions />
             </ActionIcon>
           </Menu.Target>

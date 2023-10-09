@@ -20,14 +20,14 @@ export function AdminTab() {
             <Group>
               <Tooltip label={`Manage ${space.name}`}>
                 <ActionIcon
-                  href={`/spaces/${space.id}/${space.display_name}/settings`}
+                  href={`/spaces/${space.id}/${space.name}/settings`}
                   component={Link}
                   bg="transparent"
                 >
                   <BsFillGearFill />
                 </ActionIcon>
               </Tooltip>
-              {space.name}
+              {space.display_name}
             </Group>
           </Grid.Col>
         ))}

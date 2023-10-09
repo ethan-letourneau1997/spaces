@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { Settings } from '@/features/settings/components/settings';
+import { ProfileSettings } from '@/features/profile-settings/components/profile-settings';
 import { fetchAvatar } from '@/utils/fetch-avatar';
 import { fetchProfileById } from '@/utils/fetch-profile-by-id';
 import { fetchSession } from '@/utils/fetch-session';
@@ -35,5 +35,5 @@ export default async function SettingsPage({ searchParams }: SettingsPageProps) 
   const profile = await fetchProfile();
   const avatar = await fetchUserAvatar();
 
-  return <Settings page={searchParams.page} profile={profile} avatar={avatar} />;
+  return <ProfileSettings page={searchParams.page} profile={profile} avatar={avatar} />;
 }

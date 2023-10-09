@@ -12,7 +12,7 @@ type SettingsProps = {
   avatar?: Database['public']['Tables']['profile_avatar']['Row'];
 };
 
-export function Settings({ page, profile, avatar }: SettingsProps) {
+export function ProfileSettings({ page, profile, avatar }: SettingsProps) {
   const router = useRouter();
   return (
     <Container size="sm">

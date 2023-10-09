@@ -1,22 +1,18 @@
 'use client';
 
-import useSWR from 'swr';
 import { Box, Flex, Text } from '@mantine/core';
 import { FaCommentAlt } from 'react-icons/fa';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import useSWR from 'swr';
+import { fetchProfileCommentCount } from '../api/fetch-profile-comment-count';
+import { commentCountPlaceholder } from './profile-sidebar-placeholders';
 
 type ProfileCommentCountProps = {
   userId: string;
 };
 
 export function ProfileCommentCount({ userId }: ProfileCommentCountProps) {
-  const supabase = createClientComponentClient();
-  // eslint-disable-next-line consistent-return
   const { data: commentCount } = useSWR('commentCount', async () => {
-    const { count } = await supabase
-      .from('comment')
-      .select('*', { count: 'exact', head: true })
-      .eq('posted_by', userId);
+    const count = await fetchProfileCommentCount(userId);
     return count;
   });
 
@@ -31,4 +27,6 @@ export function ProfileCommentCount({ userId }: ProfileCommentCountProps) {
       </Box>
     );
   }
+
+  return commentCountPlaceholder;
 }

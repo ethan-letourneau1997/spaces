@@ -6,6 +6,7 @@ import { Avatar, Center, Skeleton } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { fetchAvatar } from '@/utils/fetch-avatar';
+import { avatarPlaceholder } from './profile-sidebar-placeholders';
 
 // TODO uncomment avatar
 
@@ -37,4 +38,6 @@ export function ProfileAvatar() {
       </Center>
     );
   }
+
+  return avatarPlaceholder;
 }

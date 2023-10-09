@@ -1,22 +1,18 @@
 'use client';
 
-import useSWR from 'swr';
 import { Box, Flex, Text } from '@mantine/core';
 import { PiSignpostFill } from 'react-icons/pi';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import useSWR from 'swr';
+import { fetchProfilePostCount } from '../api/fetch-profile-post-count';
+import { postCountPlaceholder } from './profile-sidebar-placeholders';
 
 type ProfilePostCountProps = {
   userId: string;
 };
 
 export function ProfilePostCount({ userId }: ProfilePostCountProps) {
-  const supabase = createClientComponentClient();
-  // eslint-disable-next-line consistent-return
-  const { data: postCount } = useSWR('postCount', async () => {
-    const { count } = await supabase
-      .from('post')
-      .select('*', { count: 'exact', head: true })
-      .eq('created_by', userId);
+  const { data: postCount } = useSWR('commentCount', async () => {
+    const count = await fetchProfilePostCount(userId);
     return count;
   });
 
@@ -31,4 +27,6 @@ export function ProfilePostCount({ userId }: ProfilePostCountProps) {
       </Box>
     );
   }
+
+  return postCountPlaceholder;
 }

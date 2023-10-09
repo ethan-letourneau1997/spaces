@@ -2,23 +2,19 @@
 
 import { Divider, SimpleGrid, Text } from '@mantine/core';
 import useSWR from 'swr';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useParams } from 'next/navigation';
 import { ProfilePostCount } from './profile-post-count';
 import { ProfileCommentCount } from './profile-comment-count';
+import { fetchProfileByUsername } from '@/utils/fetch-profile-by-username';
 
 export function ProfileSidebarDetails() {
   const params = useParams();
-  const supabase = createClientComponentClient();
+
   // eslint-disable-next-line consistent-return
   const { data: profile } = useSWR('profile', async () => {
     if (params.username) {
-      const { data: public_profile } = await supabase
-        .from('public_profile')
-        .select()
-        .eq('username', params.username)
-        .single();
-      return public_profile;
+      const userProfile = await fetchProfileByUsername(params.username as string);
+      return userProfile;
     }
   });
   if (profile) {

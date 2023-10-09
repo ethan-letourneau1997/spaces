@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { FeedPosts } from './feed-posts';
+import { PostsSkeleton } from '@/components/PostsSkeleton';
 
 type userSubscriptionProps = {
   params: {
@@ -10,7 +12,9 @@ type userSubscriptionProps = {
 export async function Feed({ params }: userSubscriptionProps) {
   return (
     <>
-      <FeedPosts params={params} />
+      <Suspense fallback={<PostsSkeleton />}>
+        <FeedPosts params={params} />
+      </Suspense>
     </>
   );
 }

@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import SpacePosts from './space-posts';
+import { PostsSkeleton } from '@/components/PostsSkeleton';
 
 type SpaceProps = {
   params: {
@@ -10,5 +12,9 @@ type SpaceProps = {
 };
 
 export async function Space({ params }: SpaceProps) {
-  return <SpacePosts params={params} />;
+  return (
+    <Suspense fallback={<PostsSkeleton />}>
+      <SpacePosts params={params} />
+    </Suspense>
+  );
 }

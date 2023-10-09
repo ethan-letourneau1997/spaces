@@ -1,6 +1,7 @@
-import { Box } from '@mantine/core';
+import { Suspense } from 'react';
 import { PostPreviews } from '@/features/posts';
 import { fetchSortedProfilePosts } from '../api/fetch-sorted-profile-posts';
+import { PostsSkeleton } from '@/components/PostsSkeleton';
 
 type ProfilePostsProps = {
   params: {
@@ -16,9 +17,9 @@ export async function ProfilePosts({ params }: ProfilePostsProps) {
 
   if (profilePosts) {
     return (
-      <Box mt="sm">
+      <Suspense fallback={<PostsSkeleton />}>
         <PostPreviews posts={profilePosts} />
-      </Box>
+      </Suspense>
     );
   }
 }

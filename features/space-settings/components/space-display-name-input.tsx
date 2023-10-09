@@ -45,7 +45,7 @@ export function SpaceDisplayNameInput({ space }: SpaceDisplayNameInputProps) {
           w="100%"
         />
 
-        <Flex align="flex-end">
+        <Flex align="flex-end" display={displayName === space.display_name ? 'none' : ''}>
           <Button
             loading={isPending}
             h={35}

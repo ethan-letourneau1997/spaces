@@ -45,7 +45,7 @@ export function SpaceDescriptionInput({ space }: SpaceDescriptionInputProps) {
           w="100%"
         />
 
-        <Flex align="flex-end">
+        <Flex align="flex-end" display={description === space.description ? 'none' : ''}>
           <Button
             loading={isPending}
             h={35}

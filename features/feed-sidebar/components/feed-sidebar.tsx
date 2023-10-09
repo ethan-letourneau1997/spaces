@@ -14,4 +14,5 @@ export async function FeedSidebar() {
       </SidebarWrapper>
     );
   }
+  return <SidebarWrapper>loading...</SidebarWrapper>;
 }

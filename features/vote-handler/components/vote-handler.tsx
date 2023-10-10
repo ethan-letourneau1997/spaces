@@ -1,11 +1,8 @@
 'use client';
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
-
 import { Text, Flex, ActionIcon } from '@mantine/core';
-
 import { Database } from '@/lib/database';
-
 import {
   DownvoteButton,
   DownvotedButton,
@@ -15,7 +12,7 @@ import {
 import { upsertPostVote } from '../api/upsert-post-vote';
 import { upsertCommentVote } from '../api/upsert-comment-vote';
 
-type VoteButtonsProps = {
+type VoteHandlerProps = {
   totalVotes: number;
   userVote: number;
   post?: Database['public']['Views']['detailed_post']['Row'];
@@ -23,7 +20,7 @@ type VoteButtonsProps = {
   horizontal?: boolean;
 };
 
-export function VoteButtons({ totalVotes, userVote, post, comment, horizontal }: VoteButtonsProps) {
+export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }: VoteHandlerProps) {
   const [optimisticTotalVotes, setOptimisticTotalVotes] = useOptimistic<number>(totalVotes);
 
   const [optimisticUserVote, setOptimisticUserVote] = useOptimistic<number>(userVote);

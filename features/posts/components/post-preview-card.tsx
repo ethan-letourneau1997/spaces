@@ -1,26 +1,28 @@
 'use client';
 
-import { Anchor, Card, Text, Grid, Stack, Group } from '@mantine/core';
+import { Anchor, Card, Grid, Stack } from '@mantine/core';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Database } from '@/lib/database';
 
 import { PostThumbnail } from '@/features/post-thumbnail';
-import { PostOptions } from '@/features/post-options';
-import { ThumbnailSkeleton } from '@/components/fallbacks';
 
 type PostPreviewCardProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
-  commentCount: number;
   postVotesSection: JSX.Element;
+  postPreviewFooter: JSX.Element;
 };
 
-export function PostPreviewCard({ post, commentCount, postVotesSection }: PostPreviewCardProps) {
+export function PostPreviewCard({
+  post,
+  postPreviewFooter,
+  postVotesSection,
+}: PostPreviewCardProps) {
   return (
     <Card mt="sm">
       <Grid>
         <Grid.Col span={2}>
-          <Suspense fallback={<ThumbnailSkeleton />}>
+          <Suspense fallback={<></>}>
             <PostThumbnail post={post} />
           </Suspense>
         </Grid.Col>
@@ -37,12 +39,7 @@ export function PostPreviewCard({ post, commentCount, postVotesSection }: PostPr
                 {post.title}
               </Anchor>
             </div>
-            <Group gap="xs" align="center">
-              <Text size="sm">
-                {commentCount} comment{commentCount === 1 ? '' : 's'}
-              </Text>
-              <PostOptions post={post} />
-            </Group>
+            {postPreviewFooter}
           </Stack>
         </Grid.Col>
         <Grid.Col span={1}>{postVotesSection}</Grid.Col>

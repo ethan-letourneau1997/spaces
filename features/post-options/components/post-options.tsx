@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Button, Group, Menu, Modal, Text } from '@mantine/core';
+import { ActionIcon, Box, Button, Group, Menu, Modal, Text } from '@mantine/core';
 
 import { SlOptions } from 'react-icons/sl';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
@@ -48,22 +48,10 @@ export function PostOptions({ post }: PostOptionsProps) {
   if (isCreator) {
     return (
       <>
-        <Modal opened={opened} onClose={close} title="Delete Comment">
-          <Text>Are you sure you want to delete this post?</Text>
-          <Group mt="md">
-            <Button onClick={close} variant="outline" color="gray">
-              Cancel
-            </Button>
-            <Button loading={isPending} onClick={HandleCommentDelete} variant="filled" color="red">
-              Delete
-            </Button>
-          </Group>
-        </Modal>
-
         <Menu shadow="md">
           <Menu.Target>
-            <ActionIcon color="gray" variant="transparent" aria-label="Settings">
-              <SlOptions />
+            <ActionIcon pt={3} color="dark.1" variant="transparent" aria-label="Settings">
+              <SlOptions size={15} />
             </ActionIcon>
           </Menu.Target>
 
@@ -78,7 +66,20 @@ export function PostOptions({ post }: PostOptionsProps) {
             )}
           </Menu.Dropdown>
         </Menu>
+
+        <Modal opened={opened} onClose={close} title="Delete Comment">
+          <Text>Are you sure you want to delete this post?</Text>
+          <Group mt="md">
+            <Button onClick={close} variant="outline" color="gray">
+              Cancel
+            </Button>
+            <Button loading={isPending} onClick={HandleCommentDelete} variant="filled" color="red">
+              Delete
+            </Button>
+          </Group>
+        </Modal>
       </>
     );
   }
+  return <Box h={28} w={28} />;
 }

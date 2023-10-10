@@ -1,6 +1,7 @@
 'use client';
 
-import { Card, Flex, Skeleton, Space, Stack } from '@mantine/core';
+import { ActionIcon, Box, Card, Flex, Group, Skeleton, Space, Stack, Text } from '@mantine/core';
+import { DownvoteButton, UpvoteButton } from './vote-buttons';
 
 export function PostSkeleton() {
   return (
@@ -71,4 +72,31 @@ export function PostPageSkeleton() {
 
 export function ThumbnailSkeleton() {
   return <Skeleton h="100%" />;
+}
+
+type VoteButtonsFallbackProps = {
+  horizontal?: boolean;
+};
+
+export function VoteButtonsFallback({ horizontal }: VoteButtonsFallbackProps) {
+  return (
+    <Flex direction={horizontal ? 'row' : 'column'} align="center" justify="center" gap={2}>
+      <ActionIcon variant="transparent" color="gray">
+        <UpvoteButton />
+      </ActionIcon>
+      <Text>0</Text>
+      <ActionIcon variant="transparent" color="gray">
+        <DownvoteButton />
+      </ActionIcon>
+    </Flex>
+  );
+}
+
+export function PostPreviewFooterFallback() {
+  return (
+    <Group gap="xs" align="center">
+      <Text size="sm">0 comments</Text>
+      <Box h={28} w={28} />
+    </Group>
+  );
 }

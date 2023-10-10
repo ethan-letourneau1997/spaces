@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body className={inter.className}>
-        <MantineProvider theme={theme}>
+        <MantineProvider theme={theme} defaultColorScheme="dark">
           <Notifications />
           <Navbar>
             <Container size="lg">{children}</Container>

@@ -1,6 +1,6 @@
 'use client';
 
-import { BackgroundImage, Center, Image, Skeleton } from '@mantine/core';
+import { BackgroundImage, Center, Paper, Skeleton } from '@mantine/core';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
@@ -39,9 +39,11 @@ export function LinkPostThumbnail({ post }: LinkPostThumbnailProps) {
   }
   if (previewUrl === null) {
     return (
-      <Center h="100%" bg="gray">
-        <HiOutlineLink size={20} />
-      </Center>
+      <Paper radius="sm" h="100%" bg="gray">
+        <Center h="100%">
+          <HiOutlineLink size={20} />
+        </Center>
+      </Paper>
     );
   }
 

@@ -20,7 +20,7 @@ export async function PostPreviewFooter({ post }: PostPreviewFooterProps) {
         <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
           <LiaCommentAltSolid size={18} />
         </ActionIcon>
-        <Text size="sm">
+        <Text size="xs" fw={600} c="dark.1">
           {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
         </Text>
       </Group>

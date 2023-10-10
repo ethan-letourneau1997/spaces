@@ -95,7 +95,9 @@ export function VoteButtonsFallback({ horizontal }: VoteButtonsFallbackProps) {
 export function PostPreviewFooterFallback() {
   return (
     <Group gap="xs" align="center">
-      <Text size="sm">0 comments</Text>
+      <Text size="xs" fw={600} c="dark.1">
+        0 comments
+      </Text>
       <Box h={28} w={28} />
     </Group>
   );

@@ -3,12 +3,7 @@
 import { experimental_useOptimistic as useOptimistic } from 'react';
 import { Text, Flex, ActionIcon } from '@mantine/core';
 import { Database } from '@/lib/database';
-import {
-  DownvoteButton,
-  DownvotedButton,
-  UpvoteButton,
-  UpvotedButton,
-} from '@/components/vote-buttons';
+import { DownvoteButton, DownvotedButton, UpvoteButton, UpvotedButton } from './vote-buttons';
 import { upsertPostVote } from '../api/upsert-post-vote';
 import { upsertCommentVote } from '../api/upsert-comment-vote';
 
@@ -67,7 +62,7 @@ export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }:
       </ActionIcon>
       {/* <BiUpvote /> */}
 
-      <Text>{optimisticTotalVotes}</Text>
+      <Text size="sm">{optimisticTotalVotes}</Text>
       <ActionIcon onClick={handleDownvote} variant="transparent" color="gray">
         {optimisticUserVote === -1 ? <DownvotedButton /> : <DownvoteButton />}
       </ActionIcon>

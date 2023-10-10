@@ -16,7 +16,7 @@ export function ProfileSettings({ page, profile, avatar }: SettingsProps) {
   const router = useRouter();
   return (
     <Container size="sm">
-      <Card>
+      <Card p="lg">
         <Title mt="sm" ta="center" size="h2" order={1}>
           {profile.username}
         </Title>

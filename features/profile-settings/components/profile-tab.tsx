@@ -1,6 +1,5 @@
 'use client';
 
-import { Card } from '@mantine/core';
 import { Database } from '@/lib/database';
 import { UsernameInput } from './username-input';
 import { BioInput } from './bio-input';
@@ -14,11 +13,11 @@ type ProfileTabProps = {
 export function ProfileTab({ profile, avatar }: ProfileTabProps) {
   if (profile) {
     return (
-      <Card>
+      <>
         <UsernameInput username={profile.username} />
         <BioInput profile={profile} />
         <AvatarInput avatar={avatar} id={profile.id} />
-      </Card>
+      </>
     );
   }
 }

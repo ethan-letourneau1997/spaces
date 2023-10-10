@@ -22,7 +22,7 @@ export async function upsertSpaceDescription(
           description,
         })
         .select();
-      revalidatePath(`/spaces/${space.id}/${space.name}/settings`);
+      revalidatePath(`/spaces/${space.id}/${space.name}/admin/settings`);
     } catch (e) {
       /* empty */
     }

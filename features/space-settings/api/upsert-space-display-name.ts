@@ -23,7 +23,7 @@ export async function upsertSpaceDisplayName(
           display_name: displayName,
         })
         .select();
-      revalidatePath(`/spaces/${space.id}/${space.name}/settings`);
+      revalidatePath(`/spaces/${space.id}/${space.name}/admin/settings`);
     } catch (e) {
       /* empty */
     }

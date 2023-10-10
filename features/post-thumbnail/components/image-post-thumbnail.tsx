@@ -1,6 +1,6 @@
 'use client';
 
-import { Image, Skeleton } from '@mantine/core';
+import { BackgroundImage, Skeleton } from '@mantine/core';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
@@ -14,9 +14,7 @@ type ImagePostThumbnailProps = {
 export function ImagePostThumbnail({ post }: ImagePostThumbnailProps) {
   const supabase = createClientComponentClient();
 
-  const [firstImageUrl, setFirstImageUrl] = useState<
-    Database['public']['Tables']['link_preview']['Row'] | null | undefined
-  >(undefined);
+  const [firstImageUrl, setFirstImageUrl] = useState<string | null>(null); // Declare firstImageUrl as a string
 
   useEffect(() => {
     async function getThumbnailUrl() {
@@ -33,7 +31,9 @@ export function ImagePostThumbnail({ post }: ImagePostThumbnailProps) {
     getThumbnailUrl();
   }, [post]);
 
-  if (firstImageUrl) return <Image fit="cover" h="100%" radius="md" src={firstImageUrl || '#'} />;
+  if (firstImageUrl) {
+    return <BackgroundImage h="100%" src={firstImageUrl} radius="sm" />;
+  }
 
   return <Skeleton w="100%" h="100%" />;
 }

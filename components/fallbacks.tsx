@@ -68,3 +68,7 @@ export function PostPageSkeleton() {
     </Stack>
   );
 }
+
+export function ThumbnailSkeleton() {
+  return <Skeleton h="100%" />;
+}

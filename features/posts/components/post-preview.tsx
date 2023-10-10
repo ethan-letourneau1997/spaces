@@ -2,11 +2,13 @@
 
 import { Anchor, Card, Text, Grid, Stack, Group } from '@mantine/core';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { Database } from '@/lib/database';
 
 import { PostThumbnail } from '@/features/post-thumbnail';
 import { PostVoteButtons } from '@/features/post-votes';
 import { PostOptions } from '@/features/post-options';
+import { ThumbnailSkeleton } from '@/components/fallbacks';
 
 type PostsProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -20,7 +22,9 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostsPr
     <Card>
       <Grid>
         <Grid.Col span={2}>
-          <PostThumbnail post={post} />
+          <Suspense fallback={<ThumbnailSkeleton />}>
+            <PostThumbnail post={post} />
+          </Suspense>
         </Grid.Col>
         <Grid.Col span={9}>
           <Stack align="stretch" justify="space-between" gap={0} h="100%">

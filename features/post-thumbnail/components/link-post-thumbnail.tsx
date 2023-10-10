@@ -1,12 +1,13 @@
 'use client';
 
-import { Center, Image, Skeleton } from '@mantine/core';
+import { BackgroundImage, Center, Image, Skeleton } from '@mantine/core';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import { HiOutlineLink } from 'react-icons/hi';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Database } from '@/lib/database';
+import { ThumbnailSkeleton } from '@/components/fallbacks';
 
 type LinkPostThumbnailProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -29,7 +30,13 @@ export function LinkPostThumbnail({ post }: LinkPostThumbnailProps) {
     getThumbnailUrl();
   }, [post]);
 
-  if (previewUrl) return <Image fit="cover" h="100%" radius="md" src={previewUrl || '#'} />;
+  if (previewUrl) {
+    return (
+      <Suspense fallback={<ThumbnailSkeleton />}>
+        <BackgroundImage h="100%" src={previewUrl} radius="sm" />
+      </Suspense>
+    );
+  }
   if (previewUrl === null) {
     return (
       <Center h="100%" bg="gray">

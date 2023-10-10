@@ -1249,20 +1249,20 @@
   resolved "https://registry.npmjs.org/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
-"@floating-ui/core@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.npmjs.org/@floating-ui/core/-/core-1.4.1.tgz"
-  integrity sha512-jk3WqquEJRlcyu7997NtR5PibI+y5bi+LS3hPmguVClypenMsCY3CBa3LAQnozRCtCrYWSEtAdiskpamuJRFOQ==
+"@floating-ui/core@^1.4.2":
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@floating-ui/core/-/core-1.5.0.tgz"
+  integrity sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==
   dependencies:
-    "@floating-ui/utils" "^0.1.1"
+    "@floating-ui/utils" "^0.1.3"
 
 "@floating-ui/dom@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/@floating-ui/dom/-/dom-1.5.1.tgz"
-  integrity sha512-KwvVcPSXg6mQygvA1TjbN/gh///36kKtllIF8SUm0qpFj8+rvYrpvlYdL1JoA71SHpDqgSSdGOSoQ0Mp3uY5aw==
+  version "1.5.3"
+  resolved "https://registry.npmjs.org/@floating-ui/dom/-/dom-1.5.3.tgz"
+  integrity sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==
   dependencies:
-    "@floating-ui/core" "^1.4.1"
-    "@floating-ui/utils" "^0.1.1"
+    "@floating-ui/core" "^1.4.2"
+    "@floating-ui/utils" "^0.1.3"
 
 "@floating-ui/react-dom@^2.0.1":
   version "2.0.2"
@@ -1280,10 +1280,10 @@
     aria-hidden "^1.2.3"
     tabbable "^6.0.1"
 
-"@floating-ui/utils@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.1.1.tgz"
-  integrity sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==
+"@floating-ui/utils@^0.1.3":
+  version "0.1.6"
+  resolved "https://registry.npmjs.org/@floating-ui/utils/-/utils-0.1.6.tgz"
+  integrity sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==
 
 "@humanwhocodes/config-array@^0.11.11":
   version "0.11.11"
@@ -1569,29 +1569,29 @@
   resolved "https://registry.npmjs.org/@juggle/resize-observer/-/resize-observer-3.4.0.tgz"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
-"@mantine/carousel@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.npmjs.org/@mantine/carousel/-/carousel-7.0.2.tgz"
-  integrity sha512-ZzP5Ua2huE+xiy1frUeCbxgfeiAxwxfz/+vYAB4rPoSiTrAuaDeho6wmwWR06mOvcGZ66Uu5S8HE4IHJX1rBEg==
+"@mantine/carousel@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/carousel/-/carousel-7.1.2.tgz"
+  integrity sha512-mQT6ztCoAqt4d9Ql+a6Llotjb8ciI8oUqF2JYkvr2ZYMr1+mDlNsxURhBiwoJHj5qqHtg9VwB8HpR6fHAqew5g==
 
-"@mantine/code-highlight@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/@mantine/code-highlight/-/code-highlight-7.0.1.tgz"
-  integrity sha512-H/Icku2ER7aNLBk7O1lRnJw0OrsT7txDkhsMASQBw6leLWcVCQl6BPG2Iynm6CH4tKj8IxtZoQffpuQ7FDXA4w==
+"@mantine/code-highlight@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/code-highlight/-/code-highlight-7.1.2.tgz"
+  integrity sha512-pP0cOdyEoM0aIRmm7T+KAdq6V2N4gQEzcvRx0gd6UhGbPS4f8iLwraIST0jnyS7tAfereP25VqNeedWepHsK/A==
   dependencies:
     clsx "2.0.0"
     highlight.js "^11.7.0"
 
-"@mantine/core@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/@mantine/core/-/core-7.0.1.tgz"
-  integrity sha512-cQqQWo5uZy6G+5WwEFRt6hoHwADVRy0IQ4pW+dyhcfp1aHYHf9C1T2vP/naUZR3nczYr5j63ZVgiSwqQaqc17Q==
+"@mantine/core@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/core/-/core-7.1.2.tgz"
+  integrity sha512-EZg82V/+uA2bM981mEUOUGfqKIRsMfvxLdAPQpurhtqsnq4yBj1xjC3KzX/Eas9QhhHuR+4DJJyGTuO9aOK6nQ==
   dependencies:
     "@floating-ui/react" "^0.24.8"
     clsx "2.0.0"
     react-number-format "^5.2.2"
     react-remove-scroll "^2.5.6"
-    react-textarea-autosize "8.5.2"
+    react-textarea-autosize "8.5.3"
     type-fest "^3.13.1"
 
 "@mantine/dropzone@^7.1.2":
@@ -1601,17 +1601,17 @@
   dependencies:
     react-dropzone-esm "15.0.1"
 
-"@mantine/ds@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/@mantine/ds/-/ds-7.0.1.tgz"
-  integrity sha512-2eaIhQupDtk9E7DMmv8ejeqN+aKdS5crJ8CsuVWZGdB/GV/g0x979VXDk/s7VU6+ozwB7HvjbVg4C/nRMKMSLA==
+"@mantine/ds@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/ds/-/ds-7.1.2.tgz"
+  integrity sha512-pj/4SZq9urGlY2428Fu7F+Zv9FdXpM0Y9gXCtK4L59C1EIv3YRahIPI+cnuiUROSta+9YmxlniBuVqfTP00m2Q==
   dependencies:
     clsx "2.0.0"
 
-"@mantine/hooks@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-7.0.1.tgz"
-  integrity sha512-rPHghtUh1YYhArZzhVHMWEX4kWVieffuuaOGB8954Yyw0o1X7wIgQ35cVRS52CGtFbUToS7kaYSdxI0THkca/Q==
+"@mantine/hooks@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/hooks/-/hooks-7.1.2.tgz"
+  integrity sha512-2sqfBKse/aJq93zEpIn4OY+jRACmDIWBixfBgobRfltDyeL8G+3223LSAaeT6ZD8+h2YBJVmbCD5QY7bx2l11Q==
 
 "@mantine/notifications@^7.1.2":
   version "7.1.2"
@@ -1633,10 +1633,10 @@
   resolved "https://registry.npmjs.org/@mantine/store/-/store-7.1.2.tgz"
   integrity sha512-Lf3FLymM0q92BuRC4tZxTxrb9EjVa+J8fqEV147u/Q3aUSNmkhJCqN2MXPbTHIBJ2PsbLtDhy/2edNyIK1KhKQ==
 
-"@mantine/tiptap@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.npmjs.org/@mantine/tiptap/-/tiptap-7.0.2.tgz"
-  integrity sha512-HjixXQqmmA7zBeaVAzBXv8W6XRPjd5UHuCjAPb88VZQGD5x1oZwr/YSqPs0x+kbO+tL4/X23ek2uiHTUk1vDaA==
+"@mantine/tiptap@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/@mantine/tiptap/-/tiptap-7.1.2.tgz"
+  integrity sha512-YToxSvX3wyx1cYb5VFze9f4DA+9J2E8YnnItWhihDa1FLt1yQOuqh6V1pUItt1hE2vi1+31/1rSaWUw+YU7i3A==
 
 "@mdx-js/react@^2.1.5":
   version "2.3.0"
@@ -7064,9 +7064,9 @@ he@^1.2.0:
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
 highlight.js@^11.7.0:
-  version "11.8.0"
-  resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.8.0.tgz"
-  integrity sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==
+  version "11.9.0"
+  resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.9.0.tgz"
+  integrity sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
@@ -10036,9 +10036,9 @@ react-remove-scroll-bar@^2.3.4:
     tslib "^2.0.0"
 
 react-remove-scroll@^2.5.6:
-  version "2.5.6"
-  resolved "https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.5.6.tgz"
-  integrity sha512-bO856ad1uDYLefgArk559IzUNeQ6SWH4QnrevIUjH+GczV56giDfl3h0Idptf2oIKxQmd1p9BN25jleKodTALg==
+  version "2.5.7"
+  resolved "https://registry.npmjs.org/react-remove-scroll/-/react-remove-scroll-2.5.7.tgz"
+  integrity sha512-FnrTWO4L7/Bhhf3CYBNArEG/yROV0tKmTv7/3h9QCFvH6sndeFf1wPqOcbFVu5VAulS5dV1wGT3GZZ/1GawqiA==
   dependencies:
     react-remove-scroll-bar "^2.3.4"
     react-style-singleton "^2.2.1"
@@ -10055,10 +10055,10 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-react-textarea-autosize@8.5.2:
-  version "8.5.2"
-  resolved "https://registry.npmjs.org/react-textarea-autosize/-/react-textarea-autosize-8.5.2.tgz"
-  integrity sha512-uOkyjkEl0ByEK21eCJMHDGBAAd/BoFQBawYK5XItjAmCTeSbjxghd8qnt7nzsLYzidjnoObu6M26xts0YGKsGg==
+react-textarea-autosize@8.5.3:
+  version "8.5.3"
+  resolved "https://registry.npmjs.org/react-textarea-autosize/-/react-textarea-autosize-8.5.3.tgz"
+  integrity sha512-XT1024o2pqCuZSuBt9FwHlaDeNtVrtCXu0Rnz88t1jUGheCLa3PhjE1GH8Ctm2axEtvdCl5SUHYschyQ0L5QHQ==
   dependencies:
     "@babel/runtime" "^7.20.13"
     use-composed-ref "^1.3.0"

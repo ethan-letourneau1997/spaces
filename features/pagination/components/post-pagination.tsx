@@ -15,7 +15,7 @@ export function PostPagination() {
   const { page } = params;
   const { sort } = params;
 
-  const currentPage = page ? parseInt(page, 10) : 1;
+  const currentPage = page ? parseInt(page as string, 10) : 1;
   const router = useRouter();
 
   const { data: pageCount } = useSWR('pageCount', async () => {

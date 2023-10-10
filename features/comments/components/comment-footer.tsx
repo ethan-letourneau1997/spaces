@@ -5,8 +5,9 @@ import { useDisclosure } from '@mantine/hooks';
 
 import { Database } from '@/lib/database';
 import { ChildCommentInput } from '@/features/child-comment-input';
-import { CommentVoteButtons } from '@/features/comment-votes/components/comment-vote-buttons';
+
 import { CommentOptions } from './comment-options';
+import { CommentVoteButtons } from '@/features/comment-votes';
 
 type CommentFooterProps = {
   comment: Database['public']['Views']['comment_details']['Row'];

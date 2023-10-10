@@ -12,7 +12,10 @@ async function ChildComments({
   allComments: Database['public']['Views']['comment_details']['Row'][] | [];
   params: { spaceName: string; spaceId: string; postId: string };
 }) {
-  const childComments = allComments?.filter((c) => c.parent_comment === commentId);
+  // const childComments = allComments?.filter((c) => c.parent_comment === commentId);
+  const childComments = (
+    allComments as Database['public']['Views']['comment_details']['Row'][]
+  )?.filter((c) => c.parent_comment === commentId);
 
   return (
     <div>
@@ -34,7 +37,6 @@ type CommentsProps = {
 
 export async function Comments({ params }: CommentsProps) {
   const comments = await fetchPostComments(params.postId);
-
   async function filterComments() {
     if (comments) {
       const rootComments = comments.filter((comment) => comment.parent_comment === null);

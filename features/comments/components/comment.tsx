@@ -7,7 +7,6 @@ import { MdExpandMore } from 'react-icons/md';
 import classes from '../styles/Comment.module.css';
 import { Database } from '@/lib/database';
 
-import { CommentAvatar } from './comment-avatar';
 import { getTimeSinceNow } from '../../../utils/get-time-since-now';
 
 type CommentProps = {

@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Flex, Textarea } from '@mantine/core';
+import { Button, Flex, Textarea, Text } from '@mantine/core';
 import { useState, useTransition } from 'react';
 import { notifications } from '@mantine/notifications';
 import { upsertUserBio } from '../api/upsert-user-bio';
@@ -11,13 +11,13 @@ type BioInputProps = {
 };
 
 export function BioInput({ profile }: BioInputProps) {
-  const [value, setValue] = useState(profile.biography);
+  const [bio, setBio] = useState(profile.biography);
   const [isPending, startTransition] = useTransition();
 
   async function handleUpdateBio() {
     startTransition(async () => {
       try {
-        await upsertUserBio(profile, value);
+        await upsertUserBio(profile, bio);
         notifications.show({
           title: 'Success',
           message: 'Your bio has been updated',
@@ -32,22 +32,34 @@ export function BioInput({ profile }: BioInputProps) {
   }
 
   return (
-    <Box w={300}>
-      <Textarea
-        value={value}
-        onChange={(e) => setValue(e.currentTarget.value)}
-        label="Biography"
-        description="A short description of yourself"
-      />
-      <Flex
-        className={profile.biography === value ? 'hidden-element' : 'block'}
-        justify="flex-end"
-        mt="sm"
-      >
-        <Button loading={isPending} onClick={handleUpdateBio} size="xs">
-          Save
-        </Button>
+    <form action={handleUpdateBio}>
+      <Flex gap="sm">
+        <Textarea
+          mt="lg"
+          name="description"
+          label="Description"
+          description="A brief description"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          w="85%"
+        />
+
+        <Flex align="flex-end" w="15%">
+          <Button
+            display={bio === profile.biography ? 'none' : ''}
+            loading={isPending}
+            h={35}
+            mt="xs"
+            size="xs"
+            color="dark.2"
+            variant="outline"
+            type="submit"
+            style={{ borderWidth: '.5px' }}
+          >
+            <Text size="sm">Update</Text>
+          </Button>
+        </Flex>
       </Flex>
-    </Box>
+    </form>
   );
 }

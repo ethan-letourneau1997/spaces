@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Flex, TextInput } from '@mantine/core';
+import { Button, Flex, TextInput, Text } from '@mantine/core';
 import { useState } from 'react';
 
 type UsernameInputProps = {
@@ -8,21 +8,38 @@ type UsernameInputProps = {
 };
 
 export function UsernameInput({ username }: UsernameInputProps) {
-  const [value, setValue] = useState(username);
+  const [name, setName] = useState(username);
 
   return (
-    <Box w={300}>
-      <TextInput
-        disabled
-        w={300}
-        value={value}
-        onChange={(e) => setValue(e.currentTarget.value)}
-        label="Username"
-        description="The name that will be displayed to other users"
-      />
-      <Flex className={username === value ? 'hidden-element' : 'block'} justify="flex-end" mt="sm">
-        <Button size="xs">Save</Button>
-      </Flex>
-    </Box>
+    <>
+      <form>
+        <Flex gap="sm">
+          <TextInput
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            name="displayName"
+            mt="lg"
+            label="Display Name"
+            description="The publicly visible name"
+            w="85%"
+          />
+
+          <Flex align="flex-end" w="15%">
+            <Button
+              display={name === username ? 'none' : ''}
+              h={35}
+              mt="xs"
+              size="xs"
+              color="dark.2"
+              variant="outline"
+              type="submit"
+              style={{ borderWidth: '.5px' }}
+            >
+              <Text size="sm">Update</Text>
+            </Button>
+          </Flex>
+        </Flex>
+      </form>
+    </>
   );
 }

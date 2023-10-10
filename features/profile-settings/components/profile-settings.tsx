@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, Container, Tabs } from '@mantine/core';
+import { Card, Container, Tabs, Title } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import { ProfileTab } from './profile-tab';
 import { AdminTab } from './admin-tab';
@@ -17,12 +17,15 @@ export function ProfileSettings({ page, profile, avatar }: SettingsProps) {
   return (
     <Container size="sm">
       <Card>
+        <Title mt="sm" ta="center" size="h2" order={1}>
+          {profile.username}
+        </Title>
         <Tabs
           defaultValue="profile"
           value={page}
           onChange={(value) => router.push(`/settings?page=${value}`)}
         >
-          <Tabs.List>
+          <Tabs.List grow>
             <Tabs.Tab value="profile">Profile</Tabs.Tab>
             <Tabs.Tab value="admin">Admin</Tabs.Tab>
             <Tabs.Tab value="privacy">Privacy</Tabs.Tab>

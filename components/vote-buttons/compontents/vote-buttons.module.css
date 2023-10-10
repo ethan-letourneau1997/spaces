@@ -1,0 +1,14 @@
+.voteButton,
+.votedButton {
+}
+
+.voteButton {
+}
+
+.voteButtonWrapper:hover .voteButton {
+  color: var(--mantine-color-yellow-6);
+}
+
+.votedButton {
+  color: var(--mantine-color-yellow-6);
+}

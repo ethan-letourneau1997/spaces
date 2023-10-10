@@ -1,12 +1,18 @@
 'use client';
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
-import { BiDownvote, BiSolidDownvote, BiSolidUpvote, BiUpvote } from 'react-icons/bi';
+
 import { Text, Flex, ActionIcon } from '@mantine/core';
 
 import { Database } from '@/lib/database';
 
 import { upsertPostVote } from '../api/upsert-post-vote';
+import {
+  DownvoteButton,
+  DownvotedButton,
+  UpvoteButton,
+  UpvotedButton,
+} from '@/components/vote-buttons';
 
 type PostVoteButtonsProps = {
   postVotes: number;
@@ -59,13 +65,13 @@ export function PostVoteButtons({ postVotes, userVote, post, horizontal }: PostV
   return (
     <Flex direction={horizontal ? 'row' : 'column'} align="center" justify="center" gap={2}>
       <ActionIcon onClick={handleUpvote} variant="transparent" color="gray">
-        {optimisticUserVote === 1 ? <BiSolidUpvote /> : <BiUpvote />}
+        {optimisticUserVote === 1 ? <UpvotedButton /> : <UpvoteButton />}
       </ActionIcon>
       {/* <BiUpvote /> */}
 
       <Text>{optimisticPostVotes}</Text>
       <ActionIcon onClick={handleDownvote} variant="transparent" color="gray">
-        {optimisticUserVote === -1 ? <BiSolidDownvote /> : <BiDownvote />}
+        {optimisticUserVote === -1 ? <DownvotedButton /> : <DownvoteButton />}
       </ActionIcon>
     </Flex>
   );

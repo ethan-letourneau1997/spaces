@@ -41,7 +41,6 @@ export function SpaceDisplayNameInput({ space }: SpaceDisplayNameInputProps) {
           mt="lg"
           label="Display Name"
           description="The publicly visible name"
-          maw={400}
           w="100%"
         />
 

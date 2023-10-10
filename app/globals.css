@@ -80,7 +80,7 @@
 
   &:focus-within {
     outline: transparent;
-    border-color: transparent;
+    border-color: var(--mantine-color-gray-7);
   }
 }
 

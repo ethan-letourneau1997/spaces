@@ -41,7 +41,6 @@ export function SpaceDescriptionInput({ space }: SpaceDescriptionInputProps) {
           description="A brief description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          maw={400}
           w="100%"
         />
 

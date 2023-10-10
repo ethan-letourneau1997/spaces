@@ -1,28 +1,32 @@
-import { Box, Card, Title } from '@mantine/core';
+import { Card } from '@mantine/core';
 
 import { SpaceDescriptionInput } from './space-description-input';
 import { SpaceDisplayNameInput } from './space-display-name-input';
-import { Database } from '@/lib/database';
-import { SpaceSettingsAvatar } from './space-settings-avatar';
+import { fetchAdminSpace } from '@/utils/fetch-admin-space';
+import { fetchSpaceAvatar } from '@/utils/fetch-space-avatar';
+
+import { SpaceDisplayAvatar } from './space-display-avatar';
+import { SpaceAvatarHandler } from './space-avatar-handler';
 
 type SpaceSettingsProps = {
-  space: Database['public']['Tables']['community']['Row'];
-  avatar?: Database['public']['Tables']['community_avatar']['Row'];
+  spaceId: string;
 };
 
-export function SpaceSettings({ space, avatar }: SpaceSettingsProps) {
+export async function SpaceSettings({ spaceId }: SpaceSettingsProps) {
+  const space = await fetchAdminSpace(spaceId);
+  const avatar = await fetchSpaceAvatar(spaceId);
+
   if (space) {
     return (
       <Card>
-        <Title size="h3" order={1}>
-          {space.display_name} Settings
-        </Title>
         <SpaceDisplayNameInput space={space} />
         <SpaceDescriptionInput space={space} />
 
-        <Box mt="lg">
-          <SpaceSettingsAvatar spaceId={space.id} avatar={avatar} />{' '}
-        </Box>
+        {avatar ? (
+          <SpaceDisplayAvatar spaceId={spaceId} avatar={avatar} />
+        ) : (
+          <SpaceAvatarHandler spaceId={spaceId} avatar={avatar} />
+        )}
       </Card>
     );
   }

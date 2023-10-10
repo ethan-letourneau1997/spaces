@@ -8,9 +8,7 @@ type PostPreviewCommentCountProps = {
 export function PostPreviewCommentCount({ postId }: PostPreviewCommentCountProps) {
   const { data: commentCount } = useSWR('commentCount', async () => {
     const count = await fetchPostCommentCount(postId);
-    console.log(count);
     return count;
   });
-  console.log(commentCount);
-  return <div>{postId} comments</div>;
+  return <div>{commentCount} comments</div>;
 }

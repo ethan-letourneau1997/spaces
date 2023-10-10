@@ -18,7 +18,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@mantine/carousel": "^7.0.2",
+    "@mantine/carousel": "^7.0.1",
     "@mantine/code-highlight": "^7.0.1",
     "@mantine/core": "7.0.1",
     "@mantine/dropzone": "^7.1.2",

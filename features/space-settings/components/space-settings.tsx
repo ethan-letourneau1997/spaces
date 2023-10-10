@@ -4,10 +4,9 @@ import { Suspense } from 'react';
 import { SpaceDescriptionInput } from './space-description-input';
 import { SpaceDisplayNameInput } from './space-display-name-input';
 import { fetchAdminSpace } from '@/utils/fetch-admin-space';
-
 import { SpaceSettingsFallback } from './space-settings-fallbacks';
-import { SpaceAvatarInput } from '@/features/space-avatar-input';
 import { fetchSpaceAvatar } from '@/utils/fetch-space-avatar';
+import { AvatarInput } from '@/features/avatar-input';
 
 type SpaceSettingsProps = {
   spaceId: string;
@@ -23,8 +22,7 @@ export async function SpaceSettings({ spaceId }: SpaceSettingsProps) {
         <Card>
           <SpaceDisplayNameInput space={space} />
           <SpaceDescriptionInput space={space} />
-
-          <SpaceAvatarInput avatar={avatar} spaceId={spaceId} />
+          <AvatarInput avatar={avatar} id={spaceId} />
         </Card>
       </Suspense>
     );

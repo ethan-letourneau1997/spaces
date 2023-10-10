@@ -4,7 +4,7 @@ import { Space, Title } from '@mantine/core';
 import { Database } from '@/lib/database';
 import { UsernameInput } from './username-input';
 import { BioInput } from './bio-input';
-import { AvatarInput } from './avatar-input';
+import { AvatarInput } from '@/features/avatar-input';
 
 type ProfileTabProps = {
   profile: Database['public']['Tables']['public_profile']['Row'];
@@ -21,7 +21,7 @@ export function ProfileTab({ profile, avatar }: ProfileTabProps) {
         <Space h="md" />
         <UsernameInput username={profile.username} />
         <BioInput profile={profile} />
-        <AvatarInput avatar={avatar} userId={profile.id} />
+        <AvatarInput avatar={avatar} id={profile.id} />
       </>
     );
   }

@@ -1,6 +1,7 @@
-import { Card, Title, Text, Space } from '@mantine/core';
+import { Card, Title, Text, Space, Stack } from '@mantine/core';
 
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
 import { PostContent } from './post-content';
 import { Comments } from '@/features/comments';
@@ -10,6 +11,7 @@ import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
 import { fetchPostVotes } from '@/utils/fetch-post-votes';
 import { PostFooter } from './post-footer';
 import { DEFAULT_SORT } from '@/lib/constants';
+import { CommentsSkeleton } from '@/components/fallbacks';
 
 type PostProps = {
   params: {
@@ -41,7 +43,7 @@ export async function Post({ params }: PostProps) {
 
   if (post) {
     return (
-      <>
+      <Stack>
         <Card>
           <Text>
             Posted by {post.username} in {post.community_name}
@@ -53,11 +55,15 @@ export async function Post({ params }: PostProps) {
           <PostContent post={post} />
           <PostFooter postVotes={postVotes || 0} userVote={userVote || 0} post={post} />
         </Card>
-        <Space h="sm" />
-        <RootCommentInput post={post} />
-        <Space h="lg" />
-        <Comments params={params} />
-      </>
+
+        <Card>
+          <RootCommentInput post={post} />
+          <Space h="lg" />
+          <Suspense fallback={<CommentsSkeleton />}>
+            <Comments params={params} />
+          </Suspense>
+        </Card>
+      </Stack>
     );
   }
 }

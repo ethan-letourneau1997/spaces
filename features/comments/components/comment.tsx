@@ -1,7 +1,7 @@
 'use client';
 
 import { useDisclosure, useHover } from '@mantine/hooks';
-import { ActionIcon, Box, Collapse, Flex, Group, Stack, Text } from '@mantine/core';
+import { ActionIcon, Box, Collapse, Flex, Group, Skeleton, Stack, Text } from '@mantine/core';
 
 import { MdExpandMore } from 'react-icons/md';
 import classes from '../styles/Comment.module.css';
@@ -28,7 +28,7 @@ export function Comment({ comment, children, params }: CommentProps) {
           </ActionIcon>
         )}
         {/* <CommentAvatar userId={comment.posted_by!} /> */}
-        <div>AV</div>
+        <Skeleton h={30} w={30} circle />
         <Text ml="xs">{comment.posted_by_username}</Text>
         <Text ml="xs">{getTimeSinceNow(comment.created_at, true)}</Text>
       </Group>

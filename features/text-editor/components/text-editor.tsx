@@ -40,7 +40,12 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
   return (
     <Box bg="dark.7">
       <RichTextEditor editor={editor}>
-        <RichTextEditor.Toolbar display="flex" style={{ gap: 15 }} sticky stickyOffset={60}>
+        <RichTextEditor.Toolbar
+          display="flex"
+          style={{ gap: 15 }}
+          sticky
+          // stickyOffset={60}
+        >
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
             <RichTextEditor.Italic />

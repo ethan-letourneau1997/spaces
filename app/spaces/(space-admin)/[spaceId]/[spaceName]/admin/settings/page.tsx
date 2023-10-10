@@ -1,5 +1,7 @@
+import { Suspense } from 'react';
 import { SpaceAdmin } from '@/features/space-admin.tsx';
 import { SpaceSettings } from '@/features/space-settings';
+import { SpaceSettingsFallback } from '@/features/space-settings/components/space-settings-fallbacks';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,7 +16,11 @@ type SpaceAdminPageProps = {
 };
 
 export default async function SpacePage({ params }: SpaceAdminPageProps) {
-  const tabContent = <SpaceSettings spaceId={params.spaceId} />;
+  const tabContent = (
+    <Suspense fallback={SpaceSettingsFallback}>
+      <SpaceSettings spaceId={params.spaceId} />
+    </Suspense>
+  );
 
   return (
     <SpaceAdmin

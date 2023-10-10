@@ -1,7 +1,6 @@
-import { Stack } from '@mantine/core';
 import { Database } from '@/lib/database';
 
-import { PostVotesHandler } from './post-votes-handler';
+import { PostPreview } from './post-preview';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,11 +11,11 @@ type PostsProps = {
 export async function PostPreviews({ posts }: PostsProps) {
   if (posts) {
     return (
-      <Stack gap="xs" mt="sm">
+      <>
         {posts.map((post) => (
-          <PostVotesHandler key={post.id} post={post} />
+          <PostPreview key={post.id} post={post} />
         ))}
-      </Stack>
+      </>
     );
   }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Flex, Textarea } from '@mantine/core';
+import { Button, Flex, Textarea, Text } from '@mantine/core';
 
 import { notifications } from '@mantine/notifications';
 import { useState, useTransition } from 'react';
@@ -41,20 +41,22 @@ export function SpaceDescriptionInput({ space }: SpaceDescriptionInputProps) {
           description="A brief description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          w="100%"
+          w="85%"
         />
 
-        <Flex align="flex-end" display={description === space.description ? 'none' : ''}>
+        <Flex align="flex-end" w="15%">
           <Button
+            display={description === space.description ? 'none' : ''}
             loading={isPending}
             h={35}
             mt="xs"
             size="xs"
-            color="gray"
+            color="dark.2"
             variant="outline"
             type="submit"
+            style={{ borderWidth: '.5px' }}
           >
-            Save
+            <Text size="sm">Update</Text>
           </Button>
         </Flex>
       </Flex>

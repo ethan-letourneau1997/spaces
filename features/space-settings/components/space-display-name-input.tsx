@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Flex, TextInput } from '@mantine/core';
+import { Button, Flex, TextInput, Text } from '@mantine/core';
 
 import { notifications } from '@mantine/notifications';
 import { useState, useTransition } from 'react';
@@ -41,20 +41,22 @@ export function SpaceDisplayNameInput({ space }: SpaceDisplayNameInputProps) {
           mt="lg"
           label="Display Name"
           description="The publicly visible name"
-          w="100%"
+          w="85%"
         />
 
-        <Flex align="flex-end" display={displayName === space.display_name ? 'none' : ''}>
+        <Flex align="flex-end" w="15%">
           <Button
+            display={displayName === space.display_name ? 'none' : ''}
             loading={isPending}
             h={35}
             mt="xs"
             size="xs"
-            color="gray"
+            color="dark.2"
             variant="outline"
             type="submit"
+            style={{ borderWidth: '.5px' }}
           >
-            Save
+            <Text size="sm">Update</Text>
           </Button>
         </Flex>
       </Flex>

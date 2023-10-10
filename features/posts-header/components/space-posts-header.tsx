@@ -2,14 +2,12 @@
 
 import { Anchor, Card, Group } from '@mantine/core';
 import Link from 'next/link';
-import { useParams, usePathname } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 export function SpacePostsHeader() {
   const params = useParams();
 
-  const pathname = usePathname();
-
-  if (!params.postId && !pathname.includes('/settings')) {
+  if (!params.postId) {
     return (
       <Card>
         <Group>

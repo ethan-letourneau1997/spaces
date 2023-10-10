@@ -1,32 +1,27 @@
 import { Box, Card, Title } from '@mantine/core';
 
-import { SpaceSettingsAvatarHandler } from './space-settings-avatar-handler';
-
 import { SpaceDescriptionInput } from './space-description-input';
 import { SpaceDisplayNameInput } from './space-display-name-input';
-import { fetchAdminSpace } from '@/utils/fetch-admin-space';
+import { Database } from '@/lib/database';
+import { SpaceSettingsAvatar } from './space-settings-avatar';
 
 type SpaceSettingsProps = {
-  params: {
-    spaceId: string;
-    spaceName: string;
-  };
+  space: Database['public']['Tables']['community']['Row'];
+  avatar?: Database['public']['Tables']['community_avatar']['Row'];
 };
 
-export async function SpaceSettings({ params }: SpaceSettingsProps) {
-  const space = await fetchAdminSpace(params.spaceId);
-
+export function SpaceSettings({ space, avatar }: SpaceSettingsProps) {
   if (space) {
     return (
       <Card>
         <Title size="h3" order={1}>
-          {params.spaceName} Settings
+          {space.display_name} Settings
         </Title>
         <SpaceDisplayNameInput space={space} />
         <SpaceDescriptionInput space={space} />
 
         <Box mt="lg">
-          <SpaceSettingsAvatarHandler spaceId={space.id} />
+          <SpaceSettingsAvatar spaceId={space.id} avatar={avatar} />{' '}
         </Box>
       </Card>
     );

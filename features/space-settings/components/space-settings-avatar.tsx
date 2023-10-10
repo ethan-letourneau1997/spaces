@@ -7,7 +7,7 @@ import { Database } from '@/lib/database';
 
 type SpaceSettingsAvatarProps = {
   avatar: Database['public']['Tables']['community_avatar']['Row'];
-  spaceId: string;
+  spaceId: string | number;
 };
 
 export function SpaceSettingsAvatar({ avatar, spaceId }: SpaceSettingsAvatarProps) {

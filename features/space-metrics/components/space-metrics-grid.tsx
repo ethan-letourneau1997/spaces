@@ -31,3 +31,20 @@ export function SpaceMetricsGrid({ subscriberCount, postCount, totalVotes }: Spa
     </Grid>
   );
 }
+
+export function SpaceMetricsFallback() {
+  return (
+    <Grid mt="xl">
+      <Grid.Col span={4}>
+        <MetricCard value={0} label="Total subscribers" icon={<FaUserAstronaut size={20} />} />
+      </Grid.Col>
+      <Grid.Col span={4}>
+        <MetricCard value={0} label="Total posts" icon={<BsSignpostFill size={20} />} />
+      </Grid.Col>
+
+      <Grid.Col span={4}>
+        <MetricCard value={0} label="Total votes" icon={<FaArrowTrendUp size={20} />} />
+      </Grid.Col>
+    </Grid>
+  );
+}

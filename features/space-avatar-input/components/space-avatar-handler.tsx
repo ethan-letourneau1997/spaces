@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { notifications } from '@mantine/notifications';
 import { Database } from '@/lib/database';
 import { SpaceAvatarDropzone } from './space-avatar-dropzone';
-import { upsertSpaceAvatar } from '../api/upsert-space-avatar';
+import { upsertSpaceAvatar } from '../../space-settings/api/upsert-space-avatar';
 
 type SpaceAvatarHandlerProps = {
   avatar?: Database['public']['Tables']['community_avatar']['Row'];

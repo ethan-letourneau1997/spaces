@@ -2,7 +2,6 @@ import { Center, Container } from '@mantine/core';
 
 import { cookies } from 'next/headers';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Test } from '@/app/test';
 
 export async function Home() {
   const supabase = createServerComponentClient({ cookies });
@@ -19,8 +18,6 @@ export async function Home() {
           {/* <Text size="lg">
             See what&apos;s <Anchor>hot</Anchor> or start searching!
           </Text> */}
-          <p className="text-3xl font-bold text-red-300 underline">Hello world!</p>
-          <Test />
         </Center>
       </Container>
     );

@@ -1,9 +1,9 @@
 import { Database } from '@/lib/database';
 
-import { PostPreviewCard } from './post-preview-card';
 import { fetchPostVotes } from '@/utils/fetch-post-votes';
 import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
 import { fetchPostCommentCount } from '@/utils/fetch-post-comment-count';
+import { PostPreviewDesktop } from './post-preview-desktop';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,7 +17,7 @@ export async function PostPreview({ post }: PostPreviewProps) {
   const commentCount = await fetchPostCommentCount(post.id);
 
   return (
-    <PostPreviewCard
+    <PostPreviewDesktop
       key={post.id}
       post={post}
       postVotes={postVotes}

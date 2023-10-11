@@ -85,10 +85,11 @@
 .m-8fb7ebe7 {
   transition: none;
 
-  &:focus-within {
-    outline: transparent;
-    border-color: var(--mantine-color-gray-7);
-  }
+}
+
+.m-8fb7ebe7:focus-within {
+  outline: transparent;
+  border-color: var(--mantine-color-gray-7);
 }
 
 

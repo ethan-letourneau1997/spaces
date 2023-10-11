@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, Stack, Text } from '@mantine/core';
+import { Paper, SimpleGrid } from '@mantine/core';
 import Link from 'next/link';
 import { Database } from '@/lib/database';
 import { DEFAULT_SORT } from '@/lib/constants';
@@ -12,18 +12,22 @@ type SidebarSpacesProps = {
 export function SidebarSpaces({ spaces }: SidebarSpacesProps) {
   return (
     <>
-      <Text>My Spaces</Text>
-      <Stack gap="xs" mt="xs">
+      <SimpleGrid cols={2} spacing="xs" pt="xs">
         {spaces.map((space) => (
-          <Anchor
-            key={space.id}
-            component={Link}
+          <Paper
             href={`/spaces/${space.id}/${space.name}/${DEFAULT_SORT}`}
+            component={Link}
+            py={8}
+            px="sm"
+            bg="transparent"
+            withBorder
+            c="gray.4"
+            ta="center"
           >
             {space.display_name}
-          </Anchor>
+          </Paper>
         ))}
-      </Stack>
+      </SimpleGrid>
     </>
   );
 }

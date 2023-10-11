@@ -29,14 +29,6 @@ export function AdminTab() {
               href={`/spaces/${space.id}/${space.name}/admin/settings`}
             >
               {space.display_name}
-              {/* <Tooltip label={`Manage ${space.name}`}>
-                  <Group gap={5}>
-                    <ActionIcon bg="transparent">
-                      <BsFillGearFill />
-                    </ActionIcon>
-                    <Text>{space.display_name}</Text>
-                  </Group>
-                </Tooltip> */}
             </Paper>
           </Grid.Col>
         ))}

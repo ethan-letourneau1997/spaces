@@ -1,5 +1,5 @@
+import { Text } from '@mantine/core';
 import { Database } from '@/lib/database';
-
 import { PostPreview } from './post-preview';
 
 export const dynamic = 'force-dynamic';
@@ -18,4 +18,6 @@ export async function PostPreviews({ posts }: PostsProps) {
       </>
     );
   }
+
+  if (!posts || posts.length === 0) return <Text>No posts found</Text>;
 }

@@ -102,3 +102,13 @@ export function PostPreviewFooterFallback() {
     </Group>
   );
 }
+
+export function NoPostsFound() {
+  return (
+    <Box pt="lg">
+      <Text c="gray.6" ta="center">
+        No posts found
+      </Text>
+    </Box>
+  );
+}

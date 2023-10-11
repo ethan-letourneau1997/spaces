@@ -3,7 +3,7 @@
 import useSWR from 'swr';
 import { Carousel } from '@mantine/carousel';
 import '@mantine/carousel/styles.css';
-import { Text, Image, Center } from '@mantine/core';
+import { Image } from '@mantine/core';
 import { Database } from '@/lib/database';
 import { fetchPostImages } from '@/utils/fetch-post-images';
 
@@ -17,15 +17,17 @@ export function ImagePostContent({ post }: ImagePostContentProps) {
     return postImages;
   });
 
+  //TODO Add captions back in
+
   if (images) {
     return (
-      <Carousel withIndicators height={500}>
+      <Carousel height={400}>
         {images?.map((image: Database['public']['Tables']['post_image']['Row']) => (
           <Carousel.Slide key={image.id}>
             <Image radius="md" h={400} src={image.url} fit="contain" />
-            <Center h={70}>
+            {/* <Center h={50}>
               <Text>{image.caption}</Text>
-            </Center>
+            </Center> */}
           </Carousel.Slide>
         ))}
       </Carousel>

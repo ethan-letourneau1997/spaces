@@ -35,7 +35,9 @@ export default function RootLayout({ children }: { children: any }) {
         <MantineProvider theme={theme} defaultColorScheme="dark">
           <Notifications />
           <Navbar>
-            <Container size="lg">{children}</Container>
+            <Container className="root-container" size="lg">
+              {children}
+            </Container>
           </Navbar>
         </MantineProvider>
       </body>

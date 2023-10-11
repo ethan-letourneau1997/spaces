@@ -26,11 +26,13 @@ export function Spotlight() {
     if (selected === 'Spaces') {
       const spaceResults = await searchSpaces(search);
       setSpaces(spaceResults || []);
+      setLoading(false);
     }
 
     if (selected === 'Users') {
       const userResults = await searchUsers(search);
       setUsers(userResults || []);
+      setLoading(false);
     }
     setLoading(false);
   }

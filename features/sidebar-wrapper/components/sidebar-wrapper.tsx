@@ -6,7 +6,7 @@ type SidebarWrapperProps = {
 
 export function SidebarWrapper({ children }: SidebarWrapperProps) {
   return (
-    <Card className="hidden-md" miw="300px" maw="300px" h="fit-content">
+    <Card visibleFrom="md" miw="300px" maw="300px" h="fit-content">
       {children}
     </Card>
   );

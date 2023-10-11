@@ -1,7 +1,8 @@
 'use client';
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
-import { Text, Flex, ActionIcon } from '@mantine/core';
+import { Text, Flex, ActionIcon, em } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { Database } from '@/lib/database';
 import { DownvoteButton, DownvotedButton, UpvoteButton, UpvotedButton } from './vote-buttons';
 import { upsertPostVote } from '../api/upsert-post-vote';
@@ -17,8 +18,8 @@ type VoteHandlerProps = {
 
 export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }: VoteHandlerProps) {
   const [optimisticTotalVotes, setOptimisticTotalVotes] = useOptimistic<number>(totalVotes);
-
   const [optimisticUserVote, setOptimisticUserVote] = useOptimistic<number>(userVote);
+  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
 
   function handleVoteChange(newUserVote: number, newOptomisticVote: number) {
     if (post) {
@@ -62,7 +63,7 @@ export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }:
       </ActionIcon>
       {/* <BiUpvote /> */}
 
-      <Text size="sm">{optimisticTotalVotes}</Text>
+      <Text size={isMobile ? 'xs' : 'sm'}>{optimisticTotalVotes}</Text>
       <ActionIcon onClick={handleDownvote} variant="transparent" color="gray">
         {optimisticUserVote === -1 ? <DownvotedButton /> : <DownvoteButton />}
       </ActionIcon>

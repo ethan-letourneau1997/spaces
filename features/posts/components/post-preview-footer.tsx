@@ -24,7 +24,6 @@ export async function PostPreviewFooter({ post }: PostPreviewFooterProps) {
           {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
         </Text>
       </Group>
-
       <PostOptions post={post} />
     </Group>
   );

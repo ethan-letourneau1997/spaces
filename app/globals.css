@@ -42,6 +42,9 @@
 
 /* Small (sm) - 768px and below */
 @media (max-width: 768px) {
+  .root-container {
+    padding: 0 !important;
+  }
   /* Your CSS rules for small screens go here */
 }
 
@@ -83,4 +86,8 @@
     border-color: var(--mantine-color-gray-7);
   }
 }
+
+
+
+/* Post Previews */
 

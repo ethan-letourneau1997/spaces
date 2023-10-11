@@ -10,5 +10,5 @@ type PostVotesProps = {
 export async function PostVotes({ post }: PostVotesProps) {
   const postVotes = await fetchPostVotes(post.id);
   const userVote = await fetchUserPostVote(post.id);
-  return <VoteHandler post={post} totalVotes={postVotes} userVote={userVote} />;
+  return <VoteHandler horizontal post={post} totalVotes={postVotes} userVote={userVote} />;
 }

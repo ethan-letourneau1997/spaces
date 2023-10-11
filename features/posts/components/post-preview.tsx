@@ -1,9 +1,9 @@
-import { Suspense } from 'react';
 import { Database } from '@/lib/database';
-import { PostVotes } from './post-votes';
+
 import { PostPreviewCard } from './post-preview-card';
-import { PostPreviewFooterFallback, VoteButtonsFallback } from '@/components/fallbacks';
-import { PostPreviewFooter } from './post-preview-footer';
+import { fetchPostVotes } from '@/utils/fetch-post-votes';
+import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
+import { fetchPostCommentCount } from '@/utils/fetch-post-comment-count';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,24 +12,17 @@ type PostPreviewProps = {
 };
 
 export async function PostPreview({ post }: PostPreviewProps) {
-  const postVotesSection = (
-    <Suspense fallback={<VoteButtonsFallback />}>
-      <PostVotes post={post} />
-    </Suspense>
-  );
-
-  const postPreviewFooter = (
-    <Suspense fallback={<PostPreviewFooterFallback />}>
-      <PostPreviewFooter post={post} />
-    </Suspense>
-  );
+  const postVotes = await fetchPostVotes(post.id);
+  const userVote = await fetchUserPostVote(post.id);
+  const commentCount = await fetchPostCommentCount(post.id);
 
   return (
     <PostPreviewCard
       key={post.id}
       post={post}
-      postPreviewFooter={postPreviewFooter}
-      postVotesSection={postVotesSection}
+      postVotes={postVotes}
+      userVote={userVote}
+      commentCount={commentCount}
     />
   );
 }

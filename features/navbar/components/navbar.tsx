@@ -34,7 +34,7 @@ export function Navbar({ children }: NavbarProps) {
     >
       <AppShell.Header>
         <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
           <Group justify="space-between" style={{ flex: 1 }}>
             <Group gap="xs">
               <Flex c="pink.8">

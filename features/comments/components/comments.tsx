@@ -21,7 +21,7 @@ async function ChildComments({
     <div>
       {childComments?.map((childComment) => (
         <div key={childComment.id}>
-          <Comment comment={childComment} params={params}>
+          <Comment comment={childComment}>
             <CommentFooterHandler comment={childComment} />
             <ChildComments commentId={childComment.id!} allComments={allComments} params={params} />
           </Comment>
@@ -52,7 +52,7 @@ export async function Comments({ params }: CommentsProps) {
     return (
       <div>
         {rootComments?.map((rootComment) => (
-          <Comment key={rootComment.id} comment={rootComment} params={params}>
+          <Comment key={rootComment.id} comment={rootComment}>
             <CommentFooterHandler comment={rootComment} />
             <ChildComments commentId={rootComment.id} allComments={comments} params={params} />
           </Comment>

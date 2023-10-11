@@ -16,5 +16,7 @@ export function CommentAvatar({ userId }: CommentAvatarProps) {
     return userAvatar;
   });
 
-  if (avatar) return <Avatar size="sm" src={avatar.path} />;
+  if (avatar) {
+    return <Avatar size="sm" src={avatar.path} placeholder="UA" />;
+  }
 }

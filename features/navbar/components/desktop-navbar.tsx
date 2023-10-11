@@ -17,7 +17,7 @@ type DesktopNavbarProps = {
 
 export function DesktopNavbar({ username }: DesktopNavbarProps) {
   return (
-    <Group gap="xl" ml="xl" preventGrowOverflow visibleFrom="sm">
+    <Group gap="xl" ml="xl" preventGrowOverflow visibleFrom="md">
       <Spotlight />
       <HomeLink />
       {username ? (

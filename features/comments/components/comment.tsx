@@ -1,21 +1,21 @@
 'use client';
 
 import { useDisclosure, useHover } from '@mantine/hooks';
-import { ActionIcon, Box, Collapse, Flex, Group, Skeleton, Stack, Text } from '@mantine/core';
+import { ActionIcon, Box, Collapse, Flex, Group, Stack, Text } from '@mantine/core';
 
 import { MdExpandMore } from 'react-icons/md';
 import classes from '../styles/Comment.module.css';
 import { Database } from '@/lib/database';
 
 import { getTimeSinceNow } from '../../../utils/get-time-since-now';
+import { CommentAvatar } from './comment-avatar';
 
 type CommentProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
   children: React.ReactNode;
-  params: { spaceName: string; spaceId: string; postId: string };
 };
 
-export function Comment({ comment, children, params }: CommentProps) {
+export function Comment({ comment, children }: CommentProps) {
   const [opened, { toggle }] = useDisclosure(true);
   const { hovered, ref } = useHover();
 
@@ -27,8 +27,10 @@ export function Comment({ comment, children, params }: CommentProps) {
             <MdExpandMore size={20} onClick={toggle} />
           </ActionIcon>
         )}
-        {/* <CommentAvatar userId={comment.posted_by!} /> */}
-        <Skeleton h={30} w={30} circle />
+        <Box h={26} w={26}>
+          <CommentAvatar userId={comment.posted_by!} />
+        </Box>
+
         <Text ml="xs">{comment.posted_by_username}</Text>
         <Text ml="xs">{getTimeSinceNow(comment.created_at, true)}</Text>
       </Group>

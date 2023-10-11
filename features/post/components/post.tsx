@@ -13,6 +13,7 @@ import { PostFooter } from './post-footer';
 import { DEFAULT_SORT } from '@/lib/constants';
 import { CommentsSkeleton } from '@/components/fallbacks';
 import { PostHeader } from './post-header';
+import { fetchPostCommentCount } from '@/utils/fetch-post-comment-count';
 
 type PostProps = {
   params: {
@@ -41,6 +42,7 @@ export async function Post({ params }: PostProps) {
 
   const userVote = await fetchUserPostVote(post.id);
   const postVotes = await fetchPostVotes(post.id);
+  const postCommentCount = await fetchPostCommentCount(post.id);
 
   if (post) {
     return (
@@ -52,7 +54,12 @@ export async function Post({ params }: PostProps) {
           </Title>
           <Space h="md" />
           <PostContent post={post} />
-          <PostFooter postVotes={postVotes || 0} userVote={userVote || 0} post={post} />
+          <PostFooter
+            commentCount={postCommentCount}
+            postVotes={postVotes || 0}
+            userVote={userVote || 0}
+            post={post}
+          />
         </Card>
         <Card>
           <RootCommentInput post={post} />

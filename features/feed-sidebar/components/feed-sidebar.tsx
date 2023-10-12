@@ -8,11 +8,11 @@ export async function FeedSidebar() {
 
   if (userSpaces) {
     return (
-      <SidebarWrapper>
+      <SidebarWrapper miw="250">
         <FeedSidebarHeader />
         <SidebarSpaces spaces={userSpaces} />
       </SidebarWrapper>
     );
   }
-  return <SidebarWrapper>loading...</SidebarWrapper>;
+  return <SidebarWrapper miw="250px">loading...</SidebarWrapper>;
 }

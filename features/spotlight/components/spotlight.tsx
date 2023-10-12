@@ -50,7 +50,7 @@ export function Spotlight() {
 
   return (
     <>
-      <Input leftSection={<BiSearch />} w={200} onClick={open} component="button" pointer>
+      <Input leftSection={<BiSearch />} w={250} onClick={open} component="button" pointer>
         Search..
       </Input>
       <Modal.Root opened={opened} onClose={close}>

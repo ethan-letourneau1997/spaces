@@ -30,12 +30,13 @@ export function Navbar({ children }: NavbarProps) {
     <AppShell
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
-      padding="md"
+      // padding="md"
+      className="sm:px-4"
     >
       <AppShell.Header>
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
-          <Group justify="space-between" style={{ flex: 1 }}>
+          <Group px="md" justify="space-between" style={{ flex: 1 }}>
             <Group gap="xs">
               <Flex c="pink.8">
                 <FaUserAstronaut size={26} />
@@ -55,7 +56,6 @@ export function Navbar({ children }: NavbarProps) {
           </Group>
         </Group>
       </AppShell.Header>
-
       <MobileNavbar username={username} />
 
       <AppShell.Main>{children}</AppShell.Main>

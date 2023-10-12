@@ -18,7 +18,7 @@ export function ProfileHeader() {
           <Anchor
             className="!no-underline tracking-wide"
             fw={500}
-            c={`${params.sort === 'new' ? 'yellow.5' : 'gray.3'}`}
+            c={`${params.sort === 'new' ? 'orange.5' : 'gray.3'}`}
             component={Link}
             href={`/profile/${params.username}/${commentsOrPosts}/new/1`}
           >
@@ -27,7 +27,7 @@ export function ProfileHeader() {
           <Anchor
             className="!no-underline tracking-wide"
             fw={500}
-            c={`${params.sort === 'old' ? 'yellow.5' : 'gray.3'}`}
+            c={`${params.sort === 'old' ? 'orange.5' : 'gray.3'}`}
             component={Link}
             href={`/profile/${params.username}/${commentsOrPosts}/old/1`}
           >
@@ -36,7 +36,7 @@ export function ProfileHeader() {
           <Anchor
             className="!no-underline tracking-wide"
             fw={500}
-            c={`${params.sort === 'top' ? 'yellow.5' : 'gray.3'}`}
+            c={`${params.sort === 'top' ? 'orange.5' : 'gray.3'}`}
             component={Link}
             href={`/profile/${params.username}/${commentsOrPosts}/top/1`}
           >

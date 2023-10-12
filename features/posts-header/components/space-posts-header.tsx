@@ -12,24 +12,27 @@ export function SpacePostsHeader() {
       <Card>
         <Group>
           <Anchor
-            c={`${params.sort === 'new' ? 'indigo.5' : 'gray.3'}`}
-            underline={`${params.sort === 'new' ? 'always' : 'hover'}`}
+            className="!no-underline tracking-wide"
+            fw={500}
+            c={`${params.sort === 'new' ? 'yellow.5' : 'gray.3'}`}
             component={Link}
             href={`/spaces/${params.spaceId}/${params.spaceName}/new/1`}
           >
             New
           </Anchor>
           <Anchor
-            c={`${params.sort === 'old' ? 'indigo.5' : 'gray.3'}`}
-            underline={`${params.sort === 'old' ? 'always' : 'hover'}`}
+            className="!no-underline tracking-wide"
+            fw={500}
+            c={`${params.sort === 'old' ? 'yellow.5' : 'gray.3'}`}
             component={Link}
             href={`/spaces/${params.spaceId}/${params.spaceName}/old/1`}
           >
             Old
           </Anchor>
           <Anchor
-            c={`${params.sort === 'top' ? 'indigo.5' : 'gray.3'}`}
-            underline={`${params.sort === 'top' ? 'always' : 'hover'}`}
+            className="!no-underline tracking-wide"
+            fw={500}
+            c={`${params.sort === 'top' ? 'yellow.5' : 'gray.3'}`}
             component={Link}
             href={`/spaces/${params.spaceId}/${params.spaceName}/top/1`}
           >

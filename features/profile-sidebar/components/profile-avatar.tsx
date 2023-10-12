@@ -2,10 +2,10 @@
 
 import useSWR from 'swr';
 
-import { Avatar, Center, Skeleton } from '@mantine/core';
+import { Center, Skeleton } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import { fetchAvatar } from '@/utils/fetch-avatar';
-import { avatarPlaceholder } from './profile-sidebar-placeholders';
+import { AvatarPlaceholder } from './profile-sidebar-placeholders';
 
 // TODO uncomment avatar
 
@@ -33,5 +33,5 @@ export function ProfileAvatar({ userId }: ProfileAvatarProps) {
     );
   }
 
-  return avatarPlaceholder;
+  return <AvatarPlaceholder />;
 }

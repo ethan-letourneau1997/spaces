@@ -8,7 +8,7 @@ import { SidebarWrapper } from '@/features/sidebar-wrapper';
 import { ProfilePostCount } from './profile-post-count';
 import { ProfileCommentCount } from './profile-comment-count';
 import { fetchProfileByUsername } from '@/utils/fetch-profile-by-username';
-import { ProfileSidebarPlaceholder } from './profile-sidebar-placeholders';
+import { ProfileSidebarSkeleton } from './profile-sidebar-placeholders';
 
 export function ProfileSidebar() {
   const params = useParams();
@@ -37,5 +37,9 @@ export function ProfileSidebar() {
       </SidebarWrapper>
     );
   }
-  return ProfileSidebarPlaceholder;
+  return (
+    <SidebarWrapper>
+      <ProfileSidebarSkeleton />
+    </SidebarWrapper>
+  );
 }

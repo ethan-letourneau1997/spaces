@@ -41,5 +41,5 @@ export function SpaceSidebar() {
     );
   }
 
-  return spaceSidebarPlaceholder;
+  return <SidebarWrapper>{spaceSidebarPlaceholder}</SidebarWrapper>;
 }

@@ -4,7 +4,7 @@ import { Box, Flex, Text } from '@mantine/core';
 import { FaCommentAlt } from 'react-icons/fa';
 import useSWR from 'swr';
 import { fetchProfileCommentCount } from '../api/fetch-profile-comment-count';
-import { commentCountPlaceholder } from './profile-sidebar-placeholders';
+import { CommentCountPlaceholder } from './profile-sidebar-placeholders';
 
 type ProfileCommentCountProps = {
   userId: string;
@@ -28,5 +28,5 @@ export function ProfileCommentCount({ userId }: ProfileCommentCountProps) {
     );
   }
 
-  return commentCountPlaceholder;
+  return <CommentCountPlaceholder />;
 }

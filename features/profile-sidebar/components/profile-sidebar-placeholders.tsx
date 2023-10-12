@@ -1,9 +1,9 @@
-import { Text, Divider, SimpleGrid, Skeleton, Center, Box, Flex, Card } from '@mantine/core';
+import { Text, Divider, SimpleGrid, Skeleton, Center, Box, Flex } from '@mantine/core';
 import { FaCommentAlt } from 'react-icons/fa';
 import { PiSignpostFill } from 'react-icons/pi';
 
-export const ProfileSidebarPlaceholder = (
-  <Card className="hidden-md" miw="300px" maw="300px" h="fit-content">
+export function ProfileSidebarSkeleton() {
+  return (
     <div>
       <Center>
         <Skeleton circle h={56} w={56} />
@@ -28,31 +28,37 @@ export const ProfileSidebarPlaceholder = (
         </Box>
       </SimpleGrid>
     </div>
-  </Card>
-);
+  );
+}
 
-export const commentCountPlaceholder = (
-  <Box>
-    <Flex align="center" gap="xs" justify="center">
-      <FaCommentAlt />
-      <Text>0</Text>
-    </Flex>
-    <Text ta="center">Comments</Text>
-  </Box>
-);
+export function CommentCountPlaceholder() {
+  return (
+    <Box>
+      <Flex align="center" gap="xs" justify="center">
+        <FaCommentAlt />
+        <Text>0</Text>
+      </Flex>
+      <Text ta="center">Comments</Text>
+    </Box>
+  );
+}
 
-export const postCountPlaceholder = (
-  <Box>
-    <Flex align="center" gap="xs" justify="center">
-      <PiSignpostFill />
-      <Text>0</Text>
-    </Flex>
-    <Text ta="center">Posts</Text>
-  </Box>
-);
+export function PostCountPlaceholder() {
+  return (
+    <Box>
+      <Flex align="center" gap="xs" justify="center">
+        <PiSignpostFill />
+        <Text>0</Text>
+      </Flex>
+      <Text ta="center">Posts</Text>
+    </Box>
+  );
+}
 
-export const avatarPlaceholder = (
-  <Center>
-    <Skeleton circle h={56} w={56} />
-  </Center>
-);
+export function AvatarPlaceholder() {
+  return (
+    <Center>
+      <Skeleton circle h={56} w={56} />
+    </Center>
+  );
+}

@@ -4,7 +4,7 @@ import { Box, Flex, Text } from '@mantine/core';
 import { PiSignpostFill } from 'react-icons/pi';
 import useSWR from 'swr';
 import { fetchProfilePostCount } from '../api/fetch-profile-post-count';
-import { postCountPlaceholder } from './profile-sidebar-placeholders';
+import { PostCountPlaceholder } from './profile-sidebar-placeholders';
 
 type ProfilePostCountProps = {
   userId: string;
@@ -28,5 +28,5 @@ export function ProfilePostCount({ userId }: ProfilePostCountProps) {
     );
   }
 
-  return postCountPlaceholder;
+  return <PostCountPlaceholder />;
 }

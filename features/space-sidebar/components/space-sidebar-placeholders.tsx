@@ -1,7 +1,7 @@
-import { Divider, Skeleton, Center, Card } from '@mantine/core';
+import { Divider, Skeleton, Center, Flex } from '@mantine/core';
 
 export const spaceSidebarPlaceholder = (
-  <Card className="hidden-md" miw="300px" maw="300px" h="fit-content">
+  <Flex justify="center" direction="column">
     <Center>
       <Skeleton circle h={56} w={56} />
     </Center>
@@ -9,7 +9,7 @@ export const spaceSidebarPlaceholder = (
     <Skeleton circle h={16} mt="md" />
     <Divider my="md" />
     <Skeleton circle h={16} />
-  </Card>
+  </Flex>
 );
 
 export const avatarPlaceholder = (

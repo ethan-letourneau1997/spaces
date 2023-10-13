@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Drawer } from '@mantine/core';
+import { Box, Drawer, UnstyledButton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { RootCommentInput } from '@/features/root-comment-input';
 import { Database } from '@/lib/database';
@@ -16,9 +16,9 @@ export function RootCommentModal({ post }: RootCommentModalProps) {
       <Drawer position="bottom" opened={opened} onClose={close} title="Reply to Post">
         <RootCommentInput closeInput={close} post={post} />
       </Drawer>
-      <Button variant="subtle" onClick={open}>
+      <UnstyledButton className="!text-sm" fw={600} c="dark.1" mx={5} onClick={open}>
         Reply
-      </Button>
+      </UnstyledButton>
     </Box>
   );
 }

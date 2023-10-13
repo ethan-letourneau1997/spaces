@@ -6,6 +6,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import { HiOutlineLink } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
+import { FiExternalLink } from 'react-icons/fi';
 import { Database } from '@/lib/database';
 
 type LinkPostContentProps = {
@@ -15,25 +16,29 @@ type LinkPostContentProps = {
 export function LinkPostContent({ post }: LinkPostContentProps) {
   const supabase = createClientComponentClient();
 
-  const [previewUrl, setPreviewUrl] = useState<string | null | undefined>(undefined);
+  const [preview, setPreview] = useState<
+    Database['public']['Tables']['link_preview']['Row'] | null | undefined
+  >(undefined);
 
   useEffect(() => {
     async function getThumbnailUrl() {
       const { data } = await supabase.from('link_preview').select().eq('id', post.id).single();
       if (data) {
-        setPreviewUrl(data.url);
+        setPreview(data);
       } else {
-        setPreviewUrl(null);
+        setPreview(null);
       }
     }
     getThumbnailUrl();
   }, [post]);
 
-  if (previewUrl) {
+  if (preview) {
     return (
       <AspectRatio ratio={3 / 1.3}>
-        <Flex align="flex-start">
+        <Flex align="flex-end">
           <Anchor
+            w="100%"
+            opacity={0.7}
             py={3}
             bg="dark.7"
             c="dark.0"
@@ -42,19 +47,22 @@ export function LinkPostContent({ post }: LinkPostContentProps) {
             target="blank"
             style={{ zIndex: 10 }}
             truncate
+            size="sm"
           >
-            {post.content}
+            <FiExternalLink size={13} className="inline mb-0.5" />
+            &nbsp;
+            {preview.website}&nbsp;-&nbsp;{post.content}
           </Anchor>
         </Flex>
 
-        <BackgroundImage radius="md" src={previewUrl || '#'} />
+        <BackgroundImage radius="md" src={preview.url || '#'} />
       </AspectRatio>
     );
   }
 
-  if (previewUrl) return <Image fit="cover" h="100%" radius="md" src={previewUrl || '#'} />;
+  if (preview) return <Image fit="cover" h="100%" radius="md" src={preview || '#'} />;
 
-  if (previewUrl === null) {
+  if (preview === null) {
     return (
       <Center h="100%" bg="gray">
         <HiOutlineLink size={20} />

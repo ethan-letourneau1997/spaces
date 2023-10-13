@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default function SpaceLayout({ children }: { children: any }) {
   return (
-    <Flex gap="md" className="mt-0 sm:mt-3">
+    <Flex gap="md" className="mt-0 sm:mb-3 sm:mt-3">
       <Box w="100%">
         <SpacePostsHeader />
         {children}

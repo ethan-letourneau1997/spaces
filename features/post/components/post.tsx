@@ -60,7 +60,7 @@ export async function Post({ params }: PostProps) {
             post={post}
           />
         </Card>
-        <Card className="!p-1 !sm:p-4">
+        <Card className="!p-1 !sm:p-4 !pb-3">
           <Suspense fallback={<CommentsSkeleton />}>
             <Comments params={params} />
           </Suspense>

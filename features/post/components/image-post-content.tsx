@@ -3,7 +3,7 @@
 import useSWR from 'swr';
 import { Carousel } from '@mantine/carousel';
 import '@mantine/carousel/styles.css';
-import { Image } from '@mantine/core';
+import { AspectRatio, BackgroundImage } from '@mantine/core';
 import { Database } from '@/lib/database';
 import { fetchPostImages } from '@/utils/fetch-post-images';
 
@@ -21,13 +21,15 @@ export function ImagePostContent({ post }: ImagePostContentProps) {
 
   if (images) {
     return (
-      <Carousel height={400}>
+      <Carousel>
         {images?.map((image: Database['public']['Tables']['post_image']['Row']) => (
           <Carousel.Slide key={image.id}>
-            <Image radius="md" h={400} src={image.url} fit="contain" />
-            {/* <Center h={50}>
-              <Text>{image.caption}</Text>
-            </Center> */}
+            <AspectRatio ratio={3 / 2} bg="dark.8">
+              <BackgroundImage
+                style={{ backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}
+                src={image.url}
+              />
+            </AspectRatio>
           </Carousel.Slide>
         ))}
       </Carousel>

@@ -30,9 +30,11 @@ export function Comment({ comment, children }: CommentProps) {
         <Box h={26} w={26}>
           <CommentAvatar userId={comment.posted_by!} />
         </Box>
-
-        <Text ml="xs">{comment.posted_by_username}</Text>
-        <Text ml="xs">{getTimeSinceNow(comment.created_at, true)}</Text>
+        <Text className="!text-sm !sm:text-base" ml="xs">
+          {comment.posted_by_username}
+        </Text>
+        &nbsp;-&nbsp;
+        <Text className="!text-sm !sm:text-base">{getTimeSinceNow(comment.created_at, true)}</Text>
       </Group>
       <Flex ml="md" mt="sm" className={classes.comment}>
         <Stack justify="center" gap={1}>
@@ -48,7 +50,11 @@ export function Comment({ comment, children }: CommentProps) {
         </Stack>
 
         <Collapse in={opened} px="sm">
-          <div id="CommentContent" dangerouslySetInnerHTML={{ __html: comment.content || '' }} />
+          <div
+            className="text-sm sm:text-base"
+            id="CommentContent"
+            dangerouslySetInnerHTML={{ __html: comment.content || '' }}
+          />
           {children}
         </Collapse>
       </Flex>

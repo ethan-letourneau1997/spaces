@@ -1,13 +1,13 @@
 'use client';
 
-import { Button, Text, Collapse, Box, Group } from '@mantine/core';
+import { Button, Collapse, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import { Database } from '@/lib/database';
-import { ChildCommentInput } from '@/features/child-comment-input';
+import { ChildCommentInput, ChildCommentModal } from '@/features/child-comment-input';
 
 import { CommentOptions } from './comment-options';
-import { CommentVoteButtons } from '@/features/comment-votes';
+import { VoteHandler } from '@/features/vote-handler';
 
 type CommentFooterProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -20,23 +20,17 @@ export function CommentFooter({ comment, userVote, totalVotes }: CommentFooterPr
 
   return (
     <Box>
-      <Group>
-        <CommentVoteButtons
-          userVote={userVote}
-          commentVotes={totalVotes}
-          comment={comment}
-          horizontal
-        />
-        <Button variant="subtle" onClick={toggle}>
+      <div className="flex gap-3">
+        <VoteHandler userVote={userVote} totalVotes={totalVotes} comment={comment} horizontal />
+        <Button visibleFrom="sm" variant="subtle" onClick={toggle}>
           {opened ? 'Cancel' : 'Reply'}
         </Button>
+        <ChildCommentModal parentComment={comment} />
         <CommentOptions comment={comment} />
-      </Group>
+      </div>
 
       <Collapse transitionDuration={0} in={opened}>
-        <Text>
-          <ChildCommentInput handleClose={toggle} parentComment={comment} />
-        </Text>
+        <ChildCommentInput handleClose={toggle} parentComment={comment} />
       </Collapse>
     </Box>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
-import { Text, Flex, ActionIcon, em } from '@mantine/core';
+import { Text, em, UnstyledButton } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { Database } from '@/lib/database';
 import { DownvoteButton, DownvotedButton, UpvoteButton, UpvotedButton } from './vote-buttons';
@@ -57,16 +57,15 @@ export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }:
   }
 
   return (
-    <Flex direction={horizontal ? 'row' : 'column'} align="center" justify="center" gap={2}>
-      <ActionIcon onClick={handleUpvote} variant="transparent" color="gray">
+    <div className={`flex items-center gap-1 ${horizontal ? 'flex-row' : 'flex-col'}`}>
+      <UnstyledButton onClick={handleUpvote} color="gray">
         {optimisticUserVote === 1 ? <UpvotedButton /> : <UpvoteButton />}
-      </ActionIcon>
+      </UnstyledButton>
       {/* <BiUpvote /> */}
-
       <Text size={isMobile ? 'xs' : 'sm'}>{optimisticTotalVotes}</Text>
-      <ActionIcon onClick={handleDownvote} variant="transparent" color="gray">
+      <UnstyledButton onClick={handleDownvote} color="gray">
         {optimisticUserVote === -1 ? <DownvotedButton /> : <DownvoteButton />}
-      </ActionIcon>
-    </Flex>
+      </UnstyledButton>
+    </div>
   );
 }

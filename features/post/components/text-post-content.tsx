@@ -6,6 +6,11 @@ type TextPostContentProps = {
 
 export function TextPostContent({ post }: TextPostContentProps) {
   if (post.type === 'text') {
-    return <div dangerouslySetInnerHTML={{ __html: post.content || '' }} />;
+    return (
+      <div
+        className="text-sm sm:text-base"
+        dangerouslySetInnerHTML={{ __html: post.content || '' }}
+      />
+    );
   }
 }

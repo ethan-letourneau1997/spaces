@@ -5,7 +5,6 @@ import { Suspense } from 'react';
 import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
 import { PostContent } from './post-content';
 import { Comments } from '@/features/comments';
-import { RootCommentInput } from '@/features/root-comment-input';
 
 import { fetchUserPostVote } from '@/utils/fetch-user-post-vote';
 import { fetchPostVotes } from '@/utils/fetch-post-votes';
@@ -49,7 +48,7 @@ export async function Post({ params }: PostProps) {
       <Stack>
         <Card>
           <PostHeader post={post} />
-          <Title order={1} size="h3">
+          <Title mt={8} order={1} size="h3">
             {post.title}
           </Title>
           <Space h="md" />
@@ -61,9 +60,7 @@ export async function Post({ params }: PostProps) {
             post={post}
           />
         </Card>
-        <Card>
-          <RootCommentInput post={post} />
-          <Space h="lg" />
+        <Card className="!p-1 !sm:p-4">
           <Suspense fallback={<CommentsSkeleton />}>
             <Comments params={params} />
           </Suspense>

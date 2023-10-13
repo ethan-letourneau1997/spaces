@@ -10,9 +10,10 @@ import { createRootComment } from '@/utils/create-root-comment';
 
 type RootCommentInputProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
+  closeInput: () => void;
 };
 
-export function RootCommentInput({ post }: RootCommentInputProps) {
+export function RootCommentInput({ post, closeInput }: RootCommentInputProps) {
   const [comment, setComment] = useState<string>('');
   const [isPending, startTransition] = useTransition();
   const [remount, setRemount] = useState(0);
@@ -24,13 +25,19 @@ export function RootCommentInput({ post }: RootCommentInputProps) {
       await createRootComment(post.id, comment, pathname);
       setComment('');
       setRemount(remount + 1);
+      closeInput();
     });
   }
 
   const replyButton = (
-    <Button loading={isPending} onClick={handleRootComment}>
-      Reply
-    </Button>
+    <>
+      <Button variant="subtle" color="red" onClick={closeInput}>
+        Cancel
+      </Button>
+      <Button loading={isPending} onClick={handleRootComment}>
+        Reply
+      </Button>
+    </>
   );
 
   return (

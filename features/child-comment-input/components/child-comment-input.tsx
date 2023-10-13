@@ -30,9 +30,14 @@ export function ChildCommentInput({ parentComment, handleClose }: ChildCommentIn
   }
 
   const replyButton = (
-    <Button loading={isPending} onClick={handleRootComment}>
-      Reply
-    </Button>
+    <>
+      <Button variant="subtle" color="red" onClick={handleClose}>
+        Cancel
+      </Button>
+      <Button loading={isPending} onClick={handleRootComment}>
+        Reply
+      </Button>
+    </>
   );
 
   return (

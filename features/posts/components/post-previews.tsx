@@ -1,6 +1,6 @@
 import { Text } from '@mantine/core';
 import { Database } from '@/lib/database';
-import { PostPreview } from './post-preview';
+import { PostPreviewHandler } from './post-preview-handler';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,7 +13,7 @@ export async function PostPreviews({ posts }: PostsProps) {
     return (
       <>
         {posts.map((post) => (
-          <PostPreview key={post.id} post={post} />
+          <PostPreviewHandler key={post.id} post={post} />
         ))}
       </>
     );

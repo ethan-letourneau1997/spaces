@@ -31,7 +31,7 @@ export function Navbar({ children }: NavbarProps) {
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       // padding="md"
-      className="sm:px-4"
+      className="!sm:px-4 py-0 sm:py-4"
     >
       <AppShell.Header>
         <Group h="100%" px="md">
@@ -41,7 +41,6 @@ export function Navbar({ children }: NavbarProps) {
               <Flex c="pink.8">
                 <FaUserAstronaut size={26} />
               </Flex>
-
               <Text
                 size="30px"
                 fw={600}
@@ -51,13 +50,11 @@ export function Navbar({ children }: NavbarProps) {
                 Spaces
               </Text>
             </Group>
-
             <DesktopNavbar username={username} />
           </Group>
         </Group>
       </AppShell.Header>
       <MobileNavbar username={username} />
-
       <AppShell.Main>{children}</AppShell.Main>
     </AppShell>
   );

@@ -10,7 +10,7 @@ export function HomePostsHeader() {
     <PostsHeader
       newLink="/home/new/1"
       oldLink="/home/old/1"
-      topLink="home/top/1"
+      topLink="/home/top/1"
       sort={params.sort as string}
     />
   );

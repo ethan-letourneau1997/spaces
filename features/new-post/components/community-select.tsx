@@ -20,15 +20,10 @@ export function CommunitySelect({ spaceId, spaces }: CommunitySelectProps) {
   // Callback to handle option selection
   const handleSelectChange = (value: string | null) => {
     setSelected(value);
-
-    // Find the selected object by 'id' and log its 'id' and 'name'
     if (value && spaces) {
-      // const selectedSpace = spaces.find((space) => space.id.toString() === value);
-
       const selectedSpace = (spaces as Database['public']['Tables']['community']['Row'][])?.find(
         (space) => space.id.toString() === value
       );
-
       if (selectedSpace) {
         router.push(`/new/post/${selectedSpace.id}/${selectedSpace.name}`);
       }

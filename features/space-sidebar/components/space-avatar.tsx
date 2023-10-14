@@ -25,7 +25,7 @@ export function SpaceAvatar() {
   if (avatarUrl) {
     return (
       <Center>
-        <Avatar src={avatarUrl} size="lg">
+        <Avatar src={avatarUrl} size="lg" radius="sm">
           <Skeleton circle h={56} w={56} />
         </Avatar>
       </Center>

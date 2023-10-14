@@ -34,7 +34,7 @@ export function DesktopNavbar({ username }: DesktopNavbarProps) {
                 Settings
               </Menu.Item>
               <Menu.Divider />
-              <Menu.Item c="red.5" component={Link} href="https://mantine.dev">
+              <Menu.Item c="red.5">
                 <form action="/auth/sign-out" method="post">
                   <UnstyledButton className="!text-sm " type="submit">
                     Logout

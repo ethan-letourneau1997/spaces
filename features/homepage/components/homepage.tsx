@@ -11,7 +11,7 @@ export async function Home() {
     ? await supabase.from('public_profile').select().eq('id', data.session?.user.id).single()
     : null;
 
-  if (profile) {
+  if (profile && !profile.error) {
     return (
       <Container>
         <Center>
@@ -22,6 +22,6 @@ export async function Home() {
       </Container>
     );
   }
-
-  return <div>no user logged in</div>;
+  // return <HomePosts />;
+  return <div>placeholder</div>;
 }

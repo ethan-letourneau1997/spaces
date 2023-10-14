@@ -1,8 +1,9 @@
 'use client';
 
-import { Anchor, Card, Group, Input } from '@mantine/core';
+import { Anchor, Card, Group } from '@mantine/core';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { NewPostButton } from './new-post-button';
 
 export function SpacePageHeader() {
   const params = useParams();
@@ -10,7 +11,7 @@ export function SpacePageHeader() {
   if (!params.postId) {
     return (
       <Card withBorder>
-        <div className="flex gap-5">
+        <div className="flex gap-7">
           <Group>
             <Anchor
               className="!no-underline tracking-wide"
@@ -40,9 +41,7 @@ export function SpacePageHeader() {
               Top
             </Anchor>
           </Group>
-          <Input component="button" className="flex-1 " pointer>
-            <Input.Placeholder>Create Post</Input.Placeholder>
-          </Input>
+          <NewPostButton />
         </div>
       </Card>
     );

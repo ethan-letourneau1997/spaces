@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Card, Flex, Stack, Tabs, TextInput, Text } from '@mantine/core';
+import { Button, Card, Flex, Tabs, TextInput, Text, Input } from '@mantine/core';
 import { IconBook, IconPhoto, IconLink } from '@tabler/icons-react';
 import { useEffect, useState, useTransition } from 'react';
 import { FilePondFile } from 'filepond';
@@ -21,7 +21,7 @@ type NewPostFormProps = {
 };
 
 export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
-  const [textContent, setTextContent] = useState('test');
+  const [textContent, setTextContent] = useState('');
   const [images, setImages] = useState<FilePondFile[]>([]);
   const [isPending, startTransition] = useTransition();
   const [imagesError, setImagesError] = useState<string | null>(null);
@@ -136,59 +136,87 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
           </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel pt="lg" value="text">
-          <Stack>
-            <CommunitySelect spaces={spaces} spaceId={spaceId} />
-            <form onSubmit={form.onSubmit(console.log, handleTextError)}>
-              <TextInput label="Title" placeholder="Title" {...form.getInputProps('title')} />
-              {/* <TitleInput title={title} setTitle={setTitle} /> */}
-              <TextEditor content={textContent} setContent={setTextContent} />
-              <Text size="xs" c="red">
-                {form.errors.textContent}
-              </Text>
+          <CommunitySelect spaces={spaces} spaceId={spaceId} />
+          <form onSubmit={form.onSubmit(console.log, handleTextError)}>
+            <TextInput
+              className="mt-4"
+              label="Title"
+              placeholder="Title"
+              {...form.getInputProps('title')}
+            />
+            <Input.Label className="mt-6">Text Content</Input.Label>
+            <TextEditor content={textContent} setContent={setTextContent} />
+            <Text size="xs" c="red">
+              {form.errors.textContent}
+            </Text>
 
-              <Flex justify="flex-end" mt="sm">
-                <Button type="submit" mt="sm" loading={isPending}>
-                  Submit
-                </Button>
-              </Flex>
-            </form>
-          </Stack>
+            <Flex justify="flex-end" mt="sm">
+              <Button
+                variant="gradient"
+                gradient={{ from: 'pink', to: 'yellow', deg: 90 }}
+                type="submit"
+                mt="sm"
+                loading={isPending}
+              >
+                Create
+              </Button>
+            </Flex>
+          </form>
         </Tabs.Panel>
         <Tabs.Panel pt="lg" value="link">
-          <Stack>
-            <CommunitySelect spaces={spaces} spaceId={spaceId} />
-            <form onSubmit={form.onSubmit(console.log, handleLinkError)}>
-              <TextInput label="Title" placeholder="Title" {...form.getInputProps('title')} />
-              <TextInput
-                mt="md"
-                label="Url"
-                placeholder="Url Path"
-                {...form.getInputProps('link')}
-              />
-              <Flex justify="flex-end" mt="sm">
-                <Button type="submit" mt="sm" loading={isPending}>
-                  Submit
-                </Button>
-              </Flex>
-            </form>
-          </Stack>
+          <CommunitySelect spaces={spaces} spaceId={spaceId} />
+          <form onSubmit={form.onSubmit(console.log, handleLinkError)}>
+            <TextInput
+              className="mt-4"
+              label="Title"
+              placeholder="Title"
+              {...form.getInputProps('title')}
+            />
+            <TextInput
+              className="mt-6"
+              label="Url"
+              placeholder="Url Path"
+              {...form.getInputProps('link')}
+            />
+            <Flex justify="flex-end" mt="sm">
+              <Button
+                variant="gradient"
+                gradient={{ from: 'pink', to: 'yellow', deg: 90 }}
+                type="submit"
+                mt="sm"
+                loading={isPending}
+              >
+                Create
+              </Button>
+            </Flex>
+          </form>
         </Tabs.Panel>
         <Tabs.Panel pt="lg" value="images">
-          <Stack>
-            <CommunitySelect spaces={spaces} spaceId={spaceId} />
-            <form onSubmit={form.onSubmit(console.log, handleImagesError)}>
-              <TextInput label="Title" placeholder="Post Title" {...form.getInputProps('title')} />
-              <ImageDropzone files={images} setFiles={setImages} />
-              <Text size="xs" c="red">
-                {imagesError}
-              </Text>
-              <Flex justify="flex-end" mt="sm">
-                <Button type="submit" mt="sm" loading={isPending}>
-                  Submit
-                </Button>
-              </Flex>
-            </form>
-          </Stack>
+          <CommunitySelect spaces={spaces} spaceId={spaceId} />
+          <form onSubmit={form.onSubmit(console.log, handleImagesError)}>
+            <TextInput
+              className="mt-4 "
+              label="Title"
+              placeholder="Post Title"
+              {...form.getInputProps('title')}
+            />
+            <Input.Label className="mt-6">Images</Input.Label>
+            <ImageDropzone files={images} setFiles={setImages} />
+            <Text size="xs" c="red">
+              {imagesError}
+            </Text>
+            <Flex justify="flex-end" mt="sm">
+              <Button
+                variant="gradient"
+                gradient={{ from: 'pink', to: 'yellow', deg: 90 }}
+                type="submit"
+                mt="sm"
+                loading={isPending}
+              >
+                Create
+              </Button>
+            </Flex>
+          </form>
         </Tabs.Panel>
       </Tabs>
     </Card>

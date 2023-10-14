@@ -1,6 +1,18 @@
 'use client';
 
-import { ActionIcon, Box, Card, Flex, Group, Skeleton, Space, Stack, Text } from '@mantine/core';
+import {
+  ActionIcon,
+  Box,
+  Card,
+  Flex,
+  Group,
+  Skeleton,
+  Space,
+  Stack,
+  Tabs,
+  Text,
+} from '@mantine/core';
+import { IconBook, IconLink, IconPhoto } from '@tabler/icons-react';
 import { DownvoteButton, UpvoteButton } from './vote-buttons';
 
 export function PostSkeleton() {
@@ -110,5 +122,30 @@ export function NoPostsFound() {
         No posts found
       </Text>
     </Box>
+  );
+}
+
+export function NewPostFormPlaceholder() {
+  return (
+    <Card>
+      <Tabs defaultValue="text">
+        <Tabs.List grow>
+          <Tabs.Tab value="text" leftSection={<IconBook />}>
+            Text
+          </Tabs.Tab>
+          <Tabs.Tab value="link" leftSection={<IconLink />}>
+            Link
+          </Tabs.Tab>
+          <Tabs.Tab value="images" leftSection={<IconPhoto />}>
+            Images
+          </Tabs.Tab>
+        </Tabs.List>
+      </Tabs>
+      <Stack mt="md">
+        <Skeleton h={36} />
+        <Skeleton h={36} />
+        <Skeleton h={350} />
+      </Stack>
+    </Card>
   );
 }

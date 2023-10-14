@@ -8,5 +8,7 @@ type NewPostProps = {
 export async function NewPost({ spaceId }: NewPostProps) {
   const spaces = await fetchAllSpaces();
 
-  if (spaces) return <NewPostForm spaces={spaces} spaceId={spaceId} />;
+  if (spaces) {
+    return <NewPostForm spaces={spaces} spaceId={spaceId} />;
+  }
 }

@@ -6,7 +6,6 @@ import { FilePondFile, FilePondInitialFile } from 'filepond';
 
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import { Input } from '@mantine/core';
 
 // Register filepond plugins
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
@@ -19,7 +18,6 @@ type ImageDropzoneProps = {
 export function ImageDropzone({ files, setFiles }: ImageDropzoneProps) {
   return (
     <>
-      <Input.Label>Images</Input.Label>
       <FilePond
         allowReorder
         files={files as unknown as (string | FilePondInitialFile | Blob | File)[]}

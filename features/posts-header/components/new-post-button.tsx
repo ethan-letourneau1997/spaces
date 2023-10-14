@@ -27,7 +27,7 @@ export function NewPostButton() {
   const router = useRouter();
 
   function handleNavigateToCreate() {
-    router.push(`/spaces/${params.spaceId}/${params.spaceName}/post/new`);
+    router.push(`/new/post/${params.spaceId}/${params.spaceName}`);
   }
 
   const { data: userId } = useSWR('userId', async () => {

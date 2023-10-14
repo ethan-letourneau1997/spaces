@@ -30,7 +30,7 @@ export function CommunitySelect({ spaceId, spaces }: CommunitySelectProps) {
       );
 
       if (selectedSpace) {
-        router.push(`/spaces/${selectedSpace.id}/${selectedSpace.name}/post/new`);
+        router.push(`/new/post/${selectedSpace.id}/${selectedSpace.name}`);
       }
     }
   };

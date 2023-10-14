@@ -40,7 +40,6 @@ export function NewPostButton() {
   if (userId) {
     return (
       <div className="flex flex-1 gap-3">
-        <NewPostButtonAvatar userId={userId} />
         <Input
           classNames={
             {

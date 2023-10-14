@@ -1,11 +1,12 @@
 'use client';
 
-import { AppShell, Burger, Flex, Group, Text } from '@mantine/core';
+import { Anchor, AppShell, Burger, Flex, Group } from '@mantine/core';
 
 import { useDisclosure } from '@mantine/hooks';
 
 import useSWR from 'swr';
 import { FaUserAstronaut } from 'react-icons/fa';
+import Link from 'next/link';
 import { DesktopNavbar } from './desktop-navbar';
 import { MobileNavbar } from './mobile-navbar';
 import { fetchSession } from '@/utils/fetch-session';
@@ -41,14 +42,17 @@ export function Navbar({ children }: NavbarProps) {
               <Flex c="pink.8">
                 <FaUserAstronaut size={26} />
               </Flex>
-              <Text
+              <Anchor
+                className="!no-underline"
+                component={Link}
+                href="/"
                 size="30px"
                 fw={600}
                 variant="gradient"
                 gradient={{ from: 'pink', to: 'yellow' }}
               >
                 Spaces
-              </Text>
+              </Anchor>
             </Group>
             <DesktopNavbar username={username} />
           </Group>

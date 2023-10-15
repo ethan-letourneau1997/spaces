@@ -1,16 +1,6 @@
 'use client';
 
-import {
-  ActionIcon,
-  Anchor,
-  AspectRatio,
-  Box,
-  Card,
-  Flex,
-  Group,
-  Stack,
-  Text,
-} from '@mantine/core';
+import { ActionIcon, Anchor, AspectRatio, Box, Card, Group, Stack, Text } from '@mantine/core';
 import { Suspense } from 'react';
 import { LiaCommentAltSolid } from 'react-icons/lia';
 import Link from 'next/link';
@@ -35,14 +25,18 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
         <div
           className={`${
             post.type !== 'text' ? 'h-40' : 'hidden sm:block'
-          } col-span-12 sm:col-span-2 sm:h-auto`}
+          } col-span-12 sm:col-span-2 sm:h-auto `}
         >
           <Suspense fallback={<></>}>
-            <Box className="hidden sm:block">
-              <AspectRatio ratio={3 / 2.2}>
-                <PostThumbnail post={post} />
-              </AspectRatio>
-            </Box>
+            <div className="flex items-center w-full h-full ">
+              <Box className="hidden w-full sm:block">
+                <AspectRatio ratio={3 / 2.2}>
+                  <PostThumbnail post={post} />
+                </AspectRatio>
+              </Box>
+            </div>
+          </Suspense>
+          <Suspense fallback={<></>}>
             <Box className="w-full h-full sm:hidden">
               <PostThumbnail post={post} />
             </Box>
@@ -100,10 +94,8 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
             </div>
           </Stack>
         </div>
-        <div className="hidden col-span-1 sm:block">
-          <Flex justify="flex-end" className="h-full py-2">
-            <VoteHandler post={post} totalVotes={postVotes} userVote={userVote} />
-          </Flex>
+        <div className="items-center justify-end hidden col-span-1 sm:flex">
+          <VoteHandler post={post} totalVotes={postVotes} userVote={userVote} />
         </div>
       </div>
     </Card>

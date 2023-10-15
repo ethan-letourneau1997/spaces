@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, BackgroundImage, Center, Flex, Paper, Skeleton } from '@mantine/core';
+import { Anchor, BackgroundImage, Center, Paper, Skeleton } from '@mantine/core';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
@@ -38,7 +38,7 @@ export function LinkPostThumbnail({ post }: LinkPostThumbnailProps) {
     return (
       <Suspense fallback={<ThumbnailSkeleton />}>
         <BackgroundImage h="100%" src={linkPreview.url} radius="sm">
-          <Flex align="flex-end" h="100%">
+          <div className="flex items-end w-full h-full">
             <Anchor
               truncate
               c="gray.3"
@@ -48,16 +48,16 @@ export function LinkPostThumbnail({ post }: LinkPostThumbnailProps) {
               href={post.content}
               px={5}
               ta="end"
+              w="100%"
               bg="dark.6"
               opacity={0.8}
-              w="100%"
               size="xs"
               fw={600}
             >
               {linkPreview.website}&nbsp;
               <FiExternalLink size={13} className="inline mb-1" />
             </Anchor>
-          </Flex>
+          </div>
         </BackgroundImage>
       </Suspense>
     );

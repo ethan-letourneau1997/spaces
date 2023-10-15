@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Anchor, Card, Flex, Group, Stack, Text } from '@mantine/core';
+import { ActionIcon, Anchor, AspectRatio, Card, Flex, Group, Stack, Text } from '@mantine/core';
 import { Suspense } from 'react';
 import { LiaCommentAltSolid } from 'react-icons/lia';
 import Link from 'next/link';
@@ -28,7 +28,9 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
           } col-span-12 sm:col-span-2 sm:h-auto`}
         >
           <Suspense fallback={<></>}>
-            <PostThumbnail post={post} />
+            <AspectRatio ratio={3 / 2.2}>
+              <PostThumbnail post={post} />
+            </AspectRatio>
           </Suspense>
         </div>
         <div className="col-span-12 sm:col-span-9">

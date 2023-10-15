@@ -3,24 +3,13 @@ import Link from 'next/link';
 import { SidebarWrapper } from '@/features/sidebar-wrapper';
 import { fetchSession } from '@/utils/fetch-session';
 
+import { LoggedInSidebar } from './logged-in-sidebar';
+
 export async function HomeSidebar() {
   const data = await fetchSession();
+
   if (data.session) {
-    return (
-      <SidebarWrapper>
-        <Title ta="center">
-          Welcome to&nbsp;
-          <Text
-            inherit
-            variant="gradient"
-            component="span"
-            gradient={{ from: 'pink', to: 'yellow' }}
-          >
-            Spaces
-          </Text>
-        </Title>
-      </SidebarWrapper>
-    );
+    return <LoggedInSidebar userId={data.session.user.id} />;
   }
   return (
     <SidebarWrapper>

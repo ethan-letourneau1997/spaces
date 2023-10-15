@@ -13,7 +13,7 @@ type PostThumbnailProps = {
 
 export function PostThumbnail({ post }: PostThumbnailProps) {
   if (post.type === 'text') {
-    return <TextPostThumbnail />;
+    return <TextPostThumbnail post={post} />;
   }
 
   if (post.type === 'link') {

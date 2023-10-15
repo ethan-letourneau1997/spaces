@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, BackgroundImage, Center, Paper, Skeleton } from '@mantine/core';
+import { Anchor, BackgroundImage, Box, Center, Flex, Paper, Skeleton, Text } from '@mantine/core';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
@@ -38,26 +38,22 @@ export function LinkPostThumbnail({ post }: LinkPostThumbnailProps) {
     return (
       <Suspense fallback={<ThumbnailSkeleton />}>
         <BackgroundImage h="100%" src={linkPreview.url} radius="sm">
-          <div className="flex items-end w-full h-full">
-            <Anchor
-              truncate
-              c="gray.3"
-              target="_blank"
-              rel="noopener noreferrer"
-              component={Link}
-              href={post.content}
-              px={5}
-              ta="end"
-              w="100%"
-              bg="dark.6"
-              opacity={0.8}
-              size="xs"
-              fw={600}
-            >
-              {linkPreview.website}&nbsp;
-              <FiExternalLink size={13} className="inline mb-1" />
-            </Anchor>
-          </div>
+          <Anchor
+            target="_blank"
+            rel="noopener noreferrer"
+            href={post.content}
+            component={Link}
+            className="w-full h-full !no-underline"
+          >
+            <Flex w="100%" h="100%" align="flex-end">
+              <Box px={5} ta="end" w="100%" bg="dark.6" opacity={0.8} fw={600}>
+                <Text size="xs" c="gray.3" truncate>
+                  {linkPreview.website}&nbsp;
+                  <FiExternalLink size={13} className="inline mb-1" />
+                </Text>
+              </Box>
+            </Flex>
+          </Anchor>
         </BackgroundImage>
       </Suspense>
     );
@@ -65,9 +61,19 @@ export function LinkPostThumbnail({ post }: LinkPostThumbnailProps) {
   if (linkPreview === null) {
     return (
       <Paper radius="sm" h="100%" bg="gray">
-        <Center h="100%">
-          <HiOutlineLink size={20} />
-        </Center>
+        <Anchor
+          h="100%"
+          w="100%"
+          c="dark.0"
+          target="_blank"
+          rel="noopener noreferrer"
+          href={post.content}
+          component={Link}
+        >
+          <Center h="100%">
+            <HiOutlineLink size={20} />
+          </Center>
+        </Anchor>
       </Paper>
     );
   }

@@ -19,8 +19,9 @@ type PostPreviewProps = {
 };
 
 export function PostPreview({ post, postVotes, userVote, commentCount }: PostPreviewProps) {
+  const linkToPost = `/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`;
   return (
-    <Card mt="sm" withBorder>
+    <Card mt="sm" withBorder className="hover:!border-gray-7">
       <div className="grid grid-cols-12 gap-3">
         <div
           className={`${
@@ -70,10 +71,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
                 <Text size="xs">{getTimeSinceNow(post.created_at, true)}</Text>
               </Group>
               <div>
-                <Link
-                  className="font-bold"
-                  href={`/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`}
-                >
+                <Link className="font-bold" href={linkToPost}>
                   {post.title}
                 </Link>
               </div>
@@ -83,12 +81,16 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
                 <VoteHandler horizontal post={post} totalVotes={postVotes} userVote={userVote} />
               </div>
 
-              <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
-                <LiaCommentAltSolid size={18} />
-              </ActionIcon>
-              <Text size="xs" fw={600} c="dark.1">
-                {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
-              </Text>
+              <Anchor component={Link} href={linkToPost} className="!no-underline ">
+                <div className="flex items-center">
+                  <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
+                    <LiaCommentAltSolid size={18} />
+                  </ActionIcon>
+                  <Text size="xs" fw={600} c="dark.1">
+                    {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
+                  </Text>
+                </div>
+              </Anchor>
 
               <PostOptions post={post} />
             </div>

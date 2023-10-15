@@ -1,10 +1,11 @@
 'use client';
 
-import { BackgroundImage, Skeleton } from '@mantine/core';
+import { Anchor, BackgroundImage, Skeleton } from '@mantine/core';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Database } from '@/lib/database';
 
 type ImagePostThumbnailProps = {
@@ -32,7 +33,12 @@ export function ImagePostThumbnail({ post }: ImagePostThumbnailProps) {
   }, [post]);
 
   if (firstImageUrl) {
-    return <BackgroundImage h="100%" src={firstImageUrl} radius="sm" />;
+    const linkToPost = `/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`;
+    return (
+      <Anchor component={Link} href={linkToPost}>
+        <BackgroundImage h="100%" src={firstImageUrl} radius="sm" />
+      </Anchor>
+    );
   }
 
   return <Skeleton w="100%" h="100%" />;

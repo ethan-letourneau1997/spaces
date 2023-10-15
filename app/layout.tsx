@@ -10,8 +10,7 @@ import { theme } from '../theme';
 import { Navbar } from '@/features/navbar';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
+  title: 'Spaces',
 };
 export const dynamic = 'force-dynamic';
 

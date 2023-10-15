@@ -3,9 +3,10 @@
 import { Group, Menu, UnstyledButton } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
 import Link from 'next/link';
-import { FeedLink, HomeLink, LoginLink } from './desktop-nav-links';
+import { FeedLink, HomeLink } from './desktop-nav-links';
 import { Spotlight } from '@/features/spotlight';
 import { DEFAULT_SORT } from '@/lib/constants';
+import { LoginModal } from '@/features/login-modal';
 
 type DesktopNavbarProps = {
   username: string | null;
@@ -45,7 +46,7 @@ export function DesktopNavbar({ username }: DesktopNavbarProps) {
           </Menu>
         </>
       ) : (
-        <LoginLink />
+        <LoginModal />
       )}
     </Group>
   );

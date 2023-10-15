@@ -1,10 +1,9 @@
 'use client';
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
-import { Text, em, UnstyledButton } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { UnstyledButton } from '@mantine/core';
+import { BiDownvote, BiSolidDownvote, BiSolidUpvote, BiUpvote } from 'react-icons/bi';
 import { Database } from '@/lib/database';
-import { DownvoteButton, DownvotedButton, UpvoteButton, UpvotedButton } from './vote-buttons';
 import { upsertPostVote } from '../api/upsert-post-vote';
 import { upsertCommentVote } from '../api/upsert-comment-vote';
 
@@ -19,7 +18,6 @@ type VoteHandlerProps = {
 export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }: VoteHandlerProps) {
   const [optimisticTotalVotes, setOptimisticTotalVotes] = useOptimistic<number>(totalVotes);
   const [optimisticUserVote, setOptimisticUserVote] = useOptimistic<number>(userVote);
-  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
 
   function handleVoteChange(newUserVote: number, newOptomisticVote: number) {
     if (post) {
@@ -58,17 +56,23 @@ export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }:
 
   return (
     <div
-      className={`flex items-center gap-1 ${
-        horizontal ? 'flex-row' : 'flex-col gap-2 justify-between'
-      }`}
+      className={`flex gap-1 ${horizontal ? ' items-center' : 'flex-col gap-2 justify-between'}`}
     >
-      <UnstyledButton onClick={handleUpvote} color="gray">
-        {optimisticUserVote === 1 ? <UpvotedButton /> : <UpvoteButton />}
+      <UnstyledButton
+        className="flex items-center text-gray-4 hover:text-orange-5"
+        onClick={handleUpvote}
+        color="gray"
+      >
+        {optimisticUserVote === 1 ? <BiSolidUpvote className="text-orange-5" /> : <BiUpvote />}
       </UnstyledButton>
       {/* <BiUpvote /> */}
-      <Text size={isMobile ? 'xs' : 'sm'}>{optimisticTotalVotes}</Text>
-      <UnstyledButton onClick={handleDownvote} color="gray">
-        {optimisticUserVote === -1 ? <DownvotedButton /> : <DownvoteButton />}
+      <span className="text-sm ">{optimisticTotalVotes}</span>
+      <UnstyledButton
+        type="button"
+        onClick={handleDownvote}
+        className="flex items-center text-gray-4 hover:text-orange-5"
+      >
+        {optimisticUserVote === -1 ? <BiSolidDownvote className="text-orange-5" /> : <BiDownvote />}
       </UnstyledButton>
     </div>
   );

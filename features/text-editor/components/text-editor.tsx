@@ -56,8 +56,8 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
             {!isMobile && (
               <>
                 <RichTextEditor.Strikethrough />
-                <RichTextEditor.ClearFormatting />
-                <RichTextEditor.Highlight />
+                {/* <RichTextEditor.ClearFormatting /> */}
+                {/* <RichTextEditor.Highlight /> */}
                 <RichTextEditor.Code />
               </>
             )}
@@ -84,14 +84,14 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
               <RichTextEditor.Unlink />
             </RichTextEditor.ControlsGroup>
           )}
-          {!isMobile && (
+          {/* {!isMobile && (
             <RichTextEditor.ControlsGroup>
               <RichTextEditor.AlignLeft />
               <RichTextEditor.AlignCenter />
               <RichTextEditor.AlignJustify />
               <RichTextEditor.AlignRight />
             </RichTextEditor.ControlsGroup>
-          )}
+          )} */}
         </RichTextEditor.Toolbar>
         <RichTextEditor.Content mih={mih || isMobile ? '100px' : '30vh'} />
         <Group justify="flex-end" py="xs" px="xs">

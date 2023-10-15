@@ -1,4 +1,7 @@
+'use client';
+
 import { Database } from '@/lib/database';
+import { RenderHTML } from '@/components/render-hmtl';
 
 type TextPostContentProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -6,11 +9,6 @@ type TextPostContentProps = {
 
 export function TextPostContent({ post }: TextPostContentProps) {
   if (post.type === 'text') {
-    return (
-      <div
-        className="text-sm sm:text-base"
-        dangerouslySetInnerHTML={{ __html: post.content || '' }}
-      />
-    );
+    return <RenderHTML content={post.content} />;
   }
 }

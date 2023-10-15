@@ -1,10 +1,9 @@
 'use client';
 
-import { ActionIcon, Button, Collapse, Group, Text } from '@mantine/core';
+import { Collapse, UnstyledButton } from '@mantine/core';
 import { LiaCommentAltSolid } from 'react-icons/lia';
 import { useDisclosure } from '@mantine/hooks';
 import { Database } from '@/lib/database';
-import { PostOptions } from '@/features/post-options';
 import { VoteHandler } from '@/features/vote-handler';
 import { RootCommentInput, RootCommentModal } from '@/features/root-comment-input';
 
@@ -20,22 +19,22 @@ export function PostFooter({ postVotes, userVote, post, commentCount }: PostFoot
 
   return (
     <>
-      <Group gap={3} align="center" mt="xs">
+      <div className="flex gap-3 mt-2">
         <VoteHandler horizontal totalVotes={postVotes || 0} userVote={userVote || 0} post={post} />
-        <Group gap={1} align="center">
-          <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
+        <div className="flex items-center gap-1 ">
+          <UnstyledButton className="flex items-center">
             <LiaCommentAltSolid size={18} />
-          </ActionIcon>
-          <Text size="sm" fw={600} c="dark.1">
+          </UnstyledButton>
+
+          <span className="text-sm ">
             {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
-          </Text>
-        </Group>
-        <Button visibleFrom="sm" variant="subtle" onClick={toggle}>
+          </span>
+        </div>
+        <UnstyledButton className="!text-sm" visibleFrom="sm" onClick={toggle}>
           {opened ? 'Cancel' : 'Reply'}
-        </Button>
+        </UnstyledButton>
         <RootCommentModal post={post} />
-        <PostOptions post={post} />
-      </Group>
+      </div>
       <Collapse in={opened} pt="xs">
         <RootCommentInput closeInput={toggle} post={post} />
       </Collapse>

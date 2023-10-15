@@ -2,9 +2,9 @@
 
 import { Button, Card, Flex, Tabs, TextInput, Text, Input } from '@mantine/core';
 import { IconBook, IconPhoto, IconLink } from '@tabler/icons-react';
-import { useEffect, useState, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { FilePondFile } from 'filepond';
-import { redirect, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { TextEditor } from '@/features/text-editor';
@@ -13,7 +13,6 @@ import { CommunitySelect } from './community-select';
 import { Database } from '@/lib/database';
 import { removeTags } from '@/utils/remove-tags';
 import { createPost } from '../api/create-post';
-import { uploadImages } from '../api/upload-images';
 
 type NewPostFormProps = {
   spaceId?: string;
@@ -22,21 +21,21 @@ type NewPostFormProps = {
 
 export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
   const [textContent, setTextContent] = useState('');
+  const [textContentError, setTextContentError] = useState<string | null>(null);
+
   const [images, setImages] = useState<FilePondFile[]>([]);
-  const [isPending, startTransition] = useTransition();
   const [imagesError, setImagesError] = useState<string | null>(null);
 
-  const sanitizedText = removeTags(textContent) || '';
+  const [isPending, startTransition] = useTransition();
 
   const params = useParams();
 
+  // Initialize form
   const form = useForm({
     validateInputOnBlur: true,
-    initialValues: { title: '', textContent: '', link: '' },
+    initialValues: { title: '', link: '' },
     validate: {
       title: (value) => (value.length < 5 ? 'Title must be at lest 5 letters long' : null),
-      textContent: (value) =>
-        value.length < 10 ? 'Content must be at least 10 characters long' : null,
       link: (value) => {
         // Regular expression to validate URLs
         const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
@@ -47,57 +46,47 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
     },
   });
 
-  useEffect(() => {
-    form.setFieldValue('textContent', sanitizedText);
-  }, [textContent]);
-
+  // Create a new post if there are no form errors
   async function handleCreatePost(type: 'text' | 'link' | 'image') {
-    startTransition(async () => {
-      if (type === 'text') {
-        await createPost({
-          communityId: params.spaceId as string,
-          communityName: params.spaceName as string,
-          title: form.values.title,
-          content: textContent,
-          type: 'text',
-        });
-        notifications.show({ message: 'Your post has been created!' });
-      }
+    const communityId = params.spaceId as string;
+    const communityName = params.spaceName as string;
+    const { title } = form.values;
+    let content = null;
+    if (type === 'text') {
+      content = textContent;
+    }
+    if (type === 'link') {
+      content = form.values.link;
+    }
 
-      if (type === 'link') {
-        await createPost({
-          communityId: params.spaceId as string,
-          communityName: params.spaceName as string,
-          title: form.values.title,
-          content: form.values.link,
-          type: 'link',
-        });
-        notifications.show({ message: 'Your post has been created!' });
-      }
-      if (type === 'image') {
-        const postId = await createPost({
-          communityId: params.spaceId as string,
-          communityName: params.spaceName as string,
-          title: form.values.title,
-          type: 'image',
-        });
-        await uploadImages(images as unknown as File[], postId);
-        notifications.show({ message: 'Your post has been created!' });
-        redirect(`/spaces/${params.spaceId}/${params.spaceName}/post/${postId}/edit?type=image`);
-      }
+    startTransition(async () => {
+      await createPost({
+        communityId,
+        communityName,
+        title,
+        content,
+        type,
+      });
+      notifications.show({ message: 'Your post has been created!' });
     });
   }
 
+  // Validate text form
   const handleTextError = (errors: typeof form.errors) => {
+    const sanitizedText = removeTags(textContent) || '';
+    if (sanitizedText.length < 10) {
+      setTextContentError('Please add at least one image');
+    }
     if (errors.title) {
       notifications.show({ message: 'Please fill title field', color: 'red' });
-    } else if (errors.textContent) {
-      notifications.show({ message: 'Please provide valid text content', color: 'red' });
+    } else if (sanitizedText.length === 0) {
+      notifications.show({ message: 'Content does not meet minimum text length.', color: 'red' });
     } else {
       handleCreatePost('text');
     }
   };
 
+  // Validate link form
   const handleLinkError = (errors: typeof form.errors) => {
     if (errors.title) {
       notifications.show({ message: 'Please fill title field', color: 'red' });
@@ -108,6 +97,7 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
     }
   };
 
+  // Validate image form
   const handleImagesError = (errors: typeof form.errors) => {
     if (images.length === 0) {
       setImagesError('Please add at least one image');
@@ -147,7 +137,7 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
             <Input.Label className="mt-6">Text Content</Input.Label>
             <TextEditor content={textContent} setContent={setTextContent} />
             <Text size="xs" c="red">
-              {form.errors.textContent}
+              {textContentError}
             </Text>
 
             <Flex justify="flex-end" mt="sm">

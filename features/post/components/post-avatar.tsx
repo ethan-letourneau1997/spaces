@@ -16,7 +16,5 @@ export function PostAvatar({ userId }: PostAvatarProps) {
     return userAvatar;
   });
 
-  if (avatar) {
-    return <Avatar size="sm" src={avatar.path} placeholder="UA" />;
-  }
+  return <Avatar size="sm" src={avatar?.path} placeholder="UA" />;
 }

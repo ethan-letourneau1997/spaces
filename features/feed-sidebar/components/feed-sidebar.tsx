@@ -8,7 +8,7 @@ export async function FeedSidebar() {
 
   if (userSpaces) {
     return (
-      <SidebarWrapper miw="250">
+      <SidebarWrapper>
         <FeedSidebarHeader />
         <SidebarSpaces spaces={userSpaces} />
       </SidebarWrapper>

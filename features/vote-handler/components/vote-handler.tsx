@@ -57,7 +57,11 @@ export function VoteHandler({ totalVotes, userVote, post, comment, horizontal }:
   }
 
   return (
-    <div className={`flex items-center gap-1 ${horizontal ? 'flex-row' : 'flex-col'}`}>
+    <div
+      className={`flex items-center gap-1 ${
+        horizontal ? 'flex-row' : 'flex-col h-full  justify-between'
+      }`}
+    >
       <UnstyledButton onClick={handleUpvote} color="gray">
         {optimisticUserVote === 1 ? <UpvotedButton /> : <UpvoteButton />}
       </UnstyledButton>

@@ -101,7 +101,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
           </Stack>
         </div>
         <div className="hidden col-span-1 sm:block">
-          <Flex justify="flex-end">
+          <Flex justify="flex-end" className="h-full py-2">
             <VoteHandler post={post} totalVotes={postVotes} userVote={userVote} />
           </Flex>
         </div>

@@ -46,7 +46,7 @@ export async function Post({ params }: PostProps) {
   if (post) {
     return (
       <Stack>
-        <Card>
+        <Card className="!bg-dark-6.5" withBorder>
           <PostHeader post={post} />
           <Title mt={8} order={1} size="h3">
             {post.title}
@@ -60,7 +60,7 @@ export async function Post({ params }: PostProps) {
             post={post}
           />
         </Card>
-        <Card className="!p-1 !sm:p-4 !pb-3">
+        <Card bg="!bg-dark-6.5" className="!p-1 !sm:p-4 !pb-3" withBorder>
           <Suspense fallback={<CommentsSkeleton />}>
             <Comments params={params} />
           </Suspense>

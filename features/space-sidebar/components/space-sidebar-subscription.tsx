@@ -16,7 +16,7 @@ type SpaceSidebarSubscriptionProps = {
 
 export function SpaceSidebarSubscription({ spaceId, spaceName }: SpaceSidebarSubscriptionProps) {
   const supabase = createClientComponentClient();
-  const [userSubscribed, setUserSubscribed] = useState(false);
+  const [userSubscribed, setUserSubscribed] = useState(null);
   const [subscriberCount, setSubscriberCount] = useState(0);
 
   async function getSubscriberCount() {

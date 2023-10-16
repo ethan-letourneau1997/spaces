@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-dark-9`}>
         <MantineProvider theme={theme} defaultColorScheme="dark">
           <Notifications />
           <Navbar>

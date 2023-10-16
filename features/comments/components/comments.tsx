@@ -2,6 +2,8 @@ import { fetchPostComments } from '@/utils/fetch-post-comments';
 import { Comment } from './comment';
 import { Database } from '@/lib/database';
 import { CommentFooterHandler } from './comment-footer-handler';
+import { RootCommentInput } from '@/features/root-comment-input';
+import { fetchDetailedPostById } from '@/utils/fetch-detailed-post-by-id';
 
 async function ChildComments({
   commentId,
@@ -62,6 +64,12 @@ export async function Comments({ params }: CommentsProps) {
   }
 
   if (comments && comments.length === 0) {
-    return <span>No comments yet</span>;
+    const post = await fetchDetailedPostById(params.postId);
+    return (
+      <div className="px-4 py-2">
+        <div className="mb-2 ">Be the first to reply!</div>
+        <RootCommentInput post={post} />
+      </div>
+    );
   }
 }

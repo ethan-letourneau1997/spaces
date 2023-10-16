@@ -9,6 +9,7 @@ import { Database } from '@/lib/database';
 
 import { getTimeSinceNow } from '../../../utils/get-time-since-now';
 import { CommentAvatar } from './comment-avatar';
+import { RenderHTML } from '@/components/render-hmtl';
 
 type CommentProps = {
   comment: Database['public']['Views']['comment_details']['Row'];
@@ -50,11 +51,12 @@ export function Comment({ comment, children }: CommentProps) {
         </Stack>
 
         <Collapse in={opened} px="sm">
-          <div
+          {/* <div
             className="text-sm sm:text-base"
             id="CommentContent"
             dangerouslySetInnerHTML={{ __html: comment.content || '' }}
-          />
+          /> */}
+          <RenderHTML className="!text-sm sm:!text-base !text-gray-1" content={comment.content} />
           {children}
         </Collapse>
       </Flex>

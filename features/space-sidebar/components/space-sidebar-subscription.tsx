@@ -64,12 +64,19 @@ export function SpaceSidebarSubscription({ spaceId, spaceName }: SpaceSidebarSub
       </Group>
 
       {userSubscribed === true && (
-        <Button size="xs" color="gray" onClick={handleUnsubscribe}>
+        <Button variant="outline" size="xs" color="gray.5" onClick={handleUnsubscribe}>
           Unsubscribe
         </Button>
       )}
       {userSubscribed === false && (
-        <Button variant="outline" color="gray" size="xs" onClick={handleSubscribe}>
+        <Button
+          // variant="outline"
+          // color="yellow.7"
+          variant="gradient"
+          gradient={{ from: 'pink.8', to: 'yellow.8' }}
+          size="xs"
+          onClick={handleSubscribe}
+        >
           Subscribe
         </Button>
       )}

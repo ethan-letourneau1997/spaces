@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Collapse, Box } from '@mantine/core';
+import { Collapse, Box, UnstyledButton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import { Database } from '@/lib/database';
@@ -20,11 +20,11 @@ export function CommentFooter({ comment, userVote, totalVotes }: CommentFooterPr
 
   return (
     <Box>
-      <div className="flex gap-3">
+      <div className="flex gap-3 mt-3">
         <VoteHandler userVote={userVote} totalVotes={totalVotes} comment={comment} horizontal />
-        <Button visibleFrom="sm" variant="subtle" onClick={toggle}>
+        <UnstyledButton className="!text-sm font-semibold" visibleFrom="sm" onClick={toggle}>
           {opened ? 'Cancel' : 'Reply'}
-        </Button>
+        </UnstyledButton>
         <ChildCommentModal parentComment={comment} />
         <CommentOptions comment={comment} />
       </div>

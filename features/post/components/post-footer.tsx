@@ -30,7 +30,7 @@ export function PostFooter({ postVotes, userVote, post, commentCount }: PostFoot
             {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
           </span>
         </div>
-        <UnstyledButton className="!text-sm" visibleFrom="sm" onClick={toggle}>
+        <UnstyledButton className="!text-sm font-semibold" visibleFrom="sm" onClick={toggle}>
           {opened ? 'Cancel' : 'Reply'}
         </UnstyledButton>
         <RootCommentModal post={post} />

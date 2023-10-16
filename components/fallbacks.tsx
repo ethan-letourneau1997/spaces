@@ -1,17 +1,6 @@
 'use client';
 
-import {
-  ActionIcon,
-  Box,
-  Card,
-  Flex,
-  Group,
-  Skeleton,
-  Space,
-  Stack,
-  Tabs,
-  Text,
-} from '@mantine/core';
+import { ActionIcon, Box, Card, Flex, Group, Skeleton, Stack, Tabs, Text } from '@mantine/core';
 import { IconBook, IconLink, IconPhoto } from '@tabler/icons-react';
 import { DownvoteButton, UpvoteButton } from './vote-buttons';
 
@@ -74,10 +63,7 @@ export function PostPageSkeleton() {
   return (
     <Stack>
       <PostSkeleton />
-      <CommentsSkeleton>
-        <Skeleton h={184} />
-        <Space h="lg" />
-      </CommentsSkeleton>
+      <CommentsSkeleton />
     </Stack>
   );
 }

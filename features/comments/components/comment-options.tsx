@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Button, Group, Menu, Modal, Text } from '@mantine/core';
+import { Button, Group, Menu, Modal, Text, UnstyledButton } from '@mantine/core';
 
 import { SlOptions } from 'react-icons/sl';
 import { AiFillDelete } from 'react-icons/ai';
@@ -58,9 +58,9 @@ export function CommentOptions({ comment }: CommentOptionsProps) {
 
         <Menu shadow="md">
           <Menu.Target>
-            <ActionIcon variant="transparent" aria-label="Settings">
+            <UnstyledButton className="flex items-center">
               <SlOptions />
-            </ActionIcon>
+            </UnstyledButton>
           </Menu.Target>
 
           <Menu.Dropdown>

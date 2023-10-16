@@ -10,7 +10,7 @@ import { createRootComment } from '@/utils/create-root-comment';
 
 type RootCommentInputProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
-  closeInput: () => void;
+  closeInput?: () => void;
 };
 
 export function RootCommentInput({ post, closeInput }: RootCommentInputProps) {
@@ -31,7 +31,7 @@ export function RootCommentInput({ post, closeInput }: RootCommentInputProps) {
 
   const replyButton = (
     <>
-      <Button variant="subtle" color="red" onClick={closeInput}>
+      <Button variant="subtle" color="red" onClick={closeInput || null}>
         Cancel
       </Button>
       <Button loading={isPending} onClick={handleRootComment}>

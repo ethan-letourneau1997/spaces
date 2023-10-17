@@ -31,8 +31,8 @@ export function ProfileSidebar() {
         <Text ta="center">{profile.biography}</Text>
         <Divider my="sm" />
         <SimpleGrid cols={2}>
-          <ProfilePostCount userId={profile.id} />
-          <ProfileCommentCount userId={profile.id} />
+          <ProfilePostCount profile={profile} />
+          <ProfileCommentCount profile={profile} />
         </SimpleGrid>
       </SidebarWrapper>
     );

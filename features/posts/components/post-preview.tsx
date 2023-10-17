@@ -30,7 +30,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
         >
           <Suspense fallback={<></>}>
             <div className="flex items-center w-full h-full ">
-              <Box className="hidden w-full sm:block">
+              <Box className="hidden w-full sm:block" maw={115}>
                 <AspectRatio ratio={3 / 2.2}>
                   <PostThumbnail post={post} />
                 </AspectRatio>

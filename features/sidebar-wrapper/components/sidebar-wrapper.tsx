@@ -7,7 +7,15 @@ type SidebarWrapperProps = {
 
 export function SidebarWrapper({ children, miw }: SidebarWrapperProps) {
   return (
-    <Card bg="#212227" visibleFrom="md" miw={miw || '300px'} maw="300px" h="fit-content" withBorder>
+    <Card
+      mt="sm"
+      bg="#212227"
+      visibleFrom="md"
+      miw={miw || '300px'}
+      maw="300px"
+      h="fit-content"
+      withBorder
+    >
       {children}
     </Card>
   );

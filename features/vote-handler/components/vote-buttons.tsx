@@ -70,7 +70,7 @@ export function VoteButtons({ totalVotes, userVote, post, comment, horizontal }:
         )}
       </UnstyledButton>
       {/* <BiUpvote /> */}
-      <span className="text-sm ">{optimisticTotalVotes}</span>
+      <span className="text-sm text-center">{optimisticTotalVotes}</span>
       <UnstyledButton
         type="button"
         onClick={handleDownvote}

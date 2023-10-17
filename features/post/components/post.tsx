@@ -48,7 +48,7 @@ export async function Post({ params }: PostProps) {
       <Stack>
         <Card className="!bg-dark-6.5" withBorder>
           <PostHeader post={post} />
-          <Title mt={8} order={1} size="h3">
+          <Title mt="sm" order={1} size="h3">
             {post.title}
           </Title>
           <Space h="md" />

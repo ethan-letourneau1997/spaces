@@ -18,7 +18,7 @@ import { Database } from '@/lib/database';
 import { PostThumbnail } from '@/features/post-thumbnail';
 import { PostPreviewHeader } from './post-preview-header';
 import { PostPreviewTitle } from './post-preview-title';
-import { VoteHandler } from '@/features/vote-handler';
+import { VoteButtons } from '@/features/vote-handler';
 import { PostOptions } from '@/features/post-options';
 
 type PostPreviewCardProps = {
@@ -60,7 +60,7 @@ export function PostPreviewCard({ post, postVotes, userVote, commentCount }: Pos
           </Grid.Col>
           <Grid.Col span={1}>
             <Flex justify="flex-end">
-              <VoteHandler post={post} totalVotes={postVotes} userVote={userVote} />
+              <VoteButtons post={post} totalVotes={postVotes} userVote={userVote} />
             </Flex>
           </Grid.Col>
         </Grid>
@@ -88,7 +88,7 @@ export function PostPreviewCard({ post, postVotes, userVote, commentCount }: Pos
           </TypographyStylesProvider>
         )}
         <Group gap={4} align="center" mt="xs">
-          <VoteHandler horizontal post={post} totalVotes={postVotes} userVote={userVote} />
+          <VoteButtons horizontal post={post} totalVotes={postVotes} userVote={userVote} />
           <Group gap={1} align="center">
             <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
               <LiaCommentAltSolid size={18} />

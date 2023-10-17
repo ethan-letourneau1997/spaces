@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Box, Button, Group, Menu, Modal, Text } from '@mantine/core';
+import { Box, Button, Group, Menu, Modal, Text, UnstyledButton } from '@mantine/core';
 
 import { SlOptions } from 'react-icons/sl';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
@@ -50,9 +50,9 @@ export function PostOptions({ post }: PostOptionsProps) {
       <>
         <Menu shadow="md">
           <Menu.Target>
-            <ActionIcon pt={3} color="dark.1" variant="transparent" aria-label="Settings">
+            <UnstyledButton color="dark.1" aria-label="Post Options">
               <SlOptions size={15} />
-            </ActionIcon>
+            </UnstyledButton>
           </Menu.Target>
 
           <Menu.Dropdown>

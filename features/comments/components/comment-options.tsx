@@ -58,7 +58,7 @@ export function CommentOptions({ comment }: CommentOptionsProps) {
 
         <Menu shadow="md">
           <Menu.Target>
-            <UnstyledButton className="flex items-center">
+            <UnstyledButton className="flex items-center ml-1" c="dark.1">
               <SlOptions />
             </UnstyledButton>
           </Menu.Target>

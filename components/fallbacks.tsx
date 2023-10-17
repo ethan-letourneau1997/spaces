@@ -2,7 +2,7 @@
 
 import { ActionIcon, Box, Card, Flex, Group, Skeleton, Stack, Tabs, Text } from '@mantine/core';
 import { IconBook, IconLink, IconPhoto } from '@tabler/icons-react';
-import { DownvoteButton, UpvoteButton } from './vote-buttons';
+import { BiDownvote, BiUpvote } from 'react-icons/bi';
 
 export function PostSkeleton() {
   return (
@@ -80,11 +80,11 @@ export function VoteButtonsFallback({ horizontal }: VoteButtonsFallbackProps) {
   return (
     <Flex direction={horizontal ? 'row' : 'column'} align="center" justify="center" gap={2}>
       <ActionIcon variant="transparent" color="gray">
-        <UpvoteButton />
+        <BiUpvote />
       </ActionIcon>
       <Text>0</Text>
       <ActionIcon variant="transparent" color="gray">
-        <DownvoteButton />
+        <BiDownvote />
       </ActionIcon>
     </Flex>
   );

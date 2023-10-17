@@ -1,11 +1,14 @@
 'use client';
 
-import { Collapse, UnstyledButton } from '@mantine/core';
-import { LiaCommentAltSolid } from 'react-icons/lia';
+import { Collapse, UnstyledButton, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Database } from '@/lib/database';
-import { VoteHandler } from '@/features/vote-handler';
+import { FaCommentAlt } from 'react-icons/fa';
+import { BsFillReplyFill } from 'react-icons/bs';
+import { ImCross } from 'react-icons/im';
 import { RootCommentInput, RootCommentModal } from '@/features/root-comment-input';
+import { VoteButtons } from '@/features/vote-handler';
+import { Database } from '@/lib/database';
+import { PostSaveButton } from './post-save-button';
 
 type PostFooterProps = {
   postVotes: number;
@@ -19,20 +22,32 @@ export function PostFooter({ postVotes, userVote, post, commentCount }: PostFoot
 
   return (
     <>
-      <div className="flex gap-3 mt-2">
-        <VoteHandler horizontal totalVotes={postVotes || 0} userVote={userVote || 0} post={post} />
-        <div className="flex items-center gap-1 ">
-          <UnstyledButton className="flex items-center">
-            <LiaCommentAltSolid size={18} />
+      <div className="flex gap-4 mt-2 ">
+        <VoteButtons horizontal totalVotes={postVotes || 0} userVote={userVote || 0} post={post} />
+        <div className="flex items-center gap-1.5 ">
+          <UnstyledButton className="flex items-center" c="dark.2" pt={1}>
+            <FaCommentAlt size={14} />
           </UnstyledButton>
 
-          <span className="text-sm ">
+          <Text size="sm" c="dark.2" fw={700} className="text-sm ">
             {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
-          </span>
+          </Text>
         </div>
-        <UnstyledButton className="!text-sm font-semibold" visibleFrom="sm" onClick={toggle}>
+
+        <UnstyledButton
+          className="!text-sm hover:!text-dark-0 flex items-center gap-1"
+          py={2}
+          visibleFrom="sm"
+          fw={700}
+          c="dark.2"
+          onClick={toggle}
+        >
+          {opened ? <ImCross size={10} /> : <BsFillReplyFill size={18} className="mb-0.5" />}
           {opened ? 'Cancel' : 'Reply'}
         </UnstyledButton>
+
+        <PostSaveButton post={post} />
+
         <RootCommentModal post={post} />
       </div>
       <Collapse in={opened} pt="xs">

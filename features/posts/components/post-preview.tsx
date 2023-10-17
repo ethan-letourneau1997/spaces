@@ -16,7 +16,7 @@ type PostPreviewProps = {
 
 export function PostPreview({ post, postVotes, userVote, commentCount }: PostPreviewProps) {
   return (
-    <Card mt="sm" withBorder className="hover:!border-gray-7">
+    <Card mb="sm" withBorder className="hover:!border-gray-7">
       {post.type !== 'text' && (
         <div className="block w-full mb-2 sm:hidden h-[200px] ">
           <PostThumbnail post={post} />

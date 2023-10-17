@@ -31,6 +31,9 @@ export function DesktopNavbar({ username }: DesktopNavbarProps) {
               <Menu.Item href={`/profile/${username}/posts/${DEFAULT_SORT}`} component={Link}>
                 Profile
               </Menu.Item>
+              <Menu.Item component={Link} href="/saved">
+                Saved
+              </Menu.Item>
               <Menu.Item component={Link} href="/settings">
                 Settings
               </Menu.Item>

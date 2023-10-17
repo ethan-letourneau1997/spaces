@@ -1,6 +1,6 @@
 'use client';
 
-import { Title, Text, Divider, Box, Flex } from '@mantine/core';
+import { Title, Divider, Box, Flex } from '@mantine/core';
 import useSWR from 'swr';
 import { PiSignpostFill } from 'react-icons/pi';
 import { SidebarWrapper } from '@/features/sidebar-wrapper';
@@ -16,13 +16,12 @@ export function SavedPostsSidebar() {
       <Title ta="center" c="gray.3" order={2}>
         Saved Posts
       </Title>
-      <div className="text-sm text-center text-gray-5">Posts you have saved for later.</div>
-      <Divider mb="xs" mt={5} />
-
+      <div className="mb-2 text-sm text-center text-gray-5">Posts you have saved for later.</div>
+      <Divider mb="xs" />
       <Box ta="center">
         <Flex align="center" gap="xs" justify="center">
-          <PiSignpostFill />
-          <Text>{savedCount || 0}</Text>
+          <PiSignpostFill size={20} />
+          <span className="text-lg font-semibold">{savedCount || 0}</span>
         </Flex>
         <span className="text-center text-gray-3 ">Posts Saved</span>
       </Box>

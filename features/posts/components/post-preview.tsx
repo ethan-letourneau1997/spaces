@@ -1,8 +1,7 @@
 'use client';
 
-import { ActionIcon, Anchor, AspectRatio, Box, Card, Group, Stack, Text } from '@mantine/core';
+import { Anchor, AspectRatio, Box, Card, Group, Stack, Text } from '@mantine/core';
 import { Suspense } from 'react';
-import { LiaCommentAltSolid } from 'react-icons/lia';
 import Link from 'next/link';
 import { Database } from '@/lib/database';
 import { PostThumbnail } from '@/features/post-thumbnail';
@@ -10,6 +9,8 @@ import { VoteButtons } from '@/features/vote-handler';
 import { PostOptions } from '@/features/post-options';
 import { DEFAULT_SORT } from '@/lib/constants';
 import { getTimeSinceNow } from '@/utils/get-time-since-now';
+import { PostSaveButton } from '@/features/post-save-button';
+import { PostCommentCount } from '@/components/post-comment-count';
 
 type PostPreviewProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
@@ -84,16 +85,17 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
               </div>
 
               <Anchor component={Link} href={linkToPost} className="!no-underline ">
-                <div className="flex items-center">
+                <PostCommentCount count={commentCount} small />
+                {/* <div className="flex items-center">
                   <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
                     <LiaCommentAltSolid size={18} />
                   </ActionIcon>
                   <Text size="xs" fw={600} c="dark.1">
                     {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
                   </Text>
-                </div>
+                </div> */}
               </Anchor>
-
+              <PostSaveButton post={post} small />
               <PostOptions post={post} />
             </div>
           </Stack>

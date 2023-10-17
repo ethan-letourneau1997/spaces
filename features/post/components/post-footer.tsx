@@ -8,7 +8,7 @@ import { ImCross } from 'react-icons/im';
 import { RootCommentInput, RootCommentModal } from '@/features/root-comment-input';
 import { VoteButtons } from '@/features/vote-handler';
 import { Database } from '@/lib/database';
-import { PostSaveButton } from './post-save-button';
+import { PostSaveButton } from '@/features/post-save-button';
 
 type PostFooterProps = {
   postVotes: number;

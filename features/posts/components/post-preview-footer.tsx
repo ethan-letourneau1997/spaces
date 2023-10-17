@@ -24,7 +24,7 @@ export function PostPreviewFooter({
   saved,
 }: PostPreviewFooterProps) {
   return (
-    <div className="flex items-center gap-2 mt-4 sm:mt-2">
+    <div className="flex items-center gap-3 mt-4 sm:mt-2">
       <div className="block sm:hidden">
         <VoteButtons horizontal post={post} totalVotes={postVotes} userVote={userVote} />
       </div>

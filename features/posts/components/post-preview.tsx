@@ -24,13 +24,13 @@ export function PostPreview({ post, postVotes, userVote, commentCount, saved }: 
         </div>
       )}
 
-      <div className="flex">
+      <div className="flex sm:gap-4">
         <div className="max-w-[115px] w-full hidden sm:block ">
           <AspectRatio ratio={3 / 2.3}>
             <PostThumbnail post={post} />
           </AspectRatio>
         </div>
-        <div className="flex flex-col justify-between grow sm:px-2.5">
+        <div className="flex flex-col justify-between grow">
           <PostPreviewHeader post={post} />
           <PostPreviewFooter
             post={post}

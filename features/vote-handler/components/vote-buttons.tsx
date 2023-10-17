@@ -58,28 +58,20 @@ export function VoteButtons({ totalVotes, userVote, post, comment, horizontal }:
     <div
       className={`flex gap-1 ${horizontal ? ' items-center' : 'flex-col gap-2 justify-between'}`}
     >
-      <UnstyledButton
-        className="flex items-center hover:text-orange-5"
-        onClick={handleUpvote}
-        color="gray"
-      >
+      <UnstyledButton className="flex items-center " onClick={handleUpvote} color="gray">
         {optimisticUserVote === 1 ? (
           <BiSolidUpvote size={17} className="text-orange-5" />
         ) : (
-          <BiUpvote size={17} className="text-dark-2" />
+          <BiUpvote size={17} className="text-dark-2 hover:text-orange-5" />
         )}
       </UnstyledButton>
       {/* <BiUpvote /> */}
       <span className="text-sm text-center">{optimisticTotalVotes}</span>
-      <UnstyledButton
-        type="button"
-        onClick={handleDownvote}
-        className="flex items-center hover:text-orange-5"
-      >
+      <UnstyledButton type="button" onClick={handleDownvote} className="flex items-center ">
         {optimisticUserVote === -1 ? (
           <BiSolidDownvote size={17} className="text-orange-5" />
         ) : (
-          <BiDownvote size={17} className="text-dark-2" />
+          <BiDownvote size={17} className="text-dark-2 hover:text-orange-5" />
         )}
       </UnstyledButton>
     </div>

@@ -47,9 +47,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
           <Stack align="stretch" justify="space-between" gap={0} h="100%">
             <div>
               <Group gap={0}>
-                <Text ml={5} size="xs">
-                  posted by&nbsp;
-                </Text>
+                <Text size="xs">posted by&nbsp;</Text>
                 <Anchor
                   component={Link}
                   href={`/profile/${post.username}/posts/${DEFAULT_SORT}`}

@@ -11,6 +11,7 @@ import { DesktopNavbar } from './desktop-navbar';
 import { MobileNavbar } from './mobile-navbar';
 import { fetchSession } from '@/utils/fetch-session';
 import { fetchProfileById } from '@/utils/fetch-profile-by-id';
+import { MobileHeaderContent } from './mobile-header-content';
 
 type NavbarProps = {
   children: React.ReactNode;
@@ -33,21 +34,24 @@ export function Navbar({ children }: NavbarProps) {
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { desktop: true, mobile: !opened } }}
       // padding="md"
-      className="!sm:px-4 py-0 sm:py-4"
+      className="!sm:px-4 py-0 md:py-4"
     >
       <AppShell.Header bg="dark.9">
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
-          <Group px="md" justify="space-between" style={{ flex: 1 }}>
+
+          <MobileHeaderContent />
+
+          <Group className="!hidden md:!flex" px="md" justify="space-between" style={{ flex: 1 }}>
             <Group gap="xs">
               <Flex c="pink.8">
-                <FaUserAstronaut size={26} />
+                <FaUserAstronaut className="text-xl md:text-3xl" />
               </Flex>
               <Anchor
-                className="!no-underline"
+                className="!no-underline !text-xl md:!text-3xl"
                 component={Link}
                 href="/"
-                size="30px"
+                // size="30px"
                 fw={600}
                 variant="gradient"
                 gradient={{ from: 'pink', to: 'yellow' }}

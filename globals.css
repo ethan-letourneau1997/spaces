@@ -56,6 +56,10 @@
 /* Medium (md) - 992px and below */
 @media (max-width: 992px) {
   /* Your CSS rules for medium screens go here */
+  .mantine-Card-root {
+    border: none !important;
+    border-radius: 0px !important;
+  }
 }
 
 /* Large (lg) - 1200px and below */
@@ -92,6 +96,8 @@
   outline: transparent;
   border-color: var(--mantine-color-gray-7);
 }
+
+
 
 
 

@@ -12,20 +12,21 @@ type PostPreviewProps = {
   postVotes: number;
   userVote: number;
   commentCount: number;
+  saved: boolean;
 };
 
-export function PostPreview({ post, postVotes, userVote, commentCount }: PostPreviewProps) {
+export function PostPreview({ post, postVotes, userVote, commentCount, saved }: PostPreviewProps) {
   return (
     <Card mb="sm" withBorder className="hover:!border-gray-7">
       {post.type !== 'text' && (
-        <div className="block w-full mb-2 sm:hidden h-[200px] ">
+        <div className="block w-full mb-2 sm:hidden h-[200px]">
           <PostThumbnail post={post} />
         </div>
       )}
 
       <div className="flex">
-        <div className="max-w-[115px] w-full hidden sm:block">
-          <AspectRatio ratio={3 / 2.2}>
+        <div className="max-w-[115px] w-full hidden sm:block ">
+          <AspectRatio ratio={3 / 2.3}>
             <PostThumbnail post={post} />
           </AspectRatio>
         </div>
@@ -36,6 +37,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
             postVotes={postVotes}
             userVote={userVote}
             commentCount={commentCount}
+            saved={saved}
           />
         </div>
         <div className="items-center justify-end hidden sm:flex ">

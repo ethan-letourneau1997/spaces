@@ -2,33 +2,20 @@
 
 import { UnstyledButton } from '@mantine/core';
 import { BsBookmark, BsBookmarkFill } from 'react-icons/bs';
-import { useEffect, experimental_useOptimistic as useOptimistic } from 'react';
-import { usePathname } from 'next/navigation';
+import { experimental_useOptimistic as useOptimistic } from 'react';
+
 import { Database } from '@/lib/database';
 import { savePost } from '../api/save-post';
-import { checkUserSave } from '../api/check-user-save';
 import { unsavePost } from '../api/unsave-post';
 
 type PostSaveButtonProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
   small?: boolean;
+  saved?: boolean;
 };
 
-export function PostSaveButton({ post, small }: PostSaveButtonProps) {
-  const pathname = usePathname();
-
-  const [optimisticPostSaved, setOptimisticPostSaved] = useOptimistic<boolean>(
-    pathname === '/saved'
-  );
-
-  async function checkSave() {
-    const isPostSaved = await checkUserSave(post.id);
-    setOptimisticPostSaved(isPostSaved);
-  }
-
-  useEffect(() => {
-    checkSave();
-  }, [post]);
+export function PostSaveButton({ post, small, saved }: PostSaveButtonProps) {
+  const [optimisticPostSaved, setOptimisticPostSaved] = useOptimistic<boolean>(saved);
 
   async function handleSavePost() {
     await savePost(post);

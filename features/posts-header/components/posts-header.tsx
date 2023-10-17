@@ -20,7 +20,7 @@ export function PostsHeader({
   newPostButton = true,
 }: PostsHeaderProps) {
   return (
-    <Card withBorder>
+    <Card withBorder mb="sm">
       <div className="flex justify-between gap-7">
         <Group>
           <Anchor

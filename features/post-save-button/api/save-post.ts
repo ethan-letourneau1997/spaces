@@ -14,5 +14,6 @@ export async function savePost(post: Database['public']['Views']['detailed_post'
     await supabase.from('post_save').insert({ post_id: post.id, user_id: data.session.user.id });
     revalidatePath(`/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`);
     revalidatePath(`/saved/${post.posted_in}/${post.community_name}/post/${post.id}`);
+    revalidatePath(`/saved/${post.posted_in}/${post.community_name}`);
   }
 }

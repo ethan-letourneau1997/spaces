@@ -11,4 +11,5 @@ export async function unsavePost(post: Database['public']['Views']['detailed_pos
   await supabase.from('post_save').delete().match({ post_id: post.id });
   revalidatePath(`/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`);
   revalidatePath(`/saved/${post.posted_in}/${post.community_name}/post/${post.id}`);
+  revalidatePath(`/saved/${post.posted_in}/${post.community_name}`);
 }

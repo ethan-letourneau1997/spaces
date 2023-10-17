@@ -13,6 +13,7 @@ type PostPreviewFooterProps = {
   postVotes: number;
   userVote: number;
   commentCount: number;
+  saved: boolean;
 };
 
 export function PostPreviewFooter({
@@ -20,6 +21,7 @@ export function PostPreviewFooter({
   postVotes,
   userVote,
   commentCount,
+  saved,
 }: PostPreviewFooterProps) {
   return (
     <div className="flex items-center gap-2 mt-4 sm:mt-2">
@@ -33,7 +35,7 @@ export function PostPreviewFooter({
       >
         <PostCommentCount count={commentCount} small />
       </Anchor>
-      <PostSaveButton post={post} small />
+      <PostSaveButton post={post} small saved={saved} />
       <PostOptions post={post} />
     </div>
   );

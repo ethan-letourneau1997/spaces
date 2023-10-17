@@ -47,7 +47,9 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
           <Stack align="stretch" justify="space-between" gap={0} h="100%">
             <div>
               <Group gap={0}>
-                <Text size="xs">posted by&nbsp;</Text>
+                <Text ml={5} size="xs">
+                  posted by&nbsp;
+                </Text>
                 <Anchor
                   component={Link}
                   href={`/profile/${post.username}/posts/${DEFAULT_SORT}`}
@@ -68,15 +70,17 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
                   {post.community_name}
                 </Anchor>
                 <Text size="xs">&nbsp;-&nbsp;</Text>
-                <Text size="xs">{getTimeSinceNow(post.created_at, true)}</Text>
+                <Text mr={10} size="xs">
+                  {getTimeSinceNow(post.created_at, true)}
+                </Text>
               </Group>
               <div>
-                <Link className="font-bold" href={linkToPost}>
+                <Link className="font-bold no-underline text-gray-3" href={linkToPost}>
                   {post.title}
                 </Link>
               </div>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
               <div className="block -ml-2 sm:hidden">
                 <VoteButtons horizontal post={post} totalVotes={postVotes} userVote={userVote} />
               </div>

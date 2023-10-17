@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Group, Menu, Modal, Text, UnstyledButton } from '@mantine/core';
+import { ActionIcon, Box, Button, Group, Menu, Modal, Text } from '@mantine/core';
 
 import { SlOptions } from 'react-icons/sl';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
@@ -50,9 +50,12 @@ export function PostOptions({ post }: PostOptionsProps) {
       <>
         <Menu shadow="md">
           <Menu.Target>
-            <UnstyledButton color="dark.1" aria-label="Post Options">
+            {/* <UnstyledButton className="!flex !items-end " color="dark.1" aria-label="Post Options">
               <SlOptions size={15} />
-            </UnstyledButton>
+            </UnstyledButton> */}
+            <ActionIcon c="dark.1" variant="transparent" size={17}>
+              <SlOptions className="mt-0.5" />
+            </ActionIcon>
           </Menu.Target>
 
           <Menu.Dropdown>

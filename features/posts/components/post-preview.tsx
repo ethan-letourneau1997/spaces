@@ -6,7 +6,7 @@ import { LiaCommentAltSolid } from 'react-icons/lia';
 import Link from 'next/link';
 import { Database } from '@/lib/database';
 import { PostThumbnail } from '@/features/post-thumbnail';
-import { VoteHandler } from '@/features/vote-handler';
+import { VoteButtons } from '@/features/vote-handler';
 import { PostOptions } from '@/features/post-options';
 import { DEFAULT_SORT } from '@/lib/constants';
 import { getTimeSinceNow } from '@/utils/get-time-since-now';
@@ -78,7 +78,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
             </div>
             <div className="flex items-center">
               <div className="block -ml-2 sm:hidden">
-                <VoteHandler horizontal post={post} totalVotes={postVotes} userVote={userVote} />
+                <VoteButtons horizontal post={post} totalVotes={postVotes} userVote={userVote} />
               </div>
 
               <Anchor component={Link} href={linkToPost} className="!no-underline ">
@@ -97,7 +97,7 @@ export function PostPreview({ post, postVotes, userVote, commentCount }: PostPre
           </Stack>
         </div>
         <div className="items-center justify-end hidden col-span-1 sm:flex">
-          <VoteHandler post={post} totalVotes={postVotes} userVote={userVote} />
+          <VoteButtons post={post} totalVotes={postVotes} userVote={userVote} />
         </div>
       </div>
     </Card>

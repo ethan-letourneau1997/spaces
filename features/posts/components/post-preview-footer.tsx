@@ -1,31 +1,40 @@
-import { ActionIcon, Text } from '@mantine/core';
+'use client';
 
-import { LiaCommentAltSolid } from 'react-icons/lia';
+import { Anchor } from '@mantine/core';
+import Link from 'next/link';
 import { PostOptions } from '@/features/post-options';
 import { Database } from '@/lib/database';
-
-import { fetchPostCommentCount } from '@/utils/fetch-post-comment-count';
+import { VoteButtons } from '@/features/vote-handler';
+import { PostCommentCount } from '@/components/post-comment-count';
+import { PostSaveButton } from '@/features/post-save-button';
 
 type PostPreviewFooterProps = {
   post: Database['public']['Views']['detailed_post']['Row'];
+  postVotes: number;
+  userVote: number;
+  commentCount: number;
 };
 
-export async function PostPreviewFooter({ post }: PostPreviewFooterProps) {
-  //   const commentCount = await fetchPostCommentCount(post.id);
-  const commentCount = await fetchPostCommentCount(post.id);
-
+export function PostPreviewFooter({
+  post,
+  postVotes,
+  userVote,
+  commentCount,
+}: PostPreviewFooterProps) {
   return (
-    <div>
-      <div>
-        <ActionIcon pt={2} color="dark.1" variant="transparent" aria-label="Settings">
-          <LiaCommentAltSolid size={18} />
-        </ActionIcon>
-        <Text size="xs" fw={600} c="dark.1">
-          {commentCount || 0} comment{commentCount !== 1 || !commentCount ? 's' : ''}
-        </Text>
+    <div className="flex items-center gap-2">
+      <div className="block -ml-2 sm:hidden">
+        <VoteButtons horizontal post={post} totalVotes={postVotes} userVote={userVote} />
       </div>
+      <Anchor
+        component={Link}
+        href={`/spaces/${post.posted_in}/${post.community_name}/post/${post.id}`}
+        className="!no-underline "
+      >
+        <PostCommentCount count={commentCount} small />
+      </Anchor>
+      <PostSaveButton post={post} small />
       <PostOptions post={post} />
-      test
     </div>
   );
 }

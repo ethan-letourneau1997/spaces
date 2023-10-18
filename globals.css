@@ -98,7 +98,10 @@
 }
 
 
-
+[data-active="true"] .mantine-SegmentedControl-label  {
+  /* background: linear-gradient(45deg, #c2255c 0%, #f08c00 100%) !important; */
+  /* background-color: #c2255c  !important; */
+}
 
 
 

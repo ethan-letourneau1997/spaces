@@ -10,10 +10,7 @@ export function PostPagination() {
   const supabase = createClientComponentClient();
   const params = useParams();
 
-  const { spaceId } = params;
-  const { spaceName } = params;
-  const { page } = params;
-  const { sort } = params;
+  const { spaceId, spaceName, page, sort } = params;
 
   const currentPage = page ? parseInt(page as string, 10) : 1;
   const router = useRouter();

@@ -135,3 +135,20 @@ export function NewPostFormPlaceholder() {
     </Card>
   );
 }
+
+export function PostPreviewsSkeleton() {
+  return (
+    <div className="flex flex-col gap-2">
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+      <Skeleton height={122} />
+    </div>
+  );
+}

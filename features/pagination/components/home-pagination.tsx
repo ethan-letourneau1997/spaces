@@ -10,8 +10,7 @@ export function HomePagination() {
   const supabase = createClientComponentClient();
   const params = useParams();
 
-  const { page } = params;
-  const { sort } = params;
+  const { sort, page } = params;
 
   const currentPage = page ? parseInt(page as string, 10) : 1;
   const router = useRouter();

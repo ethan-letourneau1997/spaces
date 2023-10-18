@@ -1,10 +1,9 @@
-'use server';
-
 import { cookies } from 'next/headers';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 
-export async function fetchSortedProfileComments(
-  username: string,
+export async function fetchSortedVotedPosts(
+  userId: string,
+  type: string,
   sortBy: 'top' | 'new' | 'old',
   page: string
 ) {
@@ -15,38 +14,40 @@ export async function fetchSortedProfileComments(
   const lowerLimit = (currentPage - 1) * postsPerPage;
   const upperLimit = lowerLimit + postsPerPage - 1;
 
-  async function getSortedComments() {
-    const { data: user } = await supabase
-      .from('public_profile')
+  const vote = type === 'upvoted' ? 1 : -1;
+  async function getSortedPosts() {
+    const { data: voted_posts } = await supabase
+      .from('post_vote')
       .select()
-      .eq('username', username)
-      .single();
+      .match({ user_id: userId, vote });
 
-    if (sortBy === 'new') {
+    const postIds = voted_posts?.map((voted) => voted.post_id);
+
+    if (sortBy === 'new' && postIds) {
       const { data: posts } = await supabase
-        .from('comment')
+        .from('detailed_post')
         .select()
-        .eq('posted_by', user.id)
+        .in('id', postIds)
         .order('created_at', { ascending: false })
         .range(lowerLimit, upperLimit);
       return posts;
     }
 
-    if (sortBy === 'old') {
+    if (sortBy === 'old' && postIds) {
       const { data: posts } = await supabase
-        .from('comment')
+        .from('detailed_post')
         .select()
-        .eq('posted_by', user.id)
+        .in('id', postIds)
         .order('created_at', { ascending: true })
         .range(lowerLimit, upperLimit);
       return posts;
     }
 
-    if (sortBy === 'top') {
+    if (sortBy === 'top' && postIds) {
       const { data: posts } = await supabase
-        .from('comment_with_votes')
+        .from('post_with_votes')
         .select()
-        .eq('posted_by', user.id)
+        .in('id', postIds)
         .order('total_votes', { ascending: false })
         .range(lowerLimit, upperLimit);
 
@@ -54,7 +55,7 @@ export async function fetchSortedProfileComments(
     }
     return [];
   }
-  const posts = await getSortedComments();
+  const posts = await getSortedPosts();
 
   return posts || [];
 }

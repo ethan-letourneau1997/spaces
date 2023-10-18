@@ -34,7 +34,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "features/profile-comments/components/profile-comment.tsx"  ],
+, "features/comment-previews/components/profile-comment.tsx"  ],
   "exclude": [
     "node_modules"
   ]

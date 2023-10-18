@@ -1,22 +1,16 @@
 import { Stack } from '@mantine/core';
 import { Suspense } from 'react';
-import { fetchSortedProfileComments } from '../api/fetch-sorted-profile-comments';
-
-import { ProfileComment } from './profile-comment';
 import { PostsSkeleton } from '@/components/PostsSkeleton';
+import { ProfileComment } from '@/features/comment-previews/components/profile-comment';
+import { Database } from '@/lib/database';
 
 type ProfileCommentsProps = {
-  params: {
-    page: string;
-    sort: 'top' | 'new' | 'old';
-    username: string;
-  };
+  profileComments: Database['public']['Tables']['comment']['Row'][];
+
+  username: string;
 };
 
-export async function ProfileComments({ params }: ProfileCommentsProps) {
-  const { page, sort, username } = params;
-  const profileComments = await fetchSortedProfileComments(username, sort, page);
-
+export async function ProfileComments({ username, profileComments }: ProfileCommentsProps) {
   if (profileComments) {
     return (
       <Suspense fallback={<PostsSkeleton />}>

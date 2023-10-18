@@ -11,11 +11,11 @@ type PostsProps = {
 export async function PostPreviews({ posts }: PostsProps) {
   if (posts) {
     return (
-      <>
+      <div className="flex flex-col gap-2 ">
         {posts.map((post) => (
           <PostPreviewHandler key={post.id} post={post} />
         ))}
-      </>
+      </div>
     );
   }
 

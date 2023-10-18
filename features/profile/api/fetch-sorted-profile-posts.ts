@@ -4,9 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 
 export async function fetchSortedProfilePosts(
-  page: string,
+  userId: number,
   sortBy: 'top' | 'new' | 'old',
-  username: string
+  page: string
 ) {
   const supabase = createServerActionClient({ cookies });
 
@@ -16,19 +16,11 @@ export async function fetchSortedProfilePosts(
   const upperLimit = lowerLimit + postsPerPage - 1;
 
   async function getSortedPosts() {
-    const { data: userProfile } = await supabase
-      .from('public_profile')
-      .select()
-      .eq('username', username)
-      .single();
-
-    if (!userProfile) return [];
-
     if (sortBy === 'new') {
       const { data: posts } = await supabase
         .from('detailed_post')
         .select()
-        .eq('created_by', userProfile.id)
+        .eq('created_by', userId)
         .order('created_at', { ascending: false })
         .range(lowerLimit, upperLimit);
       return posts;
@@ -38,7 +30,7 @@ export async function fetchSortedProfilePosts(
       const { data: posts } = await supabase
         .from('detailed_post')
         .select()
-        .eq('created_by', userProfile.id)
+        .eq('created_by', userId)
         .order('created_at', { ascending: true })
         .range(lowerLimit, upperLimit);
       return posts;
@@ -48,7 +40,7 @@ export async function fetchSortedProfilePosts(
       const { data: posts } = await supabase
         .from('post_with_votes')
         .select()
-        .eq('created_by', userProfile.id)
+        .eq('created_by', userId)
         .order('total_votes', { ascending: false })
         .range(lowerLimit, upperLimit);
 

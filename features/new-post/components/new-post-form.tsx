@@ -2,6 +2,7 @@
 
 import { Button, Card, Flex, Tabs, TextInput, Text, Input } from '@mantine/core';
 import { IconBook, IconPhoto, IconLink } from '@tabler/icons-react';
+import { IoChatbox } from 'react-icons/io5';
 import { useState, useTransition } from 'react';
 import { FilePondFile } from 'filepond';
 import { useParams } from 'next/navigation';
@@ -33,7 +34,7 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
   // Initialize form
   const form = useForm({
     validateInputOnBlur: true,
-    initialValues: { title: '', link: '' },
+    initialValues: { title: '', link: '', details: '' },
     validate: {
       title: (value) => (value.length < 5 ? 'Title must be at lest 5 letters long' : null),
       link: (value) => {
@@ -43,11 +44,12 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
           ? null
           : 'Invalid URL. link should be formatted like https://www.example.com';
       },
+      details: (value) => (value.length < 10 ? 'Details must be at lest 10 letters long' : null),
     },
   });
 
   // Create a new post if there are no form errors
-  async function handleCreatePost(type: 'text' | 'link' | 'image') {
+  async function handleCreatePost(type: 'text' | 'link' | 'image' | 'chain') {
     const communityId = params.spaceId as string;
     const communityName = params.spaceName as string;
     const { title } = form.values;
@@ -57,6 +59,9 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
     }
     if (type === 'link') {
       content = form.values.link;
+    }
+    if (type === 'chain') {
+      content = form.values.details;
     }
 
     startTransition(async () => {
@@ -111,8 +116,19 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
     }
   };
 
+  // Validate chain form
+  const handleChainError = (errors: typeof form.errors) => {
+    if (errors.title) {
+      notifications.show({ message: 'Please fill title field', color: 'red' });
+    } else if (errors.details) {
+      notifications.show({ message: 'Please provide detailsL', color: 'red' });
+    } else {
+      handleCreatePost('chain');
+    }
+  };
+
   return (
-    <Card withBorder>
+    <Card withBorder maw={792} mx="auto">
       <Tabs defaultValue="text">
         <Tabs.List grow>
           <Tabs.Tab value="text" leftSection={<IconBook />}>
@@ -123,6 +139,9 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
           </Tabs.Tab>
           <Tabs.Tab value="images" leftSection={<IconPhoto />}>
             Images
+          </Tabs.Tab>
+          <Tabs.Tab value="chain" leftSection={<IoChatbox size={18} />}>
+            Chain
           </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel pt="lg" value="text">
@@ -195,6 +214,34 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
             <Text size="xs" c="red">
               {imagesError}
             </Text>
+            <Flex justify="flex-end" mt="sm">
+              <Button
+                variant="gradient"
+                gradient={{ from: 'pink', to: 'yellow', deg: 90 }}
+                type="submit"
+                mt="sm"
+                loading={isPending}
+              >
+                Create
+              </Button>
+            </Flex>
+          </form>
+        </Tabs.Panel>
+        <Tabs.Panel pt="lg" value="chain">
+          <CommunitySelect spaces={spaces} spaceId={spaceId} />
+          <form onSubmit={form.onSubmit(console.log, handleChainError)}>
+            <TextInput
+              className="mt-4"
+              label="Title"
+              placeholder="Title"
+              {...form.getInputProps('title')}
+            />
+            <TextInput
+              className="mt-6"
+              label="Details"
+              placeholder="Url Path"
+              {...form.getInputProps('details')}
+            />
             <Flex justify="flex-end" mt="sm">
               <Button
                 variant="gradient"

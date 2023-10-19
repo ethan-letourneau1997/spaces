@@ -38,7 +38,7 @@ export function SpaceSidebar() {
           </Anchor>
         </Center>
         <Space h="xs" />
-        <SpaceAvatar />
+        {/* <SpaceAvatar /> */}
         <Text mt="md" size="sm">
           {space.description}
         </Text>

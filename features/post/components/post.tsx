@@ -13,6 +13,7 @@ import { DEFAULT_SORT } from '@/lib/constants';
 import { CommentsSkeleton } from '@/components/fallbacks';
 import { PostHeader } from './post-header';
 import { fetchPostCommentCount } from '@/utils/fetch-post-comment-count';
+import { Chain } from '@/features/chain';
 
 type PostProps = {
   params: {
@@ -31,7 +32,7 @@ export async function Post({ params }: PostProps) {
     return (
       <div>
         Post not found. Return to&nbsp;
-        <Link href={`/spaces/${params.spaceId}/${params.spaceName}${DEFAULT_SORT}`}>
+        <Link href={`/spaces/${params.spaceId}/${params.spaceName}/${DEFAULT_SORT}`}>
           {params.spaceName}
         </Link>
         &nbsp;or see whats new in your <Link href="/feed">feed</Link>.
@@ -60,11 +61,15 @@ export async function Post({ params }: PostProps) {
             post={post}
           />
         </Card>
-        <Card bg="!bg-dark-6.5" className="!p-1 !sm:p-4 !pb-3" withBorder>
-          <Suspense fallback={<CommentsSkeleton />}>
-            <Comments params={params} />
-          </Suspense>
-        </Card>
+        {post.type === 'chain' ? (
+          <Chain params={params} />
+        ) : (
+          <Card bg="!bg-dark-6.5" className="!p-1 !sm:p-4 !pb-3" withBorder>
+            <Suspense fallback={<CommentsSkeleton />}>
+              <Comments params={params} />
+            </Suspense>
+          </Card>
+        )}
       </Stack>
     );
   }

@@ -5,8 +5,8 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 import { revalidatePath } from 'next/cache';
 
 export async function createChildComment(
-  parentComment: number,
-  postId: number | null,
+  parentComment: string | number,
+  postId: string | number | null,
   content: string,
   pathname: string
 ) {

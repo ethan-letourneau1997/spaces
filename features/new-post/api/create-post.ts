@@ -10,7 +10,7 @@ type createPostParams = {
   title: string;
   communityName: string;
   communityId: string;
-  type: string;
+  type: 'link' | 'text' | 'image' | 'chain';
   content?: string;
 };
 

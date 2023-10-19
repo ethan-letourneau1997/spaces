@@ -1,1013 +1,1007 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export interface Database {
   public: {
     Tables: {
       comment: {
         Row: {
-          content: string | null
-          created_at: string | null
-          id: number
-          parent_comment: number | null
-          posted_by: string | null
-          root_post: number | null
-        }
+          content: string | null;
+          created_at: string | null;
+          id: number;
+          parent_comment: number | null;
+          posted_by: string | null;
+          root_post: number | null;
+        };
         Insert: {
-          content?: string | null
-          created_at?: string | null
-          id?: number
-          parent_comment?: number | null
-          posted_by?: string | null
-          root_post?: number | null
-        }
+          content?: string | null;
+          created_at?: string | null;
+          id?: number;
+          parent_comment?: number | null;
+          posted_by?: string | null;
+          root_post?: number | null;
+        };
         Update: {
-          content?: string | null
-          created_at?: string | null
-          id?: number
-          parent_comment?: number | null
-          posted_by?: string | null
-          root_post?: number | null
-        }
+          content?: string | null;
+          created_at?: string | null;
+          id?: number;
+          parent_comment?: number | null;
+          posted_by?: string | null;
+          root_post?: number | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_details"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_details';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_vote_count"
-            referencedColumns: ["comment_id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_vote_count';
+            referencedColumns: ['comment_id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_posted_by_fkey"
-            columns: ["posted_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_posted_by_fkey';
+            columns: ['posted_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "detailed_post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'detailed_post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_preview"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_preview';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_preview_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_preview_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_vote_count"
-            referencedColumns: ["post_id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_vote_count';
+            referencedColumns: ['post_id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_with_community_name"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_with_community_name';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_with_votes';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       comment_vote: {
         Row: {
-          comment_id: number
-          created_at: string | null
-          user_id: string
-          vote: number | null
-        }
+          comment_id: number;
+          created_at: string | null;
+          user_id: string;
+          vote: number | null;
+        };
         Insert: {
-          comment_id: number
-          created_at?: string | null
-          user_id: string
-          vote?: number | null
-        }
+          comment_id: number;
+          created_at?: string | null;
+          user_id: string;
+          vote?: number | null;
+        };
         Update: {
-          comment_id?: number
-          created_at?: string | null
-          user_id?: string
-          vote?: number | null
-        }
+          comment_id?: number;
+          created_at?: string | null;
+          user_id?: string;
+          vote?: number | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "comment_vote_comment_id_fkey"
-            columns: ["comment_id"]
-            referencedRelation: "comment"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_vote_comment_id_fkey';
+            columns: ['comment_id'];
+            referencedRelation: 'comment';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_vote_comment_id_fkey"
-            columns: ["comment_id"]
-            referencedRelation: "comment_details"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_vote_comment_id_fkey';
+            columns: ['comment_id'];
+            referencedRelation: 'comment_details';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_vote_comment_id_fkey"
-            columns: ["comment_id"]
-            referencedRelation: "comment_vote_count"
-            referencedColumns: ["comment_id"]
+            foreignKeyName: 'comment_vote_comment_id_fkey';
+            columns: ['comment_id'];
+            referencedRelation: 'comment_vote_count';
+            referencedColumns: ['comment_id'];
           },
           {
-            foreignKeyName: "comment_vote_comment_id_fkey"
-            columns: ["comment_id"]
-            referencedRelation: "comment_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_vote_comment_id_fkey';
+            columns: ['comment_id'];
+            referencedRelation: 'comment_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_vote_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_vote_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       community: {
         Row: {
-          created_at: string | null
-          created_by: string | null
-          description: string
-          display_name: string
-          id: number
-          name: string
-        }
+          created_at: string | null;
+          created_by: string | null;
+          description: string;
+          display_name: string;
+          id: number;
+          name: string;
+        };
         Insert: {
-          created_at?: string | null
-          created_by?: string | null
-          description: string
-          display_name?: string
-          id?: number
-          name: string
-        }
+          created_at?: string | null;
+          created_by?: string | null;
+          description: string;
+          display_name?: string;
+          id?: number;
+          name: string;
+        };
         Update: {
-          created_at?: string | null
-          created_by?: string | null
-          description?: string
-          display_name?: string
-          id?: number
-          name?: string
-        }
+          created_at?: string | null;
+          created_by?: string | null;
+          description?: string;
+          display_name?: string;
+          id?: number;
+          name?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "community_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'community_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       community_avatar: {
         Row: {
-          file_name: string | null
-          id: number
-          path: string
-        }
+          file_name: string | null;
+          id: number;
+          path: string;
+        };
         Insert: {
-          file_name?: string | null
-          id?: number
-          path: string
-        }
+          file_name?: string | null;
+          id?: number;
+          path: string;
+        };
         Update: {
-          file_name?: string | null
-          id?: number
-          path?: string
-        }
+          file_name?: string | null;
+          id?: number;
+          path?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "community_avatar_id_fkey"
-            columns: ["id"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'community_avatar_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "community_avatar_id_fkey"
-            columns: ["id"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'community_avatar_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       link_preview: {
         Row: {
-          id: number
-          url: string
-          website: string | null
-        }
+          id: number;
+          url: string;
+          website: string | null;
+        };
         Insert: {
-          id?: number
-          url: string
-          website?: string | null
-        }
+          id?: number;
+          url: string;
+          website?: string | null;
+        };
         Update: {
-          id?: number
-          url?: string
-          website?: string | null
-        }
+          id?: number;
+          url?: string;
+          website?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "detailed_post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'detailed_post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post_community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post_community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post_preview"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post_preview';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post_preview_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post_preview_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post_vote_count"
-            referencedColumns: ["post_id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post_vote_count';
+            referencedColumns: ['post_id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post_with_community_name"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post_with_community_name';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "link_preview_id_fkey"
-            columns: ["id"]
-            referencedRelation: "post_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'link_preview_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'post_with_votes';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       post: {
         Row: {
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number
-          posted_in: number | null
-          title: string | null
-          type: string | null
-        }
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number;
+          posted_in: number | null;
+          title: string | null;
+          type: string | null;
+        };
         Insert: {
-          content?: string | null
-          created_at?: string | null
-          created_by?: string | null
-          id?: number
-          posted_in?: number | null
-          title?: string | null
-          type?: string | null
-        }
+          content?: string | null;
+          created_at?: string | null;
+          created_by?: string | null;
+          id?: number;
+          posted_in?: number | null;
+          title?: string | null;
+          type?: string | null;
+        };
         Update: {
-          content?: string | null
-          created_at?: string | null
-          created_by?: string | null
-          id?: number
-          posted_in?: number | null
-          title?: string | null
-          type?: string | null
-        }
+          content?: string | null;
+          created_at?: string | null;
+          created_by?: string | null;
+          id?: number;
+          posted_in?: number | null;
+          title?: string | null;
+          type?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       post_image: {
         Row: {
-          caption: string | null
-          created_at: string | null
-          filename: string
-          id: number
-          post_id: number | null
-          priority: number | null
-          url: string
-        }
+          caption: string | null;
+          created_at: string | null;
+          filename: string;
+          id: number;
+          post_id: number | null;
+          priority: number | null;
+          url: string;
+        };
         Insert: {
-          caption?: string | null
-          created_at?: string | null
-          filename: string
-          id?: number
-          post_id?: number | null
-          priority?: number | null
-          url: string
-        }
+          caption?: string | null;
+          created_at?: string | null;
+          filename: string;
+          id?: number;
+          post_id?: number | null;
+          priority?: number | null;
+          url: string;
+        };
         Update: {
-          caption?: string | null
-          created_at?: string | null
-          filename?: string
-          id?: number
-          post_id?: number | null
-          priority?: number | null
-          url?: string
-        }
+          caption?: string | null;
+          created_at?: string | null;
+          filename?: string;
+          id?: number;
+          post_id?: number | null;
+          priority?: number | null;
+          url?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "detailed_post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'detailed_post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_preview"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_preview';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_preview_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_preview_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_vote_count"
-            referencedColumns: ["post_id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_vote_count';
+            referencedColumns: ['post_id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_with_community_name"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_with_community_name';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_image_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_image_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_with_votes';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       post_vote: {
         Row: {
-          post_id: number
-          user_id: string
-          vote: number
-        }
+          post_id: number;
+          user_id: string;
+          vote: number;
+        };
         Insert: {
-          post_id: number
-          user_id?: string
-          vote: number
-        }
+          post_id: number;
+          user_id?: string;
+          vote: number;
+        };
         Update: {
-          post_id?: number
-          user_id?: string
-          vote?: number
-        }
+          post_id?: number;
+          user_id?: string;
+          vote?: number;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "detailed_post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'detailed_post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_preview"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_preview';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_preview_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_preview_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_vote_count"
-            referencedColumns: ["post_id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_vote_count';
+            referencedColumns: ['post_id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_with_community_name"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_with_community_name';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_post_id_fkey"
-            columns: ["post_id"]
-            referencedRelation: "post_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_post_id_fkey';
+            columns: ['post_id'];
+            referencedRelation: 'post_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_vote_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_vote_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       profile_avatar: {
         Row: {
-          file_name: string | null
-          id: string
-          path: string
-        }
+          file_name: string | null;
+          id: string;
+          path: string;
+        };
         Insert: {
-          file_name?: string | null
-          id: string
-          path: string
-        }
+          file_name?: string | null;
+          id: string;
+          path: string;
+        };
         Update: {
-          file_name?: string | null
-          id?: string
-          path?: string
-        }
+          file_name?: string | null;
+          id?: string;
+          path?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "profile_avatar_id_fkey"
-            columns: ["id"]
-            referencedRelation: "public_profile"
-            referencedColumns: ["id"]
+            foreignKeyName: 'profile_avatar_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'public_profile';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       public_profile: {
         Row: {
-          biography: string
-          id: string
-          username: string
-        }
+          biography: string;
+          id: string;
+          username: string;
+        };
         Insert: {
-          biography?: string
-          id?: string
-          username: string
-        }
+          biography?: string;
+          id?: string;
+          username: string;
+        };
         Update: {
-          biography?: string
-          id?: string
-          username?: string
-        }
+          biography?: string;
+          id?: string;
+          username?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "public_profile_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'public_profile_id_fkey';
+            columns: ['id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       user_community: {
         Row: {
-          community_id: number
-          user_id: string
-        }
+          community_id: number;
+          user_id: string;
+        };
         Insert: {
-          community_id: number
-          user_id?: string
-        }
+          community_id: number;
+          user_id?: string;
+        };
         Update: {
-          community_id?: number
-          user_id?: string
-        }
+          community_id?: number;
+          user_id?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "user_community_community_id_fkey"
-            columns: ["community_id"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'user_community_community_id_fkey';
+            columns: ['community_id'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "user_community_community_id_fkey"
-            columns: ["community_id"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'user_community_community_id_fkey';
+            columns: ['community_id'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           },
           {
-            foreignKeyName: "user_community_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'user_community_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
-        ]
-      }
-    }
+        ];
+      };
+    };
     Views: {
       comment_details: {
         Row: {
-          content: string | null
-          created_at: string | null
-          id: number | null
-          parent_comment: number | null
-          posted_by: string | null
-          posted_by_username: string | null
-          root_post: number | null
-        }
+          content: string | null;
+          created_at: string | null;
+          id: number | null;
+          parent_comment: number | null;
+          posted_by: string | null;
+          posted_by_username: string | null;
+          root_post: number | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_details"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_details';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_vote_count"
-            referencedColumns: ["comment_id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_vote_count';
+            referencedColumns: ['comment_id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_posted_by_fkey"
-            columns: ["posted_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_posted_by_fkey';
+            columns: ['posted_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "detailed_post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'detailed_post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_preview"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_preview';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_preview_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_preview_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_vote_count"
-            referencedColumns: ["post_id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_vote_count';
+            referencedColumns: ['post_id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_with_community_name"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_with_community_name';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_with_votes';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       comment_vote_count: {
         Row: {
-          comment_id: number | null
-          total_votes: number | null
-        }
-        Relationships: []
-      }
+          comment_id: number | null;
+          total_votes: number | null;
+        };
+        Relationships: [];
+      };
       comment_with_votes: {
         Row: {
-          content: string | null
-          created_at: string | null
-          id: number | null
-          parent_comment: number | null
-          posted_by: string | null
-          root_post: number | null
-          total_votes: number | null
-        }
+          content: string | null;
+          created_at: string | null;
+          id: number | null;
+          parent_comment: number | null;
+          posted_by: string | null;
+          root_post: number | null;
+          total_votes: number | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_details"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_details';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_vote_count"
-            referencedColumns: ["comment_id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_vote_count';
+            referencedColumns: ['comment_id'];
           },
           {
-            foreignKeyName: "comment_parent_comment_fkey"
-            columns: ["parent_comment"]
-            referencedRelation: "comment_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_parent_comment_fkey';
+            columns: ['parent_comment'];
+            referencedRelation: 'comment_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_posted_by_fkey"
-            columns: ["posted_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_posted_by_fkey';
+            columns: ['posted_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "detailed_post"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'detailed_post';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_preview"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_preview';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_preview_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_preview_with_votes';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_vote_count"
-            referencedColumns: ["post_id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_vote_count';
+            referencedColumns: ['post_id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_with_community_name"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_with_community_name';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "comment_root_post_fkey"
-            columns: ["root_post"]
-            referencedRelation: "post_with_votes"
-            referencedColumns: ["id"]
+            foreignKeyName: 'comment_root_post_fkey';
+            columns: ['root_post'];
+            referencedRelation: 'post_with_votes';
+            referencedColumns: ['id'];
           }
-        ]
-      }
+        ];
+      };
       detailed_post: {
         Row: {
-          community_name: string | null
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number | null
-          posted_in: number | null
-          title: string | null
-          type: string | null
-          username: string | null
-        }
+          community_name: string | null;
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number | null;
+          posted_in: number | null;
+          title: string | null;
+          type: string | null;
+          username: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       post_community: {
         Row: {
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number | null
-          posted_in: number | null
-          posted_in_name: string | null
-          title: string | null
-          type: string | null
-        }
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number | null;
+          posted_in: number | null;
+          posted_in_name: string | null;
+          title: string | null;
+          type: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       post_preview: {
         Row: {
-          community_name: string | null
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number | null
-          post_title: string | null
-          posted_in: number | null
-          title: string | null
-          type: string | null
-          username: string | null
-        }
+          community_name: string | null;
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number | null;
+          post_title: string | null;
+          posted_in: number | null;
+          title: string | null;
+          type: string | null;
+          username: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       post_preview_with_votes: {
         Row: {
-          community_name: string | null
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number | null
-          post_title: string | null
-          posted_in: number | null
-          title: string | null
-          total_votes: number | null
-          type: string | null
-          username: string | null
-        }
+          community_name: string | null;
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number | null;
+          post_title: string | null;
+          posted_in: number | null;
+          title: string | null;
+          total_votes: number | null;
+          type: string | null;
+          username: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       post_vote_count: {
         Row: {
-          post_id: number | null
-          total_votes: number | null
-        }
-        Relationships: []
-      }
+          post_id: number | null;
+          total_votes: number | null;
+        };
+        Relationships: [];
+      };
       post_with_community_name: {
         Row: {
-          community_name: string | null
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number | null
-          posted_in: number | null
-          title: string | null
-          type: string | null
-        }
+          community_name: string | null;
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number | null;
+          posted_in: number | null;
+          title: string | null;
+          type: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       post_with_votes: {
         Row: {
-          community_name: string | null
-          content: string | null
-          created_at: string | null
-          created_by: string | null
-          id: number | null
-          posted_in: number | null
-          title: string | null
-          total_votes: number | null
-          type: string | null
-          username: string | null
-        }
+          community_name: string | null;
+          content: string | null;
+          created_at: string | null;
+          created_by: string | null;
+          id: number | null;
+          posted_in: number | null;
+          title: string | null;
+          total_votes: number | null;
+          type: string | null;
+          username: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "post_created_by_fkey"
-            columns: ["created_by"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_created_by_fkey';
+            columns: ['created_by'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "community"
-            referencedColumns: ["id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'community';
+            referencedColumns: ['id'];
           },
           {
-            foreignKeyName: "post_posted_in_fkey"
-            columns: ["posted_in"]
-            referencedRelation: "user_subscription"
-            referencedColumns: ["community_id"]
+            foreignKeyName: 'post_posted_in_fkey';
+            columns: ['posted_in'];
+            referencedRelation: 'user_subscription';
+            referencedColumns: ['community_id'];
           }
-        ]
-      }
+        ];
+      };
       user_subscription: {
         Row: {
-          community_id: number | null
-          created_at: string | null
-          description: string | null
-          name: string | null
-          user_id: string | null
-        }
+          community_id: number | null;
+          created_at: string | null;
+          description: string | null;
+          name: string | null;
+          user_id: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "user_community_user_id_fkey"
-            columns: ["user_id"]
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: 'user_community_user_id_fkey';
+            columns: ['user_id'];
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
           }
-        ]
-      }
-    }
+        ];
+      };
+    };
     Functions: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Enums: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
+      [_ in never]: never;
+    };
+  };
 }

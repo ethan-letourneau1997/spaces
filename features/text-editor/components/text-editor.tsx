@@ -11,6 +11,7 @@ import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
 import { Box, Group, em } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { useEffect } from 'react';
 
 type TextEditorProps = {
   content: string;
@@ -34,6 +35,8 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
     ],
     content,
   });
+
+  useEffect(() => {}, [content]);
 
   editor?.on('update', () => {
     const updatedHTML = editor?.getHTML();

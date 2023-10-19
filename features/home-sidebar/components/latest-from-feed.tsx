@@ -19,6 +19,7 @@ export async function LatestFromFeed({ userId }: LatestFromFeedProps) {
       <FiChevronRight />
     </Link>
   );
+
   return (
     <div className="mt-3">
       <SidebarPostPreviews posts={latestPosts} header={header} />

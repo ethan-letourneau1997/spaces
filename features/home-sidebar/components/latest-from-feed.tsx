@@ -1,23 +1,27 @@
-'use client';
-
-import { Box, Group, Text } from '@mantine/core';
-import { Database } from '@/lib/database';
-import { SidebarPostPreview } from './sidebar-post-preview';
+import { FiChevronRight } from 'react-icons/fi';
+import Link from 'next/link';
+import { fetchLatestFromFeed } from '../api/fetch-latest-from-feed';
+import { SidebarPostPreviews } from '@/features/sidebar-post-previews';
+import { DEFAULT_SORT } from '@/lib/constants';
 
 type LatestFromFeedProps = {
-  posts: Database['public']['Views']['detailed_post']['Row'][];
+  userId: string;
 };
 
-export function LatestFromFeed({ posts }: LatestFromFeedProps) {
+export async function LatestFromFeed({ userId }: LatestFromFeedProps) {
+  const latestPosts = await fetchLatestFromFeed(userId);
+  const header = (
+    <Link
+      href={`/feed/${DEFAULT_SORT}`}
+      className="flex items-center mb-3 -mt-1 text-xs font-semibold gap-0.5 text-gray-4 no-underline group hover:text-white"
+    >
+      <span className="">Posts From Your Feed</span>
+      <FiChevronRight />
+    </Link>
+  );
   return (
-    <Box mt="md">
-      <Text fw={600}>The latest from your Feed</Text>
-
-      <Group gap="xs" mt="xs">
-        {posts.map((post) => (
-          <SidebarPostPreview key={post.id} post={post} />
-        ))}
-      </Group>
-    </Box>
+    <div className="mt-3">
+      <SidebarPostPreviews posts={latestPosts} header={header} />
+    </div>
   );
 }

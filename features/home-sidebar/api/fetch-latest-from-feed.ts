@@ -18,6 +18,6 @@ export async function fetchLatestFromFeed(userId: string) {
     .select()
     .in('posted_in', communityIds)
     .order('created_at', { ascending: false })
-    .limit(3);
+    .limit(5);
   return posts;
 }

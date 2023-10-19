@@ -8,8 +8,7 @@ type SidebarWrapperProps = {
 export function SidebarWrapper({ children, miw }: SidebarWrapperProps) {
   return (
     <Card
-      bg="#212227"
-      className="!hidden lg:!block"
+      className="!hidden lg:!block !bg-dark-6.5"
       miw={miw || '300px'}
       maw="300px"
       h="fit-content"

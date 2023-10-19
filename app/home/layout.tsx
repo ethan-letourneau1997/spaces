@@ -14,7 +14,10 @@ export default function PostsLayout({ children }: { children: any }) {
           {children}
           <HomePagination />
         </Box>
-        <HomeSidebar />
+
+        <div className="max-w-[300px]">
+          <HomeSidebar />
+        </div>
       </Flex>
     </>
   );

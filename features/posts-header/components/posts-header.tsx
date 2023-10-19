@@ -20,13 +20,16 @@ export function PostsHeader({
   newPostButton = true,
 }: PostsHeaderProps) {
   return (
-    <Card withBorder mb="sm">
+    <Card className="!bg-dark-6.5" withBorder mb="sm">
       <div className="flex justify-between gap-7">
         <Group>
           <Anchor
+            variant="gradient"
+            gradient={{ from: 'pink', to: 'yellow' }}
             className="!no-underline tracking-wide"
-            fw={500}
-            c={`${sort === 'new' ? 'orange.5' : 'gray.3'}`}
+            fw={600}
+            size="lg"
+            // c={`${sort === 'new' ? 'orange.5' : 'gray.3'}`}
             component={Link}
             href={newLink}
           >
@@ -35,7 +38,8 @@ export function PostsHeader({
           <Anchor
             className="!no-underline tracking-wide"
             fw={500}
-            c={`${sort === 'old' ? 'orange.5' : 'gray.3'}`}
+            size="lg"
+            c={`${sort === 'old' ? 'orange.5' : 'gray.5'}`}
             component={Link}
             href={oldLink}
           >
@@ -44,7 +48,8 @@ export function PostsHeader({
           <Anchor
             className="!no-underline tracking-wide"
             fw={500}
-            c={`${sort === 'top' ? 'orange.5' : 'gray.3'}`}
+            size="lg"
+            c={`${sort === 'top' ? 'orange.5' : 'gray.5'}`}
             component={Link}
             href={topLink}
           >

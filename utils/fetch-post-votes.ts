@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers';
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
 
-export async function fetchPostVotes(postId: number | null) {
+export async function fetchPostVotes(postId: number | null | string) {
   const supabase = createServerActionClient({ cookies });
 
   const { data: comment_votes } = await supabase.from('post_vote').select().eq('post_id', postId);

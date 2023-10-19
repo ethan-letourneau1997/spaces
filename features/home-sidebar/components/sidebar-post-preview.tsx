@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, AspectRatio, Card, Group, Text } from '@mantine/core';
+import { Anchor, AspectRatio, Group, Text } from '@mantine/core';
 import Link from 'next/link';
 import { Database } from '@/lib/database';
 import { PostThumbnail } from '@/features/post-thumbnail';
@@ -12,7 +12,7 @@ type SidebarPostPreviewProps = {
 
 export function SidebarPostPreview({ post }: SidebarPostPreviewProps) {
   return (
-    <Card py="xs" w="100%">
+    <div>
       <Group gap={0}>
         <Text size="xs">posted by&nbsp;</Text>
         <Anchor
@@ -51,6 +51,6 @@ export function SidebarPostPreview({ post }: SidebarPostPreviewProps) {
           </AspectRatio>
         </div>
       )}
-    </Card>
+    </div>
   );
 }

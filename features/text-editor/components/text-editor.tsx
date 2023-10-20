@@ -18,7 +18,7 @@ type TextEditorProps = {
   buttons?: JSX.Element;
 };
 
-export function TextEditor({ content, setContent, mih, buttons }: TextEditorProps) {
+export function TextEditor({ content, setContent, buttons }: TextEditorProps) {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -67,7 +67,7 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
             <RichTextEditor.Unlink />
           </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
-        <RichTextEditor.Content mih={mih || '30vh'} />
+        <RichTextEditor.Content className="md:!min-h-[140px] !min-h-[140px]" />
         <Group justify="flex-end" py="xs" px="xs">
           {buttons}
         </Group>

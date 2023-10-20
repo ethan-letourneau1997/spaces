@@ -109,5 +109,5 @@
     overflow-x: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
-    font-size: 15px;
+    @apply md:text-sm text-xs bg-dark-8 w-fit p-2 sm:p-4 mb-3
 }

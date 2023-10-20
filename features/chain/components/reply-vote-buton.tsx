@@ -37,7 +37,7 @@ export function ReplyVoteButton({ comment, userVote }: ReplyVoteButtonProps) {
       {optimisticUserVote === 1 ? (
         <Button
           onClick={handleRemoveVote}
-          color="blue.3"
+          color="yellow.6"
           variant="outline"
           radius="xl"
           leftSection={<FaArrowUp />}
@@ -53,6 +53,7 @@ export function ReplyVoteButton({ comment, userVote }: ReplyVoteButtonProps) {
           radius="xl"
           leftSection={<FaArrowUp />}
           size="xs"
+          className="hover:!border-yellow-6 hover:text-yellow-6"
         >
           {optimisticTotalVotes}
         </Button>

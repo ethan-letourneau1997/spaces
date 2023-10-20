@@ -65,7 +65,6 @@ export function VoteButtons({ totalVotes, userVote, post, comment, horizontal }:
           <BiUpvote size={17} className="text-dark-2 hover:text-orange-5" />
         )}
       </UnstyledButton>
-      {/* <BiUpvote /> */}
       <span className="text-sm text-center">{optimisticTotalVotes}</span>
       <UnstyledButton type="button" onClick={handleDownvote} className="flex items-center ">
         {optimisticUserVote === -1 ? (

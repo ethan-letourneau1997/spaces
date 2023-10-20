@@ -8,12 +8,10 @@ import { Database } from '@/lib/database';
 export async function upsertChainCommentVote(
   comment: Database['public']['Views']['comment_details']['Row'],
   pathname: string,
-  remove?: boolean
+  vote: number
 ) {
   const supabase = createServerActionClient({ cookies });
   const { data } = await supabase.auth.getSession();
-
-  const vote = remove ? 0 : 1;
 
   if (data.session) {
     await supabase

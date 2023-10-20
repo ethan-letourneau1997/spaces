@@ -1,4 +1,5 @@
-import { ChainComments } from './chain-comments';
+import { ChainReplies } from './chain-replies';
+import { RootInput } from './root-input';
 
 type ChainProps = {
   params: {
@@ -15,7 +16,7 @@ export async function Chain({ params }: ChainProps) {
 
   return (
     <>
-      <ChainComments postId={postId} />
+      <ChainReplies postId={postId} /> <RootInput />
     </>
   );
 }

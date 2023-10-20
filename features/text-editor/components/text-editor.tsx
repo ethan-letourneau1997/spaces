@@ -9,9 +9,7 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
-import { Box, Group, em } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
-import { useEffect } from 'react';
+import { Box, Group } from '@mantine/core';
 
 type TextEditorProps = {
   content: string;
@@ -21,8 +19,6 @@ type TextEditorProps = {
 };
 
 export function TextEditor({ content, setContent, mih, buttons }: TextEditorProps) {
-  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
-
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -36,8 +32,6 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
     content,
   });
 
-  useEffect(() => {}, [content]);
-
   editor?.on('update', () => {
     const updatedHTML = editor?.getHTML();
     setContent(updatedHTML);
@@ -46,24 +40,13 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
   return (
     <Box bg="dark.7">
       <RichTextEditor editor={editor}>
-        <RichTextEditor.Toolbar
-          display="flex"
-          style={{ gap: 15 }}
-          sticky
-          // stickyOffset={60}
-        >
+        <RichTextEditor.Toolbar display="flex" style={{ gap: 15 }} sticky>
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
             <RichTextEditor.Italic />
             <RichTextEditor.Underline />
-            {!isMobile && (
-              <>
-                <RichTextEditor.Strikethrough />
-                {/* <RichTextEditor.ClearFormatting /> */}
-                {/* <RichTextEditor.Highlight /> */}
-                <RichTextEditor.Code />
-              </>
-            )}
+            <RichTextEditor.Strikethrough className="!hidden sm:!flex" />
+            <RichTextEditor.Code className="!hidden sm:!flex" />
           </RichTextEditor.ControlsGroup>
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.H1 />
@@ -71,32 +54,20 @@ export function TextEditor({ content, setContent, mih, buttons }: TextEditorProp
             <RichTextEditor.H3 />
             <RichTextEditor.H4 />
           </RichTextEditor.ControlsGroup>
-          {!isMobile && (
-            <RichTextEditor.ControlsGroup>
-              <RichTextEditor.Blockquote />
-              <RichTextEditor.Hr />
-              <RichTextEditor.BulletList />
-              <RichTextEditor.OrderedList />
-              <RichTextEditor.Subscript />
-              <RichTextEditor.Superscript />
-            </RichTextEditor.ControlsGroup>
-          )}
-          {!isMobile && (
-            <RichTextEditor.ControlsGroup>
-              <RichTextEditor.Link />
-              <RichTextEditor.Unlink />
-            </RichTextEditor.ControlsGroup>
-          )}
-          {/* {!isMobile && (
-            <RichTextEditor.ControlsGroup>
-              <RichTextEditor.AlignLeft />
-              <RichTextEditor.AlignCenter />
-              <RichTextEditor.AlignJustify />
-              <RichTextEditor.AlignRight />
-            </RichTextEditor.ControlsGroup>
-          )} */}
+          <RichTextEditor.ControlsGroup className="!hidden sm:!flex">
+            <RichTextEditor.Blockquote />
+            <RichTextEditor.Hr />
+            <RichTextEditor.BulletList />
+            <RichTextEditor.OrderedList />
+            <RichTextEditor.Subscript />
+            <RichTextEditor.Superscript />
+          </RichTextEditor.ControlsGroup>
+          <RichTextEditor.ControlsGroup className="!hidden sm:!flex">
+            <RichTextEditor.Link />
+            <RichTextEditor.Unlink />
+          </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
-        <RichTextEditor.Content mih={mih || isMobile ? '100px' : '30vh'} />
+        <RichTextEditor.Content mih={mih || '30vh'} />
         <Group justify="flex-end" py="xs" px="xs">
           {buttons}
         </Group>

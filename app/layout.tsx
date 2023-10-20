@@ -1,6 +1,6 @@
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
-import '../globals.css';
+import './globals.css';
 
 import { ColorSchemeScript, Container, MantineProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: any }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body className={`${inter.className} bg-dark-9`}>
+      <body className={`${inter.className} bg-dark-9 dark`}>
         <MantineProvider theme={theme} defaultColorScheme="dark">
           <Notifications />
           <Navbar>

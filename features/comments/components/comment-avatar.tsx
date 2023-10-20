@@ -1,9 +1,7 @@
 'use client';
 
-import { Avatar } from '@mantine/core';
-
+import Image from 'next/image';
 import useSWR from 'swr';
-
 import { fetchAvatar } from '@/utils/fetch-avatar';
 
 type CommentAvatarProps = {
@@ -17,6 +15,16 @@ export function CommentAvatar({ userId }: CommentAvatarProps) {
   });
 
   if (avatar) {
-    return <Avatar size="sm" src={avatar.path} placeholder="UA" />;
+    return (
+      <div className="w-[28px] h-[28px] relative ">
+        <Image
+          className="rounded-full"
+          src={avatar.path}
+          alt="img name"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+    );
   }
 }

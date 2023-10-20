@@ -1,10 +1,10 @@
 'use client';
 
 import useSWR from 'swr';
-
-import { Avatar, Center, Skeleton } from '@mantine/core';
+import { Avatar, Center } from '@mantine/core';
 import { useParams } from 'next/navigation';
 import { IoPlanetOutline } from 'react-icons/io5';
+import Image from 'next/image';
 import { fetchSpaceAvatar } from '@/utils/fetch-space-avatar';
 import { avatarPlaceholder } from './space-sidebar-placeholders';
 
@@ -24,11 +24,15 @@ export function SpaceAvatar() {
 
   if (avatarUrl) {
     return (
-      <Center>
-        <Avatar src={avatarUrl} size="lg" radius="sm">
-          <Skeleton circle h={56} w={56} />
-        </Avatar>
-      </Center>
+      <div className="w-[56px] h-[56px] relative mx-auto">
+        <Image
+          className="rounded-full"
+          src={avatarUrl}
+          alt="img name"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
     );
   }
 

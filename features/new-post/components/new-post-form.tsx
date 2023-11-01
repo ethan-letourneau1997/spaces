@@ -14,6 +14,7 @@ import { CommunitySelect } from './community-select';
 import { Database } from '@/lib/database';
 import { removeTags } from '@/utils/remove-tags';
 import { createPost } from '../api/create-post';
+import { uploadImages } from '../api/upload-images';
 
 type NewPostFormProps = {
   spaceId?: string;
@@ -65,13 +66,16 @@ export function NewPostForm({ spaceId, spaces }: NewPostFormProps) {
     }
 
     startTransition(async () => {
-      await createPost({
+      const postId = await createPost({
         communityId,
         communityName,
         title,
         content,
         type,
       });
+      if (type === 'image') {
+        uploadImages(images, postId);
+      }
       notifications.show({ message: 'Your post has been created!' });
     });
   }
